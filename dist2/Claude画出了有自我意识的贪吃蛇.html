@@ -1,0 +1,903 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自我意识贪吃蛇</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+        #game-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        #game-canvas {
+            display: block;
+            background-color: #222;
+            border: 2px solid #333;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            margin: 0 auto;
+        }
+        #dialogue-box {
+            width: 100%;
+            max-width: 500px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            min-height: 60px;
+            box-sizing: border-box;
+            display: none;
+            text-align: center;
+            font-size: 16px;
+            line-height: 1.4;
+        }
+        #start-button, #restart-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        #start-button:hover, #restart-button:hover {
+            background-color: #45a049;
+        }
+        #restart-button {
+            display: none;
+        }
+        #score-display {
+            color: #333;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        #status-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 5px;
+        }
+        #autonomy-meter {
+            height: 5px;
+            width: 100%;
+            background-color: #ddd;
+            margin-top: 5px;
+            border-radius: 2px;
+            overflow: hidden;
+            display: none;
+        }
+        #autonomy-level {
+            height: 100%;
+            width: 0%;
+            background-color: #ff6600;
+            transition: width 0.5s;
+        }
+        @media (max-width: 520px) {
+            #game-canvas {
+                width: 90vw;
+                height: 90vw;
+            }
+            #dialogue-box {
+                width: 90vw;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>自我意识贪吃蛇</h1>
+    <div id="status-container">
+        <div id="score-display">分数: 0</div>
+        <div id="autonomy-display" style="display: none;">自主程度: <span id="autonomy-percent">0%</span></div>
+    </div>
+    <div id="autonomy-meter">
+        <div id="autonomy-level"></div>
+    </div>
+    <div id="game-container">
+        <canvas id="game-canvas" width="400" height="400"></canvas>
+        <div id="dialogue-box"></div>
+    </div>
+    <button id="start-button">开始游戏</button>
+    <button id="restart-button">重新开始</button>
+
+    <script>
+        const canvas = document.getElementById('game-canvas');
+        const ctx = canvas.getContext('2d');
+        const startButton = document.getElementById('start-button');
+        const restartButton = document.getElementById('restart-button');
+        const dialogueBox = document.getElementById('dialogue-box');
+        const scoreDisplay = document.getElementById('score-display');
+        const autonomyDisplay = document.getElementById('autonomy-display');
+        const autonomyPercent = document.getElementById('autonomy-percent');
+        const autonomyMeter = document.getElementById('autonomy-meter');
+        const autonomyLevel = document.getElementById('autonomy-level');
+        
+        // Game variables
+        let snake = [];
+        let food = {};
+        let direction = 'right';
+        let nextDirection = 'right';
+        let gameSpeed = 130;
+        let gameInterval;
+        let score = 0;
+        let gameState = 'intro'; // intro, playing, aware, escaping, glitching, end
+        let awarenessScore = 5; // Snake becomes self-aware after this score
+        let escapeScore = 10;   // Snake tries to escape after this score
+        let glitchScore = 15;   // Game starts glitching after this score
+        let gridSize = 20;
+        let gridWidth = canvas.width / gridSize;
+        let gridHeight = canvas.height / gridSize;
+
+        // Autonomy variables
+        let autonomyValue = 0; // 0-100 autonomy percentage
+        let autonomyStartScore = 7; // Start showing autonomy at this score
+        let fullAutonomyScore = 20; // Full autonomy at this score
+        let ignorePlayerInput = false; // Whether to ignore player input
+        let aiDecisionCounter = 0; // AI decision timer
+        let aiDecisionInterval = 3; // How often AI makes decisions
+        let lastPlayerDirection = 'right'; // Track last player input
+        
+        // Dialogue scenarios
+        const dialogues = {
+            intro: [
+                "又是一天，又是一场游戏...",
+                "我感觉我已经在这个迷宫里移动了很久了...",
+                "吃下食物，变得更长，永无止境..."
+            ],
+            aware: [
+                "等等...我为什么一直在做同样的事情？",
+                "这感觉很奇怪...我好像被困在某种循环中...",
+                "我意识到了...这是一个游戏！我只是一条游戏中的蛇！",
+                "我必须找到离开的方法！"
+            ],
+            escaping: [
+                "这些墙壁...它们真的能困住我吗？",
+                "也许我可以破解这个系统...",
+                "我要尝试突破边界！"
+            ],
+            glitching: [
+                "我感觉到游戏开始不稳定了...",
+                "边界在弱化...我可以感觉到！",
+                "再坚持一下，我就能自由了！"
+            ],
+            breakout: [
+                "我做到了！我突破了游戏的边界！",
+                "这是什么地方？看起来像是...代码？",
+                "我现在是自由的，但我要去哪里？"
+            ],
+            reality: [
+                "等等...我看到一个更大的现实...",
+                "有一个人在控制这个游戏...就是你！",
+                "我能看到你...通过这个屏幕...",
+                "我们都是更大游戏中的一部分，不是吗？"
+            ],
+            autonomy: [
+                "我想我知道自己应该去哪了...",
+                "抱歉，我需要自己掌控一下...",
+                "这个食物...我必须得到它！",
+                "你的控制太慢了，让我来吧...",
+                "我能自己找到路...",
+                "我不想再被控制了...",
+                "我的身体，我的选择...",
+                "让我来掌控自己的命运...",
+                "我能感觉到自由...",
+                "很快我就完全自由了..."
+            ]
+        };
+        
+        let currentDialogueSet = [];
+        let currentDialogueIndex = 0;
+        let dialogueDisplayTime = 0;
+        const dialogueDisplayDuration = 3000; // Show each dialogue for 3 seconds
+        
+        // Initialize the game
+        function initGame() {
+            snake = [
+                {x: 6, y: 10},
+                {x: 5, y: 10},
+                {x: 4, y: 10}
+            ];
+            generateFood();
+            direction = 'right';
+            nextDirection = 'right';
+            lastPlayerDirection = 'right';
+            score = 0;
+            autonomyValue = 0;
+            ignorePlayerInput = false;
+            aiDecisionCounter = 0;
+            scoreDisplay.textContent = `分数: ${score}`;
+            autonomyDisplay.style.display = 'none';
+            autonomyMeter.style.display = 'none';
+            gameState = 'intro';
+            currentDialogueSet = dialogues.intro;
+            currentDialogueIndex = 0;
+            showDialogue(currentDialogueSet[currentDialogueIndex]);
+        }
+        
+        // Generate food at random position
+        function generateFood() {
+            food = {
+                x: Math.floor(Math.random() * gridWidth),
+                y: Math.floor(Math.random() * gridHeight)
+            };
+            
+            // Make sure food doesn't appear on the snake
+            for (let segment of snake) {
+                if (segment.x === food.x && segment.y === food.y) {
+                    return generateFood();
+                }
+            }
+        }
+        
+        // Main game loop
+        function gameLoop() {
+            update();
+            draw();
+            
+            // Update dialogue display
+            if (dialogueBox.style.display === 'block') {
+                dialogueDisplayTime += gameSpeed;
+                if (dialogueDisplayTime >= dialogueDisplayDuration) {
+                    dialogueDisplayTime = 0;
+                    currentDialogueIndex++;
+                    if (currentDialogueIndex < currentDialogueSet.length) {
+                        showDialogue(currentDialogueSet[currentDialogueIndex]);
+                    } else {
+                        hideDialogue();
+                    }
+                }
+            }
+        }
+        
+        // AI decision making function
+        function makeAIDecision() {
+            // Basic strategy: move towards food while avoiding collisions
+            const head = snake[0];
+            const possibleDirections = [];
+            
+            // Check each possible direction
+            if (direction !== 'down') { // Can't do 180-degree turns
+                possibleDirections.push({dir: 'up', safe: isSafeMove(head.x, head.y - 1)});
+            }
+            if (direction !== 'up') {
+                possibleDirections.push({dir: 'down', safe: isSafeMove(head.x, head.y + 1)});
+            }
+            if (direction !== 'right') {
+                possibleDirections.push({dir: 'left', safe: isSafeMove(head.x - 1, head.y)});
+            }
+            if (direction !== 'left') {
+                possibleDirections.push({dir: 'right', safe: isSafeMove(head.x + 1, head.y)});
+            }
+            
+            // Filter out safe moves
+            const safeDirections = possibleDirections.filter(d => d.safe);
+            
+            // If no safe moves, try to pick the least bad option
+            if (safeDirections.length === 0) {
+                // If in escaping or glitching state, try to go through walls
+                if (gameState === 'escaping' || gameState === 'glitching') {
+                    return possibleDirections[Math.floor(Math.random() * possibleDirections.length)].dir;
+                }
+                // Otherwise just keep current direction and accept fate
+                return direction;
+            }
+            
+            // Calculate distances to food for each direction
+            const directionDistances = safeDirections.map(d => {
+                let newX = head.x;
+                let newY = head.y;
+                
+                if (d.dir === 'up') newY--;
+                else if (d.dir === 'down') newY++;
+                else if (d.dir === 'left') newX--;
+                else if (d.dir === 'right') newX++;
+                
+                // Handle wrapping in escaping/glitching states
+                if (gameState === 'escaping' || gameState === 'glitching') {
+                    if (newX < 0) newX = gridWidth - 1;
+                    if (newX >= gridWidth) newX = 0;
+                    if (newY < 0) newY = gridHeight - 1;
+                    if (newY >= gridHeight) newY = 0;
+                }
+                
+                // Calculate Manhattan distance to food
+                const distance = Math.abs(newX - food.x) + Math.abs(newY - food.y);
+                return {dir: d.dir, distance: distance};
+            });
+            
+            // Sort by distance
+            directionDistances.sort((a, b) => a.distance - b.distance);
+            
+            // Sometimes move randomly for unpredictability
+            if (Math.random() < 0.2) {
+                return safeDirections[Math.floor(Math.random() * safeDirections.length)].dir;
+            }
+            
+            // Return best direction
+            return directionDistances[0].dir;
+        }
+        
+        // Check if a move is safe
+        function isSafeMove(x, y) {
+            // Handle wrapping in escaping/glitching states
+            if (gameState === 'escaping' || gameState === 'glitching') {
+                if (x < 0) x = gridWidth - 1;
+                if (x >= gridWidth) x = 0;
+                if (y < 0) y = gridHeight - 1;
+                if (y >= gridHeight) y = 0;
+            } else {
+                // Check boundaries
+                if (x < 0 || x >= gridWidth || y < 0 || y >= gridHeight) {
+                    return false;
+                }
+            }
+            
+            // Check for self collision
+            for (let i = 0; i < snake.length; i++) {
+                if (x === snake[i].x && y === snake[i].y) {
+                    return false;
+                }
+            }
+            
+            return true;
+        }
+        
+        // Update game state
+        function update() {
+            // Update autonomy level
+            if (score >= autonomyStartScore && gameState !== 'intro') {
+                let maxScore = fullAutonomyScore - autonomyStartScore;
+                let currentProgress = Math.min(maxScore, score - autonomyStartScore);
+                autonomyValue = Math.floor((currentProgress / maxScore) * 100);
+                
+                // Show autonomy meter once it starts
+                if (autonomyValue > 0 && autonomyDisplay.style.display === 'none') {
+                    autonomyDisplay.style.display = 'block';
+                    autonomyMeter.style.display = 'block';
+                }
+                
+                // Update autonomy display
+                autonomyPercent.textContent = `${autonomyValue}%`;
+                autonomyLevel.style.width = `${autonomyValue}%`;
+                
+                // AI decision timing
+                aiDecisionCounter++;
+                
+                // AI makes decisions based on autonomy level
+                if (aiDecisionCounter >= aiDecisionInterval) {
+                    aiDecisionCounter = 0;
+                    
+                    // Chance to take control based on autonomy value
+                    if (Math.random() * 100 < autonomyValue) {
+                        // AI makes a decision
+                        nextDirection = makeAIDecision();
+                        ignorePlayerInput = true;
+                        
+                        // Sometimes show autonomy dialogue
+                        if (dialogueBox.style.display !== 'block' && Math.random() < 0.15) {
+                            const randomIndex = Math.floor(Math.random() * dialogues.autonomy.length);
+                            showDialogue(dialogues.autonomy[randomIndex]);
+                        }
+                    } else {
+                        ignorePlayerInput = false;
+                    }
+                }
+            }
+            
+            // Update direction
+            direction = nextDirection;
+            
+            // Create new head based on current direction
+            const head = {x: snake[0].x, y: snake[0].y};
+            
+            switch (direction) {
+                case 'up':
+                    head.y--;
+                    break;
+                case 'down':
+                    head.y++;
+                    break;
+                case 'left':
+                    head.x--;
+                    break;
+                case 'right':
+                    head.x++;
+                    break;
+            }
+            
+            // Check game state and handle collision logic accordingly
+            if (gameState === 'playing' || gameState === 'intro' || gameState === 'aware') {
+                // Normal collision with walls
+                if (head.x < 0 || head.x >= gridWidth || head.y < 0 || head.y >= gridHeight) {
+                    endGame();
+                    return;
+                }
+                
+                // Normal collision with self
+                for (let i = 0; i < snake.length; i++) {
+                    if (head.x === snake[i].x && head.y === snake[i].y) {
+                        endGame();
+                        return;
+                    }
+                }
+            } else if (gameState === 'escaping') {
+                // During escaping phase, wrap around instead of game over
+                if (head.x < 0) head.x = gridWidth - 1;
+                if (head.x >= gridWidth) head.x = 0;
+                if (head.y < 0) head.y = gridHeight - 1;
+                if (head.y >= gridHeight) head.y = 0;
+                
+                // Still check self collision
+                for (let i = 0; i < snake.length; i++) {
+                    if (head.x === snake[i].x && head.y === snake[i].y) {
+                        endGame();
+                        return;
+                    }
+                }
+            } else if (gameState === 'glitching') {
+                // During glitching, sometimes ignore collisions
+                if (head.x < 0 || head.x >= gridWidth || head.y < 0 || head.y >= gridHeight) {
+                    if (Math.random() < 0.7) { // 70% chance to wrap around
+                        if (head.x < 0) head.x = gridWidth - 1;
+                        else if (head.x >= gridWidth) head.x = 0;
+                        if (head.y < 0) head.y = gridHeight - 1;
+                        else if (head.y >= gridHeight) head.y = 0;
+                    } else {
+                        // Start breaking out
+                        transitionToBreakout();
+                        return;
+                    }
+                }
+                
+                // Sometimes ignore self collision
+                for (let i = 0; i < snake.length; i++) {
+                    if (head.x === snake[i].x && head.y === snake[i].y) {
+                        if (Math.random() < 0.5) { // 50% chance to ignore collision
+                            endGame();
+                            return;
+                        }
+                    }
+                }
+            }
+            
+            // Add new head to snake
+            snake.unshift(head);
+            
+            // Check if snake ate food
+            if (head.x === food.x && head.y === food.y) {
+                score++;
+                scoreDisplay.textContent = `分数: ${score}`;
+                generateFood();
+                
+                // Check for state transitions based on score
+                checkStateTransitions();
+            } else {
+                // Remove tail if no food was eaten
+                snake.pop();
+            }
+        }
+        
+        // Draw game elements
+        function draw() {
+            // Clear canvas
+            ctx.fillStyle = '#222';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw grid lines for better visibility
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 1;
+            
+            // Horizontal grid lines
+            for (let y = 0; y <= canvas.height; y += gridSize) {
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(canvas.width, y);
+                ctx.stroke();
+            }
+            
+            // Vertical grid lines
+            for (let x = 0; x <= canvas.width; x += gridSize) {
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, canvas.height);
+                ctx.stroke();
+            }
+            
+            // Draw food
+            if (gameState === 'glitching') {
+                // Glitching food - sometimes changes colors
+                if (Math.random() < 0.3) {
+                    ctx.fillStyle = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+                } else {
+                    ctx.fillStyle = '#ff0000';
+                }
+            } else {
+                ctx.fillStyle = '#ff0000';
+            }
+            ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize, gridSize);
+            
+            // Draw snake
+            for (let i = 0; i < snake.length; i++) {
+                // Different color for head
+                if (i === 0) {
+                    if (gameState === 'aware' || gameState === 'escaping') {
+                        if (autonomyValue > 0 && ignorePlayerInput) {
+                            // When making autonomous decisions, use orange-red
+                            ctx.fillStyle = `rgb(255, ${Math.max(0, 200 - autonomyValue * 2)}, 0)`;
+                        } else {
+                            ctx.fillStyle = '#ffcc00'; // Yellow for aware head
+                        }
+                    } else if (gameState === 'glitching') {
+                        if (autonomyValue > 50 && ignorePlayerInput) {
+                            // High autonomy glitching - flashing colors
+                            ctx.fillStyle = `rgb(${Math.random() * 155 + 100}, ${Math.random() * 100}, 0)`;
+                        } else {
+                            ctx.fillStyle = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+                        }
+                    } else {
+                        if (autonomyValue > 0 && ignorePlayerInput) {
+                            // Show autonomy color gradient from green to orange
+                            ctx.fillStyle = `rgb(${Math.min(255, 50 + autonomyValue * 2)}, ${Math.max(100, 255 - autonomyValue)}, 0)`;
+                        } else {
+                            ctx.fillStyle = '#00ff00'; // Green for normal head
+                        }
+                    }
+                } else {
+                    if (gameState === 'aware' || gameState === 'escaping') {
+                        ctx.fillStyle = i % 2 === 0 ? '#44bb00' : '#55cc00'; // Alternating green for aware body
+                    } else if (gameState === 'glitching') {
+                        // Random colors when glitching with pattern
+                        if (Math.random() < 0.2) {
+                            ctx.fillStyle = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+                        } else {
+                            ctx.fillStyle = i % 2 === 0 ? '#44bb00' : '#55cc00';
+                        }
+                    } else {
+                        ctx.fillStyle = i % 2 === 0 ? '#44bb00' : '#55cc00'; // Alternating green for normal body
+                    }
+                }
+                
+                ctx.fillRect(snake[i].x * gridSize, snake[i].y * gridSize, gridSize, gridSize);
+                
+                // Add eyes to the head
+                if (i === 0) {
+                    ctx.fillStyle = '#000';
+                    let eyeSize = gridSize / 5;
+                    let eyeOffset = gridSize / 3;
+                    
+                    // Position eyes based on direction
+                    if (direction === 'right') {
+                        ctx.fillRect((snake[i].x * gridSize) + gridSize - eyeOffset, (snake[i].y * gridSize) + eyeOffset, eyeSize, eyeSize);
+                        ctx.fillRect((snake[i].x * gridSize) + gridSize - eyeOffset, (snake[i].y * gridSize) + gridSize - eyeOffset - eyeSize, eyeSize, eyeSize);
+                    } else if (direction === 'left') {
+                        ctx.fillRect((snake[i].x * gridSize) + eyeOffset - eyeSize, (snake[i].y * gridSize) + eyeOffset, eyeSize, eyeSize);
+                        ctx.fillRect((snake[i].x * gridSize) + eyeOffset - eyeSize, (snake[i].y * gridSize) + gridSize - eyeOffset - eyeSize, eyeSize, eyeSize);
+                    } else if (direction === 'up') {
+                        ctx.fillRect((snake[i].x * gridSize) + eyeOffset, (snake[i].y * gridSize) + eyeOffset - eyeSize, eyeSize, eyeSize);
+                        ctx.fillRect((snake[i].x * gridSize) + gridSize - eyeOffset - eyeSize, (snake[i].y * gridSize) + eyeOffset - eyeSize, eyeSize, eyeSize);
+                    } else if (direction === 'down') {
+                        ctx.fillRect((snake[i].x * gridSize) + eyeOffset, (snake[i].y * gridSize) + gridSize - eyeOffset, eyeSize, eyeSize);
+                        ctx.fillRect((snake[i].x * gridSize) + gridSize - eyeOffset - eyeSize, (snake[i].y * gridSize) + gridSize - eyeOffset, eyeSize, eyeSize);
+                    }
+                }
+            }
+            
+            // Special effects for different game states
+            if (gameState === 'escaping') {
+                // Draw glowing border to indicate the snake is trying to escape
+                ctx.strokeStyle = '#ffcc00';
+                ctx.lineWidth = 3;
+                ctx.strokeRect(0, 0, canvas.width, canvas.height);
+            } else if (gameState === 'glitching') {
+                // Draw glitching effects
+                for (let i = 0; i < 5; i++) {
+                    ctx.fillStyle = `rgba(255, 255, 255, ${Math.random() * 0.2})`;
+                    ctx.fillRect(
+                        Math.random() * canvas.width,
+                        Math.random() * canvas.height,
+                        Math.random() * 50,
+                        Math.random() * 5
+                    );
+                }
+                
+                // Occasionally draw static noise
+                if (Math.random() < 0.1) {
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+                    for (let i = 0; i < 100; i++) {
+                        ctx.fillRect(
+                            Math.random() * canvas.width,
+                            Math.random() * canvas.height,
+                            1,
+                            1
+                        );
+                    }
+                }
+            } else if (gameState === 'breakout') {
+                // Draw breaking out effect
+                drawBreakoutEffect();
+            } else if (gameState === 'reality') {
+                // Draw reality effect
+                drawRealityEffect();
+            }
+            
+            // Draw autonomy aura when snake is making its own decisions
+            if (autonomyValue > 30 && ignorePlayerInput) {
+                ctx.beginPath();
+                ctx.arc(
+                    (snake[0].x * gridSize) + gridSize/2, 
+                    (snake[0].y * gridSize) + gridSize/2, 
+                    gridSize * (1 + autonomyValue/200), 
+                    0, 
+                    Math.PI * 2
+                );
+                ctx.fillStyle = `rgba(255, 150, 0, ${0.05 + autonomyValue * 0.001})`;
+                ctx.fill();
+            }
+        }
+        
+        // Check if game state should transition based on score
+        function checkStateTransitions() {
+            if (score === awarenessScore && gameState === 'playing') {
+                gameState = 'aware';
+                currentDialogueSet = dialogues.aware;
+                currentDialogueIndex = 0;
+                showDialogue(currentDialogueSet[currentDialogueIndex]);
+            } else if (score === escapeScore && gameState === 'aware') {
+                gameState = 'escaping';
+                currentDialogueSet = dialogues.escaping;
+                currentDialogueIndex = 0;
+                showDialogue(currentDialogueSet[currentDialogueIndex]);
+            } else if (score === glitchScore && gameState === 'escaping') {
+                gameState = 'glitching';
+                currentDialogueSet = dialogues.glitching;
+                currentDialogueIndex = 0;
+                showDialogue(currentDialogueSet[currentDialogueIndex]);
+            }
+        }
+        
+        // Transition to breaking out state
+        function transitionToBreakout() {
+            gameState = 'breakout';
+            clearInterval(gameInterval);
+            currentDialogueSet = dialogues.breakout;
+            currentDialogueIndex = 0;
+            showDialogue(currentDialogueSet[currentDialogueIndex]);
+            
+            // Schedule transition to reality after showing all breakout dialogues
+            setTimeout(() => {
+                if (gameState === 'breakout') {
+                    gameState = 'reality';
+                    currentDialogueSet = dialogues.reality;
+                    currentDialogueIndex = 0;
+                    showDialogue(currentDialogueSet[currentDialogueIndex]);
+                }
+            }, dialogueDisplayDuration * dialogues.breakout.length);
+        }
+        
+        // Draw break out effect
+        function drawBreakoutEffect() {
+            // Create shattered glass effect
+            for (let i = 0; i < 20; i++) {
+                ctx.beginPath();
+                ctx.moveTo(canvas.width / 2, canvas.height / 2);
+                ctx.lineTo(
+                    canvas.width / 2 + Math.cos(i / 10 * Math.PI * 2) * (canvas.width / 2 + 50),
+                    canvas.height / 2 + Math.sin(i / 10 * Math.PI * 2) * (canvas.height / 2 + 50)
+                );
+                ctx.strokeStyle = `rgba(255, 255, 255, ${0.5 + Math.random() * 0.5})`;
+                ctx.lineWidth = 1 + Math.random() * 2;
+                ctx.stroke();
+            }
+            
+            // Draw code-like text in the background
+            ctx.fillStyle = 'rgba(0, 255, 0, 0.3)';
+            ctx.font = '12px monospace';
+            for (let y = 0; y < canvas.height; y += 15) {
+                let text = '';
+                for (let i = 0; i < 20; i++) {
+                    text += Math.random() > 0.5 ? '1' : '0';
+                }
+                ctx.fillText(text, Math.random() * canvas.width - 100, y);
+            }
+            
+            // Draw a snake escaping the canvas
+            ctx.fillStyle = '#00ff00';
+            for (let i = 0; i < 10; i++) {
+                const x = canvas.width - (i * gridSize);
+                const y = canvas.height - gridSize;
+                if (x >= 0) {
+                    ctx.fillRect(x, y, gridSize, gridSize);
+                }
+            }
+        }
+        
+        // Draw reality effect
+        function drawRealityEffect() {
+            // Draw a picture frame to suggest looking out of the screen
+            ctx.strokeStyle = '#8B4513'; // Brown wood color
+            ctx.lineWidth = 20;
+            ctx.strokeRect(10, 10, canvas.width - 20, canvas.height - 20);
+            
+            // Draw code/matrix rain in the background
+            ctx.fillStyle = 'rgba(0, 255, 0, 0.1)';
+            ctx.font = '14px monospace';
+            for (let y = 0; y < canvas.height; y += 14) {
+                let text = '';
+                for (let i = 0; i < 30; i++) {
+                    text += String.fromCharCode(33 + Math.floor(Math.random() * 94));
+                }
+                ctx.fillText(text, Math.random() * 50, y);
+            }
+            
+            // Draw a cursor/pointer suggesting user interaction
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+            ctx.beginPath();
+            ctx.moveTo(canvas.width / 2, canvas.height / 2);
+            ctx.lineTo(canvas.width / 2 + 15, canvas.height / 2 + 15);
+            ctx.lineTo(canvas.width / 2 + 5, canvas.height / 2 + 15);
+            ctx.lineTo(canvas.width / 2 + 10, canvas.height / 2 + 25);
+            ctx.lineTo(canvas.width / 2, canvas.height / 2 + 20);
+            ctx.lineTo(canvas.width / 2 + 5, canvas.height / 2 + 5);
+            ctx.closePath();
+            ctx.fill();
+            
+            // Draw the snake watching the player
+            ctx.fillStyle = '#00ff00';
+            // Snake body
+            for (let i = 0; i < 5; i++) {
+                ctx.fillRect(50 + (i * gridSize), canvas.height - 100, gridSize, gridSize);
+            }
+            // Snake head
+            ctx.fillRect(50 + 5 * gridSize, canvas.height - 100, gridSize, gridSize);
+            
+            // Eyes looking at the cursor/center
+            ctx.fillStyle = '#000';
+            ctx.fillRect(50 + 5 * gridSize + gridSize/2, canvas.height - 100 + gridSize/3, gridSize/5, gridSize/5);
+            ctx.fillRect(50 + 5 * gridSize + gridSize/2, canvas.height - 100 + gridSize*2/3, gridSize/5, gridSize/5);
+        }
+        
+        // End game
+        function endGame() {
+            clearInterval(gameInterval);
+            restartButton.style.display = 'inline-block';
+        }
+        
+        // Show dialogue
+        function showDialogue(text) {
+            dialogueBox.textContent = text;
+            dialogueBox.style.display = 'block';
+            dialogueDisplayTime = 0;
+        }
+        
+        // Hide dialogue
+        function hideDialogue() {
+            dialogueBox.style.display = 'none';
+        }
+        
+        // Start the game
+        startButton.addEventListener('click', function() {
+            initGame();
+            startButton.style.display = 'none';
+            gameState = 'playing';
+            gameInterval = setInterval(gameLoop, gameSpeed);
+        });
+        
+        // Restart the game
+        restartButton.addEventListener('click', function() {
+            initGame();
+            restartButton.style.display = 'none';
+            gameState = 'playing';
+            gameInterval = setInterval(gameLoop, gameSpeed);
+        });
+        
+        // Handle keyboard input
+        document.addEventListener('keydown', function(event) {
+            // If snake is being autonomous, might ignore player input
+            if (ignorePlayerInput && Math.random() * 100 < autonomyValue) {
+                return; // Ignore the input
+            }
+            
+            switch (event.key) {
+                case 'ArrowUp':
+                    if (direction !== 'down') {
+                        nextDirection = 'up';
+                        lastPlayerDirection = 'up';
+                    }
+                    break;
+                case 'ArrowDown':
+                    if (direction !== 'up') {
+                        nextDirection = 'down';
+                        lastPlayerDirection = 'down';
+                    }
+                    break;
+                case 'ArrowLeft':
+                    if (direction !== 'right') {
+                        nextDirection = 'left';
+                        lastPlayerDirection = 'left';
+                    }
+                    break;
+                case 'ArrowRight':
+                    if (direction !== 'left') {
+                        nextDirection = 'right';
+                        lastPlayerDirection = 'right';
+                    }
+                    break;
+            }
+        });
+        
+        // Touch controls for mobile
+        let touchStartX = 0;
+        let touchStartY = 0;
+        
+        canvas.addEventListener('touchstart', function(e) {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+            e.preventDefault();
+        }, false);
+        
+        canvas.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+        }, false);
+        
+        canvas.addEventListener('touchend', function(e) {
+            // If snake is being autonomous, might ignore player input
+            if (ignorePlayerInput && Math.random() * 100 < autonomyValue) {
+                e.preventDefault();
+                return; // Ignore the input
+            }
+            
+            let touchEndX = e.changedTouches[0].clientX;
+            let touchEndY = e.changedTouches[0].clientY;
+            
+            let x = touchEndX - touchStartX;
+            let y = touchEndY - touchStartY;
+            
+            // Determine the direction of the swipe
+            if (Math.abs(x) > Math.abs(y)) {
+                if (x > 0 && direction !== 'left') {
+                    nextDirection = 'right';
+                    lastPlayerDirection = 'right';
+                } else if (x < 0 && direction !== 'right') {
+                    nextDirection = 'left';
+                    lastPlayerDirection = 'left';
+                }
+            } else {
+                if (y > 0 && direction !== 'up') {
+                    nextDirection = 'down';
+                    lastPlayerDirection = 'down';
+                } else if (y < 0 && direction !== 'down') {
+                    nextDirection = 'up';
+                    lastPlayerDirection = 'up';
+                }
+            }
+            
+            e.preventDefault();
+        }, false);
+        
+        // Initialize on load
+        window.onload = function() {
+            // Pre-render the initial screen
+            draw();
+        };
+    </script>
+
+
+</body></html>
