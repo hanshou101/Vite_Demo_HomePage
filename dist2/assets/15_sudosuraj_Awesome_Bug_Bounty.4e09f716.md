@@ -1,0 +1,256 @@
+https://github.com/sudosuraj/Awesome-Bug-Bounty
+
+# **超棒的漏洞赏金计划**
+
+\_ 由@sudosuraj 提出的 Web 渗透测试方法  
+这是我的个人仓库，包括漏洞赏金提示、工具集合、我个人在搜寻漏洞时喜欢的单行代码等等。它正在开发中，欢迎随意[贡献](https://github.com/sudosuraj/Awesome-Bug-Bounty/issues/new)。
+
+## **工具安装**
+
+\#\!/bin/bash
+
+go install \-v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest  
+go install \-v github.com/tomnomnom/anew@latest  
+go install github.com/tomnomnom/assetfinder@latest  
+go install github.com/projectdiscovery/katana/cmd/katana@latest  
+go install github.com/tomnomnom/waybackurls@latest  
+go install github.com/hakluke/hakrawler@latest  
+go install github.com/d3mondev/puredns/v2@latest  
+go install \-v github.com/projectdiscovery/dnsx/cmd/dnsx@latest  
+go install github.com/lc/gau/v2/cmd/gau@latest  
+go install github.com/utkusen/socialhunter@latest  
+go install \-v github.com/PentestPad/subzy@latest  
+go install github.com/003random/getJS/v2@latest  
+\#https://github.com/0xRyuk/crtsh.git  
+sudo apt install python3-pip  
+pip3 install uro  
+pip3 install urless  
+pipx install bbot
+
+git clone https://github.com/0xRyuk/crtsh.git /tmp/crtsh  
+pip3 install \-r /tmp/crtsh/requirments.txt  
+sudo mkdir \-p /opt/crtsh  
+sudo cp /tmp/crtsh/crtsh.py /opt/crtsh/  
+sudo echo 'alias crtsh="python3 /opt/crtsh/crtsh.py"'\>\>\~/.zshrc  
+. \~/.zshrc
+
+git clone https://github.com/m4ll0k/SecretFinder.git /tmp/secretfinder  
+pip install \-r /tmp/secretfinder/requirements.txt  
+sudo mkdir \-p /opt/secretfinder  
+sudo cp /tmp/secretfinder/SecretFinder.py  /opt/secretfinder/secretfinder.py  
+sudo echo 'alias secretfinder="python3 /opt/secretfinder/secretfinder.py"'\>\>\~/.zshrc  
+. \~/.zshrc
+
+git clone https://github.com/GerbenJavado/LinkFinder.git  
+cd LinkFinder  
+sudo mkdir \-p /opt/linkfinder  
+sudo cp linkfinder.py /opt/linkfinder/linkfinder.py  
+sudo echo 'alias linkfinder="python3 /opt/linkfinder/linkfinder.py"'\>\>\~/.zshrc  
+. \~/.zshrc
+
+## **子域名**
+
+### **枚举：**
+
+subfinder \-dL domains.txt \-all  \-recursive | anew rawsubdomains.txt
+
+cat domains.txt | while read domain; do assetfinder $domain \-subs-only && anew rawsubdomains.txt; done
+
+cat domains.txt | while read domain; do crtsh \-d $domain && anew rawsubdomains.txt; done
+
+for i in $(cat domains.txt);do bbot \-t $i \-p subdomain-enum; done
+
+### **正在解决：**
+
+\#\!/bin/bash  
+subfinder \-dL domains.txt \-all  \-recursive | anew rawsubdomains.txt  
+cat domains.txt | while read domain; do assetfinder $domain \-subs-only && anew rawsubdomains.txt; done   
+cat domains.txt | while read domain; do crtsh \-d $domain && anew rawsubdomains.txt; done
+
+wget https://raw.githubusercontent.com/proabiral/Fresh-Resolvers/master/resolvers.txt  
+echo 8.8.8.8 \>\> trusted.txt  
+echo 8.8.4.4 \>\> trusted.txt  
+massdns \-r resolvers.txt \-t A \-o S rawsubdomains.txt \-w resolved0.txt  
+cat resolved0.txt | awk '{print $1}' | sed 's/\\.$//' | sort \-u | anew subdomains.txt  
+dnsx \-l rawsubdomains.txt \-r resolvers.txt \-a \-resp \-o resolved1.txt  
+cat resolved1.txt |awk '{print $1}' | sed 's/\\.$//' | sort \-u | anew subdomains.txt  
+puredns resolve rawsubdomains.txt \-r resolvers.txt \--resolvers-trusted trusted.txt | anew resolved2.txt  
+cat resolved2.txt | awk '{print $1}' | sort \-u | anew subdomains.txt
+
+cat resolved\*.txt | grep \-E \-o '((25\[0-5\]|2\[0-4\]\[0-9\]|\[01\]?\[0-9\]\[0-9\]?)\\.){3}(25\[0-5\]|2\[0-4\]\[0-9\]|\[01\]?\[0-9\]\[0-9\]?)' | anew IPs.txt
+
+rm \-rf resolve\*.txt && rm \-rf trusted.txt
+
+ cat IPs.txt | httpx-toolkit \-title \-ports 66,80,81,443,445,457,1080,1100,1241,1352,1433,1434,1521,1944,2301,3000,3128,3306,4000,4001,4002,4100,5000,5432,5800,5801,5802,6346,6347,7001,7002,8000,8080,8443,8888,30821 \-threads 300 anew alive.txt 
+
+ cat subdomains.txt | httpx-toolkit \-title \-ports 66,80,81,443,445,457,1080,1100,1241,1352,1433,1434,1521,1944,2301,3000,3128,3306,4000,4001,4002,4100,5000,5432,5800,5801,5802,6346,6347,7001,7002,8000,8080,8443,8888,30821 \-threads 300 | anew alive.txt
+
+echo Done\!
+
+### **子域名接管**
+
+subzy run \--targets alive.txt
+
+## **查找正在运行的服务：**
+
+[https://raw.githubusercontent.com/Bo0oM/services-names-wordlist/master/list.txt](https://raw.githubusercontent.com/Bo0oM/services-names-wordlist/master/list.txt)
+
+## **断链劫持**
+
+socialhunter \-f alive.txt
+
+## **从IPs.txt 上的[ports.txt](https://github.com/sudosuraj/Awesome-Bug-Bounty/blob/main/ports.txt)扫描端口**
+
+sudo masscan $(cat IPs.txt)  \-p0-65535 \--rate 1000 \--wait 3 2\> /dev/null | grep \-o \-P '(?\<=port ).\*(?=/)' | anew ports.txt
+
+## **使用 Naabu 进行端口扫描**
+
+naabu \-list domains.txt \-c 50 \-nmap-cli 'nmap \-sCV' | anew naabufull.txt  
+naabu \-list subdomains.txt \-c 50 \-nmap-cli 'nmap \-sCV' | anew naabufull.txt
+
+## **查找技术**
+
+cat urls.txt| while read urls; do webtech \-u $urls; done
+
+## **内容发现**
+
+dirsearch \-l alive.txt \-x 500,502,503,429 \-R 5 \--random-agent \-t 100 \-F  \-w /usr/share/wordlists/seclists/Discovery/Web-Content/raft-medium-directories.txt
+
+cat subdomains.txt | httpx \-title \-td \-sc \-fr | anew alive.txt
+
+cat alive.txt | gau | anew allurls.txt
+
+katana \-u alive.txt \-d 5 \-ps \-pss waybackarchive,commoncrawl,alienvault \-kf \-jc \-fx \-ef woff,css,png,svg,jpg,woff2,jpeg,gif,svg \-o allurls.txt
+
+katana \-u alive.txt \-d 4 \-f qurl \-o allurls.txt
+
+cat alive.txt | hakrawler | anew allurls.txt
+
+cat allurls.txt | grep \-E "\\.txt|\\.log|\\.cache|\\.secret|\\.db|\\.backup|\\.bkp|\\.yml|\\.json|\\.gz|\\.rar|\\.gzip|\\.zip|\\.config"
+
+## **参数发现**
+
+### **收集带参数的 URL**
+
+cat allurls.txt|grep \-v \-i \-E "\\.js" | grep \-P '(?\<=\\?|&)\\w+(?==|&)' | uro | tee \-a paramsurls.txt
+
+for i in $(cat subdomains.txt); do paramspider \-d $i | anew paramurls.txt; done
+
+### **收集参数单词作为单词表**
+
+cat allurls.txt | grep \-oP '(?\<=\\?|&)\\w+(?==|&)' |  tee \-a params.txt
+
+## **查找并枚举 JavaScript 文件**
+
+cat allurls.txt | grep \-i \-E "\\.js" | egrep \-v "\\.json" | httpx \-mc 200 | anew jsfiles.txt
+
+while read \-r url; do  
+  if curl \-s \-o /dev/null \-w "%{http\_code}" "$url" | grep \-q 200 && \\  
+     curl \-s \-I "$url" | grep \-iq 'Content-Type:.\*\\(text/javascript\\|application/javascript\\)'; then  
+    echo "$url"  
+  fi  
+done \< jsfiles.txt \> livejsfiles.txt
+
+\# https://github.com/m4ll0k/SecretFinder
+
+cat jsfiles.txt | while read url; do python3 secretfinder.py \-i $url \-o cli \>\> secrets.txt; done
+
+nuclei \-l jsfiles.txt \-t /home/enma/nuclei-templates/http/exposures/ \-o jsecrets.txt
+
+cat jsfiles.txt | while read url; do linkfinder \-i $url \-o cli \>\> endpoints-js.txt; done
+
+cat jsfiles.txt | xargs \-I{} python3 /opt/linkfinder/linkfinder.py \-i {} \-o cli | anew endpoints-js.txt
+
+\# Download JS Files
+
+\#\# curl  
+mkdir \-p js\_files; while IFS= read \-r url || \[ \-n "$url" \]; do filename=$(basename "$url"); echo "Downloading $filename JS..."; curl \-sSL "$url" \-o "downloaded\_js\_files/$filename"; done \< "$1"; echo "Download complete."
+
+\#\# wget  
+sed \-i 's/\\r//' js.txt && for i in $(cat liveJS.txt); do wget "$i"; done
+
+## **GraphQL API**
+
+grep \-r \-i \-o \-E "http\[s\]?://\[a-zA-Z0-9./?=\_-\]\*\\b(graphql)" | anew graphql\_endpoints.txt  
+grep \-r \-i "graphql\\|mutation" . | anew graphql\_endpoints.txt
+
+### **POST 请求自省查询：**
+
+{"query": "query IntrospectionQuery{\_\_schema{queryType{name}mutationType{name}subscriptionType{name}types{...FullType}directives{name description locations args{...InputValue}}}}fragment FullType on \_\_Type{kind name description fields(includeDeprecated:true){name description args{...InputValue}type{...TypeRef}isDeprecated deprecationReason}inputFields{...InputValue}interfaces{...TypeRef}enumValues(includeDeprecated:true){name description isDeprecated deprecationReason}possibleTypes{...TypeRef}}fragment InputValue on \_\_InputValue{name description type{...TypeRef}defaultValue}fragment TypeRef on \_\_Type{kind name ofType{kind name ofType{kind name ofType{kind name ofType{kind name ofType{kind name ofType{kind name ofType{kind name}}}}}}}}"}
+
+### **GET 请求自省查询：**
+
+/?query=fragment%20FullType%20on%20Type%20{+%20%20kind+%20%20name+%20%20description+%20%20fields%20{+%20%20%20%20name+%20%20%20%20description+%20%20%20%20args%20{+%20%20%20%20%20%20...InputValue+%20%20%20%20}+%20%20%20%20type%20{+%20%20%20%20%20%20...TypeRef+%20%20%20%20}+%20%20}+%20%20inputFields%20{+%20%20%20%20...InputValue+%20%20}+%20%20interfaces%20{+%20%20%20%20...TypeRef+%20%20}+%20%20enumValues%20{+%20%20%20%20name+%20%20%20%20description+%20%20}+%20%20possibleTypes%20{+%20%20%20%20...TypeRef+%20%20}+}++fragment%20InputValue%20on%20InputValue%20{+%20%20name+%20%20description+%20%20type%20{+%20%20%20%20...TypeRef+%20%20}+%20%20defaultValue+}++fragment%20TypeRef%20on%20Type%20{+%20%20kind+%20%20name+%20%20ofType%20{+%20%20%20%20kind+%20%20%20%20name+%20%20%20%20ofType%20{+%20%20%20%20%20%20kind+%20%20%20%20%20%20name+%20%20%20%20%20%20ofType%20{+%20%20%20%20%20%20%20%20kind+%20%20%20%20%20%20%20%20name+%20%20%20%20%20%20%20%20ofType%20{+%20%20%20%20%20%20%20%20%20%20kind+%20%20%20%20%20%20%20%20%20%20name+%20%20%20%20%20%20%20%20%20%20ofType%20{+%20%20%20%20%20%20%20%20%20%20%20%20kind+%20%20%20%20%20%20%20%20%20%20%20%20name+%20%20%20%20%20%20%20%20%20%20%20%20ofType%20{+%20%20%20%20%20%20%20%20%20%20%20%20%20%20kind+%20%20%20%20%20%20%20%20%20%20%20%20%20%20name+%20%20%20%20%20%20%20%20%20%20%20%20%20%20ofType%20{+%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20kind+%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20name+%20%20%20%20%20%20%20%20%20%20%20%20%20%20}+%20%20%20%20%20%20%20%20%20%20%20%20}+%20%20%20%20%20%20%20%20%20%20}+%20%20%20%20%20%20%20%20}+%20%20%20%20%20%20}+%20%20%20%20}+%20%20}+}++query%20IntrospectionQuery%20{+%20%20schema%20{+%20%20%20%20queryType%20{+%20%20%20%20%20%20name+%20%20%20%20}+%20%20%20%20mutationType%20{+%20%20%20%20%20%20name+%20%20%20%20}+%20%20%20%20types%20{+%20%20%20%20%20%20...FullType+%20%20%20%20}+%20%20%20%20directives%20{+%20%20%20%20%20%20name+%20%20%20%20%20%20description+%20%20%20%20%20%20locations+%20%20%20%20%20%20args%20{+%20%20%20%20%20%20%20%20...InputValue+%20%20%20%20%20%20}+%20%20%20%20}+%20%20}+}
+
+相关文章：[https ://medium.com/@jonathanmondaut/from-developer-to-hacker-breaking-into-graphql-6083c80b4588](https://medium.com/@jonathanmondaut/from-developer-to-hacker-breaking-into-graphql-6083c80b4588)
+
+## **SQLi 单行代码**
+
+cat subs.txt | (gau || hakrawler || katana || waybckurls) | grep "=" | anew tmp-sqli.txt && sqlmap \-m tmp-sqli.txt \--batch \--random-agent \--level 5 \--risk 3 \--dbs && for i in $(cat tmp-sqli.txt); do ghauri \-u "$i" \--level 3 \--dbs \--current-db \--batch \--confirm; done
+
+\_ 在 sqlmap/ghauri 的输出文件夹中找到哪个主机存在漏洞 root@bb:\~/.local/share/sqlmap/output:  
+	find \-type f \-name "log" \-exec sh \-c 'grep \-q "Parameter" "{}" && echo "{}: SQLi"' \\;
+
+\_ 使用 TOR 绕过 WAF  
+	sqlmap \-r request.txt \--time-sec=10 \--tor \--tor-type=SOCKS5 \--check-tor \--dbs \--random-agent \--tamper=space2comment
+
+使用 SQLmap Tamper 脚本绕过 WAF  
+	sqlmap \--list-tampers | grep "\*" | awk '{print $2}' | grep ".py" | tr '\\n' ','| sed 's/.py//g'
+
+	sqlmap \-u 'http://www.site.com/search.cmd?form\_state=1' \--level=5 \--risk=3 \--tamper=apostrophemask,apostrophenullencode,base64encode,between,chardoubleencode,charencode,charunicodeencode,equaltolike,greatest,ifnull2ifisnull,multiplespaces,nonrecursivereplacement,percentage,randomcase,securesphere,space2comment,space2plus,space2randomblank,unionalltounion,unmagicquotes \--no-cast \--no-escape \--dbs \--random-agent
+
+## **查找单个域的 IP 和 ASN**
+
+`dig +short target.com| xargs -n 1 -I {} whois -h whois.cymru.com {} | grep -oE "([0-9]{1,3}\.){3}[0-9]{1,3}"`
+
+## **查找多个域名的 IP 和 asn**
+
+### **1**
+
+`cat domains.txt | xargs -I {} -n 1 dig +short {} | xargs -n 1 -I {} whois -h whois.cymru.com {} | grep -oE "([0-9]{1,3}\.){3}[0-9]{1,3}"`
+
+### **2**
+
+`cat subfinder.txt | dnsx -silent -a -resp-only | anew IPs.txt`
+
+## **0xNinja 子域名枚举**
+
+### **1 单个域名的子域名枚举**
+
+`python3 cet.py --domain target.com | sed -e 's:^ *::g' -e 's:^*\.::g' -e '/^$/d' | sed -e 's:*.::g' | sort -u | grep -o -E '\b[a-zA-Z0-9.-]*target[a-zA-Z0-9.-]*\.(com)\b' |tee -a 2.txt`  
+`./crt.sh paytmlabs.com | tee -a 2.txt`
+
+### **2 多个域的子域名枚举（inscope-domains.txt）**
+
+`cat inscope-domains.txt | xargs -I {} -n 1 python3 cet.py --domain {} | sed -e 's:^ *::g' -e 's:^*\.::g' -e '/^$/d' | sed -e 's:*.::g' | sort -u | grep -o -E '\b[a-zA-Z0-9.-]*target[a-zA-Z0-9.-]*\.(com)\b' |tee -a 2.txt`  
+`cat inscope-domains.txt | xargs -I {} -n 1 bash crt.sh | tee -a 2.txt`
+
+### **3 解析实时子域名**
+
+下载最新的解析器：[这里](https://raw.githubusercontent.com/proabiral/Fresh-Resolvers/master/resolvers.txt)  
+`wget https://raw.githubusercontent.com/proabiral/Fresh-Resolvers/master/resolvers.txt`  
+`massdns -r resolvers.txt -t A -o S subdomains.txt -w resolved.txt`  
+`puredns resolve subdomains.txt -r resolvers.txt --resolvers-trusted trusted.txt | anew resolved2.txt`  
+`dnsx -l subdomains.txt -r resolvers.txt -a -resp -o resolved1.txt`
+
+### **4\. 查找多个顶级域名的子域名**
+
+while read domain; do if host “$domain” \> /dev/null; then echo $domain;fi;done\<DutchGov.txt \>\> domains.txt  
+for sub in $(cat domains.txt);do subfinder \-d $sub \-o $sub.dutch;done  
+cat \*.dutch \> all.sub
+
+### **5\. 同时对多个域进行 FUZZ**
+
+for i in $(cat all.sub); do echo””; echo “Subdomain of $i”;echo “”;gobuster dir \-w wordlist.txt \-u $i \-e \-o tmp ;cat tmp \>\> dutch.fuzz; echo “”; done
+
+## **查找单个域名的 IP 地址**
+
+`dig +short target.com | xargs -n 1 -I {} whois -h whois.cymru.com {} | tee IPs.txt`
+
+## **查找多个域名的 IP 地址**
+
+`cat domains.txt | xargs -I {} -n 1 dig +short {} | xargs -n 1 -I {} whois -h whois.cymru.com {} | tee IPs.txt`
+
+## **使用 censys 收集 IP**
+
+`censys search hackerone.com | grep "ip" | egrep -v "description" | cut -d ":" -f2 | tr -d \"\, | tee IPs.txt`  
