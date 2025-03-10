@@ -1,0 +1,20 @@
+const n=`# \u3010\u8001\u7CFB\u7EDF\u7684\u3011\u9E3F\u8499\u5DE5\u5177\u7BB1    \u6C22\u6C27\u5316\u82EF - \u84DD\u594F\u4E91\u7F51\u76D8
+
+Created: November 22, 2024 10:18 PM
+URL: https://wwa.lanzoui.com/u/%E6%B0%A2%E6%B0%A7%E5%8C%96%E8%8B%AF
+\u6587\u7AE0\u7C7B\u522B(\u6839\u636EWebStorm\u7684\u76EE\u5F55\u6765): \u9E3F\u8499HarmonyOS
+\u8BC4\u5206: 6.5
+
+\u52AA\u529B\u52A0\u8F7D\u4E2D...
+
+\u6C22\u6C27\u5316\u82EF
+
+\u6587\u4EF6\u540D
+
+\u5927\u5C0F
+
+\u65F6\u95F4
+
+\u663E\u793A\u66F4\u591A\u6587\u4EF6
+
+\xA9 2023 Lanzou A`;export{n as _};

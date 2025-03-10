@@ -1,0 +1,98 @@
+const n=`# \u3010\u9E3F\u8499\u9006\u5411\u5DE5\u5177\u5305-\u539F\u7248\u3011Yricky/abcde: openHarmony\u9006\u5411\u5DE5\u5177\u5305
+
+Created: November 25, 2024 9:07 PM
+URL: https://github.com/Yricky/abcde
+\u6587\u7AE0\u7C7B\u522B(\u6839\u636EWebStorm\u7684\u76EE\u5F55\u6765): \u9E3F\u8499HarmonyOS
+\u8BC4\u5206: 8.5
+
+# ABCDE
+
+> 
+> 
+> 
+> OpenHarmony\u9006\u5411\u5DE5\u5177\u5305 by Yricky
+> 
+> [\u67E5\u770B\u5B8C\u6574\u6587\u6863\u76EE\u5F55](https://github.com/Yricky/abcde/blob/main/docs/index.md)
+> 
+
+ABCDE\u662F\u4E00\u4E2A\u4F7F\u7528Kotlin\u7F16\u5199\u7684OpenHarmony\u9006\u5411\u5DE5\u5177\u5305\uFF0C\u76EE\u524D\u5DF2\u7ECF\u5B9E\u73B0\u7684\u529F\u80FD\u4E3A\u89E3\u6790\u65B9\u821F\u5B57\u8282\u7801\u6587\u4EF6\u4E2D \u7684\u7C7B\u4FE1\u606F\u3001\u65B9\u6CD5\u4FE1\u606F\u3001\u5B57\u9762\u91CF\u6570\u7EC4\u4FE1\u606F\u4EE5\u53CA\u5BF9\u65B9\u6CD5\u8FDB\u884C\u53CD\u6C47\u7F16\uFF0C\u89E3\u6790\u8D44\u6E90\u7D22\u5F15\u6587\u4EF6\u7B49\u529F\u80FD\u3002
+
+\u8BE5\u5DE5\u5177\u6838\u5FC3\u529F\u80FD\u7531\u7EAFkotlin\uFF08jvm\uFF09\u5B9E\u73B0\uFF0C\u56E0\u6B64\u53EF\u4EE5\u63D0\u4F9B\u5E73\u53F0\u65E0\u5173\u7684jar\u5305\u4F9Bjava\u5DE5\u7A0B\u5F15\u7528\u5E76\u4E8C\u6B21\u5F00\u53D1
+
+## \u6784\u5EFA
+
+### \u73AF\u5883\u9700\u6C42
+
+- JDK17+
+
+### \u6784\u5EFAUberJar
+
+\`\`\`
+./gradlew :abcdecoder:packageReleaseUberJarForCurrentOS
+\`\`\`
+
+> 
+> 
+> 
+> \u4E5F\u53EF\u4EE5\u53BB[github actions](https://github.com/Yricky/abcde/actions) \u4E2D\u4E0B\u8F7D\u6700\u65B0\u7684\u6784\u5EFA
+> 
+
+## \u529F\u80FD\u6F14\u793A
+
+### \u4E3B\u9875\u9762
+
+\u53EF\u4EE5\u62D6\u5165\u6216\u70B9\u51FB\u6253\u5F00\u6587\u4EF6\uFF0C\u652F\u6301\u6587\u4EF6\u7C7B\u578B\u6709.abc\u3001.hap\u3001.index\u7B49
+
+![https://github.com/Yricky/abcde/raw/main/docs/image/Screenshot_20240719_202230.png](https://github.com/Yricky/abcde/raw/main/docs/image/Screenshot_20240719_202230.png)
+
+### hap\u9875\u9762
+
+![https://github.com/Yricky/abcde/raw/main/docs/image/Screenshot_20240719_204555.png](https://github.com/Yricky/abcde/raw/main/docs/image/Screenshot_20240719_204555.png)
+
+\u8FD9\u91CC\u53EF\u4EE5\u4EE5\u6811\u5F62\u7ED3\u6784\u67E5\u770Bhap\u4E2D\u7684\u5185\u5BB9\uFF0C\u5176\u4E2D\u7684abc\u548Cindex\u6587\u4EF6\u80FD\u591F\u70B9\u51FB\u6253\u5F00\u3002 \u5982\u679C\u89E3\u6790\u6210\u529F\uFF0C\u8BE5hap\u7684\u90E8\u5206\u5305\u4FE1\u606F\u5C06\u5728\u53F3\u4FA7\u5C55\u793A\u3002
+
+### \u8D44\u6E90\u7D22\u5F15\u67E5\u770B\u9875\u9762
+
+![https://github.com/Yricky/abcde/raw/main/docs/image/Screenshot_20240719_204623.png](https://github.com/Yricky/abcde/raw/main/docs/image/Screenshot_20240719_204623.png)
+
+\u8FD9\u91CC\u63D0\u4F9B\u4E0Eandroid studio\u67E5\u770Barsc\u7C7B\u4F3C\u7684\u529F\u80FD\uFF0C\u53EF\u4EE5\u67E5\u770BopenHarmony \u8D44\u6E90\u7D22\u5F15\u6587\u4EF6\u4E2D\u7684\u5185\u5BB9\uFF0C\u5E76\u652F\u6301\u6309\u7C7B\u578B\u533A\u5206\u548C\u540D\u79F0+\u5185\u5BB9\u7684\u67E5\u627E\u3002
+
+### abc\u6587\u4EF6\u67E5\u770B\u9875\u9762
+
+![https://github.com/Yricky/abcde/raw/main/docs/image/Screenshot_20240719_204701.png](https://github.com/Yricky/abcde/raw/main/docs/image/Screenshot_20240719_204701.png)
+
+\u8FD9\u91CC\u53EF\u4EE5\u6309\u7167\u6811\u5F62\u7ED3\u6784\u67E5\u770Babc\u5B57\u8282\u7801\u6587\u4EF6\u4E2D\u7684\u7C7B\u4FE1\u606F\uFF0C\u652F\u6301\u6309\u540D\u79F0\u67E5\u627E\u3002\u5DE6\u4FA7 \u4FE1\u606F\u9875\u7B7E\u4E5F\u652F\u6301\u67E5\u770B\u5B57\u8282\u7801\u7248\u672C\u3001\u6821\u9A8C\u548C\u7B49\u4FE1\u606F\u3002
+
+### \u7C7B\u4FE1\u606F\u548C\u5B57\u8282\u7801\u67E5\u770B
+
+![https://github.com/Yricky/abcde/raw/main/docs/image/Screenshot_20240719_204729.png](https://github.com/Yricky/abcde/raw/main/docs/image/Screenshot_20240719_204729.png)
+
+\u70B9\u5165\u67D0\u4E2A\u7C7B\u540E\uFF0C\u53EF\u4EE5\u67E5\u770B\u7C7B\u7684\u65B9\u6CD5\u548C\u5B57\u6BB5\u3002\u652F\u6301\u7B80\u5355\u7684\u7D22\u5F15\uFF0C\u5DE6\u4FA7\u4FE1\u606F\u9875\u7B7E\u4E2D\u53EF\u4EE5\u67E5\u770B \u8FD9\u4E2A\u7C7B\u7684\u5BFC\u5165\u5BFC\u51FA\u4FE1\u606F
+
+![https://github.com/Yricky/abcde/raw/main/docs/image/Screenshot_20240719_204801.png](https://github.com/Yricky/abcde/raw/main/docs/image/Screenshot_20240719_204801.png)
+
+\u70B9\u51FB\u7C7B\u4E2D\u7684\u67D0\u4E2A\u65B9\u6CD5\u5373\u53EF\u67E5\u770B\u8BE5\u65B9\u6CD5\u7684\u5B57\u8282\u7801\u3002
+
+### \u547D\u4EE4\u884C
+
+\u76EE\u524D\u652F\u6301\u4F7F\u7528\u547D\u4EE4\u884C\u89E3\u6790\u51FAabc\u6587\u4EF6\u4E2D\u7684class\u5217\u8868\u548C\u8D44\u6E90\u7D22\u5F15\u6587\u4EF6\u4E2D\u7684\u5185\u5BB9 \u4EE5\u4E0B\u662F\u547D\u4EE4\u884C\u793A\u4F8B\uFF1A
+
+> 
+> 
+> 
+> dump class
+> 
+
+\`\`\`
+java -jar /path/to/abcdecoder.jar --cli --dump-class /path/to/module.abc [--out=out.txt]
+\`\`\`
+
+> 
+> 
+> 
+> dump index
+> 
+
+\`\`\`
+java -jar /path/to/abcdecoder.jar --cli --dump-index /path/to/resources.index [--out=out.json]
+\`\`\``;export{n as _};

@@ -1,0 +1,689 @@
+const t=`devanshbatham/Awesome-Bugbounty-Writeups: A curated list of bugbounty writeups (Bug type wise) , inspired from https://github.com/ngalongc/bug-bounty-reference    https://github.com/devanshbatham/Awesome-Bugbounty-Writeups\r
+\r
+\uFF03\uFF03 \u5185\u5BB9\r
+\r
+- [\u8DE8\u7AD9\u70B9\u811A\u672C (XSS)](https://github.com/devanshbatham/Awesome-Bugbounty-Writeups#cross-site-scripting-xss)\r
+- [\u8DE8\u7AD9\u8BF7\u6C42\u4F2A\u9020\uFF08CSRF\uFF09]\uFF08https://github.com/devanshbatham/Awesome-Bugbounty-Writeups#cross-site-request-forgery-csrf\uFF09\r
+- [\u70B9\u51FB\u52AB\u6301\uFF08UI \u91CD\u88C5\u653B\u51FB\uFF09](https://github.com/devanshbatham/Awesome-Bugbounty-Writeups#clickjacking-ui-redressing-attack)\r
+- [\u672C\u5730\u6587\u4EF6\u5305\u542B (LFI)](https://github.com/devanshbatham/Awesome-Bugbounty-Writeups#local-file-inclusion-lfi)\r
+- [\u5B50\u57DF\u540D\u63A5\u7BA1]\uFF08https://github.com/devanshbatham/Awesome-Bugbounty-Writeups#subdomain-takeover\uFF09\r
+- [\u62D2\u7EDD\u670D\u52A1 (DOS)](https://github.com/devanshbatham/Awesome-Bugbounty-Writeups#denial-of-service-dos)\r
+- [\u8EAB\u4EFD\u9A8C\u8BC1\u7ED5\u8FC7]\uFF08https://github.com/devanshbatham/Awesome-Bugbounty-Writeups#authentication-bypass\uFF09\r
+- [SQL \u6CE8\u5165](https://github.com/devanshbatham/Awesome-Bugbounty-Writeups#sql-injectionsqli)\r
+- [\u4E0D\u5B89\u5168\u7684\u76F4\u63A5\u5BF9\u8C61\u5F15\u7528 (IDOR)](https://github.com/devanshbatham/Awesome-Bugbounty-Writeups#insecure-direct-object-reference-idor)\r
+- [2FA \u76F8\u5173\u95EE\u9898](https://github.com/devanshbatham/Awesome-Bugbounty-Writeups#2fa-related-issues)\r
+- [CORS \u76F8\u5173\u95EE\u9898](https://github.com/devanshbatham/Awesome-Bugbounty-Writeups#cors-related-issues)\r
+- [\u670D\u52A1\u5668\u7AEF\u8BF7\u6C42\u4F2A\u9020\uFF08SSRF\uFF09]\uFF08https://github.com/devanshbatham/Awesome-Bugbounty-Writeups/blob/master/README.md#server-side-request-forgery-ssrf\uFF09\r
+- [\u7ADE\u4E89\u6761\u4EF6]\uFF08https://github.com/devanshbatham/Awesome-Bugbounty-Writeups/blob/master/README.md#race-condition\uFF09\r
+- [\u8FDC\u7A0B\u4EE3\u7801\u6267\u884C (RCE)](https://github.com/devanshbatham/Awesome-Bugbounty-Writeups#remote-code-execution-rce)\r
+- [Android \u6E17\u900F\u6D4B\u8BD5](https://github.com/devanshbatham/Awesome-Bugbounty-Writeups#android-pentesting)\r
+- [\u8D21\u732E]\uFF08https://github.com/devanshbatham/Awesome-Bugbounty-Writeups#contributing\uFF09\r
+- [\u7EF4\u62A4\u8005](https://github.com/devanshbatham/Awesome-Bugbounty-Writeups#maintainers)\r
+\r
+\r
+\r
+## \u8DE8\u7AD9\u70B9\u811A\u672C\uFF08XSS\uFF09\r
+\r
+- [\u4ECE P5 \u5230 P2 \u518D\u5230 100 BXSS](https://medium.com/@mohameddaher/from-p5-to-p5-to-p2-from-nothing-to-1000-bxss-4dd26bc30a82)\r
+- [Google \u91C7\u96C6 XSS (Apigee)](https://medium.com/@TnMch/google-acquisition-xss-apigee-5479d7b5dc4)\r
+- [\u901A\u8FC7 Angular Js \u6A21\u677F\u6CE8\u5165\u5728 Microsoft.com \u4E0A\u53D1\u8D77 XSS](https://medium.com/@impratikdabhi/reflected-xss-on-microsoft-com-via-angular-template-injection-2e26d80a7fd8)\r
+- [\u5728 Google Scholar \u4E0A\u7814\u7A76 XSS \u7684\u591A\u6001\u56FE\u50CF](https://blog.doyensec.com/2020/04/30/polymorphic-images-for-xss.html)\r
+- [Netflix Party Simple XSS](https://medium.com/@kristian.balog/netflix-party-simple-xss-ec92ed1d7e18)\r
+- [Google Nest \u4E2D\u7684\u5B58\u50A8\u578B XSS](https://medium.com/bugbountywriteup/stored-xss-in-google-nest-a82373bbda68)\r
+- [\u767B\u5F55\u95E8\u6237\u4E0A\u7684\u81EA\u6211 XSS \u5230\u6301\u4E45\u6027 XSS]\uFF08https://medium.com/@nnez/always-escalate-from-self-xss-to-persistent-xss-on-login-portal-54265b0adfd0\uFF09\r
+- [\u5F71\u54CD Firefox \u7684\u901A\u7528 XSS](https://0x65.dev/blog/2020-03-30/cve-2019-17004-semi-universal-xss-affecting-firefox-for-ios.html)\r
+- [\u50CFboss\u4E00\u6837\u7ED5\u8FC7XSS WAF\u5B57\u7B26\u9650\u5236]\uFF08https://medium.com/bugbountywriteup/xss-waf-character-limitation-bypass-like-a-boss-2c788647c229\uFF09\r
+- [Self XSS \u8D26\u6237\u63A5\u7BA1](https://medium.com/@ch3ckm4te/self-xss-to-account-takeover-72c89775cf8f)\r
+- [Microsoft \u5B50\u57DF\u540D\u4E0A\u7684\u53CD\u5C04\u578B XSS](https://medium.com/bugbountywriteup/reflected-xss-on-microsoft-com-subdomains-4bdfc2c716df)\r
+- [\u68D8\u624B\u7684XSS](https://smaranchand.com.np/2020/02/the-tricky-xss/)\r
+- [AT&T \u4E2D\u7684\u53CD\u5C04\u578B XSS](https://medium.com/@godofdarkness.msf/reflected-xss-in-at-t-7f1bdd10d8f7)\r
+- [\u4F7F\u7528 Acunetix \u5728 Google \u4E0A\u8FDB\u884C XSS \u653B\u51FB](https://www.acunetix.com/blog/web-security-zone/xss-google-acunetix/)\r
+- [\u5229\u7528 websocket \u5E94\u7528\u7A0B\u5E8F\u8303\u56F4\u7684 XSS](https://medium.com/@osamaavvan/exploiting-websocket-application-wide-xss-csrf-66e9e2ac8dfa)\r
+- [\u5229\u7528 HTTP \u8D70\u79C1\u653B\u51FB\u5F15\u53D1\u7684\u53CD\u5C04\u578B XSS ](https://hazana.xyz/posts/escalating-reflected-xss-with-http-smuggling/)\r
+- [Facebook instagram CDN \u670D\u52A1\u5668\u4E0A\u7684 XSS \u7ED5\u8FC7\u7B7E\u540D\u4FDD\u62A4]\uFF08https://www.amolbaikar.com/xss-on-facebook-instagram-cdn-server-bypassing-signature-protection/\uFF09\r
+- [Facebook \u6536\u8D2D Oculus \u65F6\u5B58\u5728 XSS](https://www.amolbaikar.com/xss-on-facebooks-acquisition-oculus-cdn-server/)\r
+- [sony \u5B50\u57DF\u540D\u4E0A\u7684 XSS ](https://medium.com/@gguzelkokar.mdbf15/xss-on-sony-subdomain-feddaea8f5ac)\r
+- [\u5229\u7528 Self XSS ](https://footstep.ninja/posts/exploiting-self-xss/)\r
+- [\u8F7B\u677E\u67E5\u627E\u8DE8\u7AD9\u70B9\u811A\u672C\u5305\u542B XSSI]\uFF08https://medium.com/bugbountywriteup/effortlessly-finding-cross-site-script-inclusion-xssi-jsonp-for-bug-bounty-38ae0b9e5c8a\uFF09\r
+- [Bugbounty DOM XSS](https://jinone.github.io/bugbounty-a-dom-xss/)\r
+- [\u76F2 XSS\uFF1A\u4E00\u573A\u667A\u529B\u6E38\u620F]\uFF08https://medium.com/@dirtycoder0124/blind-xss-a-mind-game-to-win-the-battle-4fc67c524678?\uFF09\r
+- [FireFox IOS QR \u7801\u8BFB\u53D6\u5668 XSS(CVE-2019-17003)](https://payatu.com/blog/nikhil-mittal/firefox-ios-qr-code-reader-xss-(cve-2019-17003))\r
+- [HTML \u6CE8\u5165 XSS](https://evanricafort.blogspot.com/2019/12/html-injection-to-xss-bypass-in.html)\r
+- [CVE-2020-13487 | bbPress \u4E2D\u7ECF\u8FC7\u8EAB\u4EFD\u9A8C\u8BC1\u7684\u5B58\u50A8\u578B\u8DE8\u7AD9\u70B9\u811A\u672C](https://hackerone.com/reports/881918)\r
+- [\u5B58\u50A8\u5E93\u4EE3\u7801\u9519\u8BEF\u9875\u9762\u7684 XSS](https://medium.com/@navne3t/150-xss-at-error-page-of-respository-code-4fc628892742)\r
+- [\u50CF\u4E13\u4E1A\u4EBA\u58EB\u4E00\u6837\u8FDB\u884C XSS \u653B\u51FB](https://www.hackerinside.me/2019/12/xss-like-pro.html)\r
+- [\u6211\u5982\u4F55\u901A\u8FC7 CSRF \u5C06\u81EA\u8EAB XSS \u8F6C\u53D8\u4E3A\u5B58\u50A8\u578B XSS](https://medium.com/@abhishake100/how-i-turned-self-xss-to-stored-via-csrf-d12eaaf59f2e)\r
+- [\u5B58\u50A8\u5728 Outlook \u7F51\u9875\u4E0A\u7684 XSS](https://medium.com/@elmrhassel/xss-stored-on-outlook-web-outlook-android-app-ad4bd46b8823)\r
+- [XSS Bug 20 Chars \u76F2 XSS Payload](https://medium.com/@mohameddaher/how-i-paid-2-for-1054-xss-bug-20-chars-blind-xss-payloads-12d32760897b)\r
+- [AMP4EMAIL \u4E2D\u7684 XSS\uFF08DOM \u7834\u574F\uFF09]\uFF08https://research.securitum.com/xss-in-amp4email-dom-clobbering/\uFF09\r
+- [\u57FA\u4E8E DOM \u7684 XSS \u6F0F\u6D1E\u8D4F\u91D1\u62A5\u544A](https://hacknpentest.com/dom-based-xss-bug-bounty-writeup/)\r
+- [XSS \u6C38\u8FDC\u4E0D\u4F1A\u6D88\u5931]\uFF08https://medium.com/@04sabsas/xss-will-never-die-eb3584081a5f\uFF09\r
+- [avast \u684C\u9762\u6740\u6BD2\u8F6F\u4EF6\u5B58\u5728 5000 \u7F8E\u5143 XSS \u95EE\u9898](https://medium.com/bugbountywriteup/5-000-usd-xss-issue-at-avast-desktop-antivirus-for-windows-yes-desktop-1e99375f0968)\r
+- [XSS \u8D26\u6237\u63A5\u7BA1](https://noobe.io/articles/2019-10/xss-to-account-takeover)\r
+- [Paypal \u5982\u4F55\u5E2E\u52A9\u6211\u751F\u6210 XSS](https://medium.com/@pflash0x0punk/how-paypal-helped-me-to-generate-xss-9408c0931add)\r
+- [\u50CF\u4E13\u4E1A\u4EBA\u58EB\u4E00\u6837\u7ED5\u8FC7 Uppercase \u8FC7\u6EE4\u5668\uFF08XSS \u9AD8\u7EA7\u65B9\u6CD5\uFF09]\uFF08https://medium.com/@Master_SEC/bypass-uppercase-filters-like-a-pro-xss-advanced-methods-daf7a82673ce\uFF09\r
+- [\u5229\u7528\u53CD\u5C04\u578BXSS\u7A83\u53D6\u767B\u5F55\u51ED\u8BC1](https://medium.com/@mehulcodes/stealing-login-credentials-with-reflected-xss-7cb450bf5710)\r
+- [bughunting xss on cookie \u5F39\u51FA\u8B66\u544A](https://victoni.github.io/bug-hunting-xss-on-cookie-popup-warning/)\r
+- [XSS \u5C31\u662F\u7231](https://nirmaldahal.com.np/xss-is-love/)\r
+- [Oneplus \u5BA2\u6237\u652F\u6301\u95E8\u6237\u4E2D\u7684 XSS \u6F0F\u6D1E](https://medium.com/@tech96bot/oneplus-xss-vulnerability-in-customer-support-portal-d5887a7367f4)\r
+- [\u901A\u8FC7\u67E5\u627E RCE \u6765\u5229\u7528\u57FA\u4E8E cookie \u7684 XSS](https://noobe.io/articles/2019-09/exploiting-cookie-based-xss-by-finding-rce)\r
+- [\u901A\u8FC7\u5B8F\u5728 zendesk \u4E0A\u8FDB\u884C\u5B58\u50A8\u578B XSS](https://medium.com/@hariharan21/stored-xss-on-zendesk-via-macros-part-2-676cefee4616)\r
+- [ZOHO \u4E3B\u7A0B\u5E8F\u4E2D\u7684 XSS](https://www.hackerinside.me/2019/09/xss-in-zoho-mail.html)\r
+- [\u79C1\u6709\u7A0B\u5E8F\u4E2D\u57FA\u4E8E DOM \u7684 XSS](https://www.mohamedharon.com/2019/09/dom-based-xss-in-private-program.html)\r
+- [Bugbounty \u6587\u7AE0\uFF1A\u6CE8\u610F\u5E76\u83B7\u53D6\u5B58\u50A8\u578B XSSS](https://medium.com/@04sabsas/bugbounty-writeup-take-attention-and-get-stored-xss-495dd6eab07e)\r
+- [\u6211\u5982\u4F55 xssed \u7BA1\u7406\u5458\u8D26\u6237](https://gauravnarwani.com/how-i-xssed-admin-account/)\r
+- [\u8C37\u6B4C\u4E0A\u7684\u70B9\u51FB\u52AB\u6301XSS]\uFF08https://websecblog.com/vulns/clickjacking-xss-on-google-org/\uFF09\r
+- [laporbugid \u4E0A\u7684\u5B58\u50A8\u578B XSS](https://learn.hackersid.com/2019/08/stored-xss-on-laporbugid.html)\r
+- [\u5229\u7528\u57FA\u4E8E angularjs \u7684 XSS \u8FDB\u884C\u6743\u9650\u63D0\u5347](https://www.shawarkhan.com/2019/08/leveraging-angularjs-based-xss-to-privilege-escalation.html)\r
+- [\u6211\u662F\u5982\u4F55\u901A\u8FC7\u5728 shodan \u4E2D\u641C\u7D22\u53D1\u73B0 XSS \u7684](https://blog.usejournal.com/how-i-found-xss-by-searching-in-shodan-6943b799e648)\r
+- [\u5C06\u7F13\u5B58\u4E2D\u6BD2\u94FE\u63A5\u5230\u5B58\u50A8\u578B XSS](https://medium.com/@nahoragg/chaining-cache-poisoning-to-stored-xss-b910076bda4f)\r
+- [XSS \u5230 RCE](https://medium.com/@hungrybytes/xss-to-rce-in-e20b2bc55f94)\r
+- [Twitter \u4E0A\u4EF7\u503C 1120 \u7684 XSS](https://medium.com/@bywalks/xss-on-twitter-worth-1120-914dcd28ee18)\r
+- [ebay.com \u4E2D\u7684\u53CD\u5C04\u578B XSS](https://medium.com/@madguyyy/reflected-xss-in-ebay-com-60a9d61e26cd)\r
+- [\u57FA\u4E8E Cookie \u7684 XSS \u6F0F\u6D1E\u60AC\u8D4F 2300](https://medium.com/@iSecMax/\u0441ookie-based-xss-exploitation-2300-bug-bounty-story-9bc532ffa564)\r
+- [netcat -SMTP-self XSS \u6709\u54EA\u4E9B\u5171\u540C\u70B9](https://medium.com/bugbountywriteup/what-do-netcat-smtp-and-self-xss-have-in-common-stored-xss-a05648b72002)\r
+- [\u8C37\u6B4C\u81EA\u5B9A\u4E49\u641C\u7D22\u5F15\u64CE\u4E0A\u7684XSS]\uFF08https://thesecurityexperts.wordpress.com/2019/07/11/xss-on-google-custom-search-engine/\uFF09\r
+- [\u5B8C\u6574\u8D26\u6237\u63A5\u7BA1\u6F0F\u6D1E\u7684\u6545\u4E8B N/A \u81F3\u5DF2\u63A5\u53D7]\uFF08https://medium.com/@nandwanajatin25/story-of-a-stored-xss-to-full-account-takeover-vulnerability-na-to-accepted-8478aa5e0d8e\uFF09\r
+- [\u662F\u7684\uFF0C\u6211\u901A\u8FC7 markdown \u7F16\u8F91\u5668\u5728 1 \u5206\u949F\u5185\u53D1\u73B0\u4E86 p2 \u5B58\u50A8\u578B XSS](https://medium.com/@schopath/yeah-i-got-p2-in-1-minute-stored-xss-via-markdown-editor-7872dba3f158)\r
+- [\u786E\u5B9E\u5B58\u5728\u5B58\u50A8\u578B XSS ](https://cyberzombie.in/stored-xss-on-indeed/)\r
+- [\u81EA\u8EAB XSS \u5230\u6076\u610F XSS](https://medium.com/@saadahmedx/self-xss-to-evil-xss-bcf2494a82a4)\r
+- [\u7ECF\u5178 XSS \u5982\u4F55\u5BFC\u81F4\u6301\u4E45\u6027 ATO \u6F0F\u6D1E](https://hackademic.co.in/how-a-classical-xss-can-lead-to-persistent-ato-vulnerability/)\r
+- [tokopedia \u706B\u8F66\u7968\u4E2D\u7684\u53CD\u5C04\u578B XSS](https://visat.me/security/reflected-xss-in-tokopedia-train-ticket/)\r
+- [\u7ED5\u8FC7XSS\u8FC7\u6EE4\u5668\u5E76\u7A83\u53D6\u7528\u6237\u4FE1\u7528\u5361\u6570\u636E]\uFF08https://medium.com/@osamaavvan/bypassing-xss-filter-and-stealing-user-credit-card-data-100f247ed5eb\uFF09\r
+- [Googleplex.com \u76F2 XSS](https://websecblog.com/vulns/googleplex-com-blind-xss/)\r
+- [\u9519\u8BEF\u9875\u9762\u4E0A\u7684\u53CD\u5C04\u578BXSS](https://noobe.io/articles/2019-06/reflected-xss-on-error-page)\r
+- [\u6211\u5982\u4F55\u901A\u8FC7\u76F2 XSS \u83B7\u53D6\u79C1\u4EBA\u7968\u636E\u54CD\u5E94\u9762\u677F\u548C Fortigate Web \u9762\u677F]\uFF08https://pwnsec.ninja/2019/06/06/how-i-was-able-to-get-private-ticket-response-panel-and-fortigate-web-panel-via-blind-xss/\uFF09\r
+- [Unicode \u4E0E WAF](https://medium.com/bugbountywriteup/unicode-vs-waf-xss-waf-bypass-128cd9972a30)\r
+- [\u57FA\u4E8E URI \u7684 XSS \u6545\u4E8B\u548C\u4E00\u4E9B\u7B80\u5355\u7684 google dorking]\uFF08https://medium.com/@nandwanajatin25/story-of-a-uri-based-xss-with-some-simple-google-dorking-e1999254aa55\uFF09\r
+- [edmodo \u4E0A\u7684\u5B58\u50A8\u578B XSS](https://medium.com/@matarpan33r/stored-xss-on-edmodo-67b244824fa5)\r
+- [XSSed m\u200B\u200By way to 1000](https://gauravnarwani.com/xssed-my-way-to-1000/)\r
+- [\u66F4\u52A0\u52AA\u529B\u5730\u9632\u5FA1 XSS](https://medium.com/@fbotes2/try-harder-for-xss-7aa3657255a1)\r
+- [\u4ECE\u53C2\u6570\u6C61\u67D3\u5230XSS](https://medium.com/@momenbasel/from-parameter-pollution-to-xss-d095e13be060)\r
+- [MIME \u55C5\u63A2 XSS](https://www.komodosec.com/post/mime-sniffing-xss)\r
+- [Microsoft techprofile \u4E0A\u7684\u5B58\u50A8\u578B XSS](https://medium.com/@kang_ali/stored-xss-on-techprofile-microsoft-d21757588cc1)\r
+- [\u53EF\u611F\u67D3\u8815\u866B\u7684 Twitter XSS \u6545\u4E8B](https://www.virtuesecurity.com/tale-of-a-wormable-twitter-xss/)\r
+- [XSS \u653B\u51FB google bot \u7D22\u5F15\u64CD\u7EB5](http://www.tomanthony.co.uk/blog/xss-attacks-googlebot-index-manipulation/)\r
+- [\u4ECE\u53CD\u5C04\u578BXSS\u5230\u8D26\u6237\u63A5\u7BA1](https://medium.com/a-bugz-life/from-reflected-xss-to-account-takeover-showing-xss-impact-9bc6dd35d4e6)\r
+- [\u901A\u8FC7XSS\u7A83\u53D6\u672C\u5730\u5B58\u50A8\u6570\u636E](http://blog.h4rsh4d.com/2019/04/stealing-local-storage-data-through-xss.html)\r
+- [CSRF \u653B\u51FB\u53EF\u5BFC\u81F4\u5B58\u50A8\u578B XSS](https://medium.com/bugbountywriteup/csrf-attack-can-lead-to-stored-xss-f40ba91f1e4f)\r
+- [XSS \u53CD\u5C04\uFF08\u8FC7\u6EE4\u5668\u7ED5\u8FC7\uFF09]\uFF08https://medium.com/bugbountywriteup/xss-reflected-xss-bypass-filter-de41d35239a3\uFF09\r
+- [hackerone \u79C1\u6709\u7A0B\u5E8F XSS \u9632\u62A4\u7ED5\u8FC7](https://medium.com/@bughunter.sec7/how-i-was-able-to-bypass-xss-protection-on-hackerones-private-program-8914a31339a9)\r
+- [\u4EC5\u7528 5 \u5206\u949F\u5C31\u5728 edmodo.com \u4E0A\u53D1\u73B0\u6211\u7684\u7B2C\u4E8C\u4E2A\u5B58\u50A8\u578B XSS](https://medium.com/@ZishanAdThandar/just-5-minute-to-get-my-2nd-stored-xss-on-edmodo-com-fe2ee559e00d)\r
+- [skype.com \u4E2D\u7684\u591A\u91CD XSS ](https://medium.com/@jayateerthag/multiple-xss-in-skype-com-2-18cfed39edbd)\r
+- [\u5229\u7528 moodle \u7279\u8272\u548C\u5C0F\u9519\u8BEF\u83B7\u53D6 XSS ](https://medium.com/@daniel.thatcher/obtaining-xss-using-moodle-features-and-minor-bugs-2035665989cc)\r
+- [403 forbidden \u4E0A\u7684 XSS \u7ED5\u8FC7 akamai WAF](https://medium.com/@bughunter.sec7/xss-403-forbidden-bypass-akamai-security-write-up-b341f588efb5)\r
+- [\u6211\u5982\u4F55\u5C06\u81EA\u8EAB XSS \u8F6C\u53D8\u4E3A\u53CD\u5C04\u578B XSS](https://medium.com/@heinthantzin/how-i-was-able-to-turn-self-xss-into-reflected-xss-850e3d5a2beb)\r
+- [3 \u4E2A XSS \u7684\u6545\u4E8B](https://gauravnarwani.com/a-tale-of-3-xss/)\r
+- [Google.com \u4E0A\u7684\u5B58\u50A8\u578B XSS](https://medium.com/@bughunter.sec7/stored-xss-on-google-com-e7ac12f03b8e)\r
+- [\u6307\u5357\u6E38\u620F\u5E73\u53F0 (www.dota2.com) \u4E2D\u7684\u5B58\u50A8\u578B XSS](https://medium.com/@bughunter.sec7/stored-xss-in-the-guides-gameplayversion-www-dota2-com-775fa9a1889b)\r
+- [Admin google.com \u53CD\u5C04\u578B XSS](https://buer.haus/2015/01/21/admin-google-com-reflected-cross-site-scripting-xss/)\r
+- [Paypal \u5B58\u50A8\u5B89\u5168\u7ED5\u8FC7]\uFF08https://blog.it-securityguard.com/bugbounty-paypal-stored-xss-security-bypass/\uFF09\r
+- [Paypal DOM XSS \u4E3B\u57DF\u540D](https://blog.it-securityguard.com/bugbounty-paypal-dom-xss-main-domain/)\r
+- [Bugbounty\uFF1A\u4EF7\u503C 5000 \u7F8E\u5143\u7684 Google XSS](https://blog.it-securityguard.com/bugbounty-the-5000-google-xss)\r
+- [Facebook \u5B58\u50A8\u578B XSS](https://buer.haus/2014/06/16/facebook-stored-cross-site-scripting-xss-badges/)\r
+- [Ebay \u79FB\u52A8\u53CD\u5C04\u578B XSS](https://thehackerblog.com/ebay-mobile-reflected-xss-disclosure-writeup/index.html)\r
+- [Magix bugbounty XSS \u5199\u5165](https://www.rcesecurity.com/2014/04/magix-bug-bounty-magix-com-rce-sqli-and-xara-com-lfi-xss/)\r
+- [\u6EE5\u7528 CORS \u5728 flickr \u4E0A\u9020\u6210 XSS ](https://whitton.io/articles/abusing-cors-for-an-xss-on-flickr/)\r
+- [Google \u7FA4\u7EC4\u4E0A\u7684 XSS ](https://manuel-sousa.blogspot.com/2013/11/xss-google-groups-groupsgooglecom.html)\r
+- [Oracle XSS](http://blog.shashank.co/2013/11/oracle-xss.html)\r
+- [\u5185\u5BB9\u7C7B\u578B\u548C XSS Facebook Studio](https://whitton.io/articles/content-types-and-xss-facebook-studio/)\r
+- [Admob \u521B\u610F\u56FE\u7247 XSS](https://bitquark.co.uk/blog/2013/07/19/admob_creative_image_xss)\r
+- [Amazon \u5305\u88C5\u53CD\u9988 XSS](https://bitquark.co.uk/blog/2013/07/03/amazon_packaging_feedback_xss)\r
+- [PaypalTech XSS]\uFF08https://www.rcesecurity.com/2013/04/paypal-bug-bounty-paypaltech-com-xss/\uFF09\r
+- [\u6211\u7684\u4E16\u754C\u4E0A\u5B58\u5728\u6301\u4E45\u6027 XSS](https://whitton.io/archive/persistent-xss-on-myworld-ebay-com/)\r
+- [\u8BBE\u5907\u7BA1\u7406\u4E2D\u7684 Google VRP XSS](https://sites.google.com/securifyinc.com/vrp-writeups/gsuite/bookmark-xss-device-management)\r
+- [Google VRP XSS](https://sites.google.com/securifyinc.com/vrp-writeups/hire-with-google/xsses)\r
+- [Google VRP \u76F2 XSS](https://sites.google.com/securifyinc.com/vrp-writeups/hire-with-google/blind-xss)\r
+- [WAZE XSS]\uFF08https://sites.google.com/securifyinc.com/vrp-writeups/waze/waze-xss\uFF09\r
+- [\u57FA\u4E8E Referer \u7684 XSS](https://medium.com/@arbazhussain/referer-based-xss-52aeff7b09e7)\r
+- [\u6211\u4EEC\u5982\u4F55\u53D1\u660E Tesla DOM XSS](https://labs.detectify.com/2017/07/27/how-we-invented-the-tesla-dom-doom-xss/)\r
+- [Rockstar \u6E38\u620F\u4E0A\u7684\u5B58\u50A8\u578B XSS](https://medium.com/@arbazhussain/stored-xss-on-rockstar-game-c008ec18d071)\r
+- [\u6211\u662F\u5982\u4F55\u7ED5\u8FC7\u77E5\u540D\u7F51\u7AD9 imgur.com \u7684\u5F3A XSS \u4FDD\u62A4\u7684](https://medium.com/bugbountywriteup/how-i-was-able-to-bypass-strong-xss-protection-in-well-known-website-imgur-com-8a247c527975)\r
+- [Self XSS \u5230 Good XSS](https://medium.com/@arbazhussain/self-xss-to-good-xss-clickjacking-6db43b44777e)\r
+- [\u653B\u51FB\u8FC5\u901F\u5347\u7EA7\uFF1A\u4ECE\u90E8\u5206 CSRF \u5230\u53CD\u5C04\u578B XSS \u5230\u5B8C\u6574 CSRF \u5230\u5B58\u50A8\u578B XSS](https://medium.com/@ciph3r7r0ll/that-escalated-quickly-from-partial-csrf-to-reflected-xss-to-complete-csrf-to-stored-xss-6ba8103069c2)\r
+- [\u5229\u7528\u52A8\u6001\u751F\u6210\u7684 js \u6587\u4EF6\u7684 XSS](https://medium.com/@arbazhussain/xss-using-dynamically-generated-js-file-a7a10d05ff08)\r
+- [\u7ED5\u8FC7\u951A\u70B9\u6807\u7B7E\u5904\u7684 XSS \u8FC7\u6EE4](https://medium.com/@arbazhussain/bypassing-xss-filtering-at-anchor-tags-706dde7b8090)\r
+- [\u901A\u8FC7\u4E22\u5F03 cookie \u6765\u5F15\u53D1 XSS](https://wesecureapp.com/blog/xss-by-tossing-cookies/)\r
+- [\u901A\u8FC7 kiteworks \u653B\u51FB Coinbase angularjs dom XSS](http://www.paulosyibelo.com/2017/07/coinbase-angularjs-dom-xss-via-kiteworks.html)\r
+- [\u4E2D\u7B49\u5185\u5BB9\u6B3A\u9A97\u548C XSS](https://ahussam.me/Medium-content-spoofing-xss/)\r
+- [\u6258\u7BA1\u5E94\u7528\u548C\u97F3\u4E50\uFF1AGoogle Play \u4E2D\u7684\u4E24\u4E2A XSS \u6545\u4E8B](https://ysx.me.uk/managed-apps-and-music-a-tale-of-two-xsses-in-google-play/)\r
+- [\u5728\u63A8\u7279\u4E0A\u5236\u4F5C\u4E00\u4E2A\u901A\u8FC7 CSP \u7ED5\u8FC7\u89E6\u53D1\u7684 XSS ](https://medium.com/@tbmnull/making-an-xss-triggered-by-csp-bypass-on-twitter-561f107be3e5)\r
+- [\u5C06 phantomjs \u56FE\u7247\u6E32\u67D3\u4E2D\u7684 XSS \u5347\u7EA7\u4E3A SSRF](https://buer.haus/2017/06/29/escalating-xss-in-phantomjs-image-rendering-to-ssrflocal-file-read/)\r
+- [Simplerisk \u4E2D\u7684\u53CD\u5C04\u578B XSS](https://www.seekurity.com/blog/general/reflected-xss-vulnerability-in-simplerisk/)\r
+- [\u4FC4\u7F57\u65AF\u7535\u5B50\u90AE\u4EF6\u63D0\u4F9B\u5546\u5FC3\u810F\u4E2D\u7684\u5B58\u50A8\u578BXSS](https://www.seekurity.com/blog/general/stored-xss-in-the-heart-of-the-russian-email-provider-giant-mail-ru/)\r
+- [\u6211\u662F\u5982\u4F55\u5728 atmail \u4E0A\u6784\u5EFA XSS \u8815\u866B\u7684](https://www.bishopfox.com/blog/2017/06/how-i-built-an-xss-worm-on-atmail/)\r
+- [bugcrowd \u548C\u8BB8\u591A\u5176\u4ED6\u7F51\u7AD9\u4E3B\u57DF\u4E0A\u7684 XSS](https://blog.witcoat.com/2018/05/30/xss-on-bugcrowd-and-so-many-other-websites-main-domain/)\r
+- [Godaddy XSS \u5F71\u54CD\u505C\u653E\u57DF\u540D\u91CD\u5B9A\u5411\u5904\u7406\u5668]\uFF08https://www.seekurity.com/blog/write-ups/godaddy-xss-affects-parked-domains-redirector-processor/\uFF09\r
+- [Google \u56FE\u7247\u641C\u7D22\u4E2D\u7684\u5B58\u50A8\u578B XSS](https://sites.google.com/site/bugbountybughunter/home/stored-xss-in-google-image-search)\r
+- [\u4E00\u5BF9 plotly \u9519\u8BEF\u5B58\u50A8 XSS \u548C AWS \u5143\u6570\u636E](https://ysx.me.uk/a-pair-of-plotly-bugs-stored-xss-and-aws-metadata-ssrf/)\r
+- [Mcafee Web \u7F51\u5173\u4E2D\u7684\u8FD1\u4E4E\u901A\u7528\u7684 XSS]\uFF08https://blog.ettic.ca/near-universal-xss-in-mcafee-web-gateway-cf8dfcbc8fc3\uFF09\r
+- [\u6E17\u900F Pornhub XSS \u6F0F\u6D1E](https://www.jonbottarini.com/2017/03/16/penetrating-pornhub-xss-vulns-galore-plus-a-cool-shirt/)\r
+- [\u6211\u662F\u5982\u4F55\u901A\u8FC7\u6446\u5F04 protobuf \u53D1\u73B0 5000 \u4E2A Google \u5730\u56FE XSS \u7684](https://medium.com/@marin_m/how-i-found-a-5-000-google-maps-xss-by-fiddling-with-protobuf-963ee0d9caff)\r
+- [Airbnb \u5728\u7ED5\u8FC7 json \u7F16\u7801 XSS \u8FC7\u6EE4\u5668 WAF CSP \u548C auditior \u65F6\u51FA\u73B0\u516B\u4E2A\u6F0F\u6D1E](https://buer.haus/2017/03/08/airbnb-when-bypassing-json-encoding-xss-filter-waf-csp-and-auditor-turns-into-eight-vulnerabilities/)\r
+- [Lightweight \u6807\u8BB0\u5728 gitlab \u4E2D\u9020\u6210\u6301\u4E45\u6027 XSS \u7684\u4E09\u91CD\u594F](https://ysx.me.uk/lightweight-markup-a-trio-of-persistent-xss-in-gitlab/)\r
+- [XSS ONE BAY](https://whitehatnepal.tumblr.com/post/153333332112/xssonebay)\r
+- [unifi \u4E2D\u7684 SVG XSS](https://guptashubham.com/svg-xss-in-unifi-v5-0-2/)\r
+- [unifi V4.8.12 \u63A7\u5236\u5668\u4E2D\u7684\u5B58\u50A8\u578B XSS](https://guptashubham.com/stored-xss-in-unifi-v4-8-12-controller/)\r
+- [\u5C06\u81EA\u8EAB XSS \u8F6C\u53D8\u4E3A\u826F\u597D XSS v2](https://httpsonly.blogspot.com/2016/08/turning-self-xss-into-good-xss-v2.html)\r
+- [SWF XSS \u57FA\u4E8E DOM \u7684 XSS](https://guptashubham.com/swf-xss-dom-based-xss/)\r
+- [Yahoo Dev flurry \u4E2D\u7684 XSS \u8FC7\u6EE4\u5668\u7ED5\u8FC7](https://guptashubham.com/xss-filter-bypass-in-yahoo-dev-flurry-com/)\r
+- [Flickr \u4E0A\u7684 XSS](https://guptashubham.com/xss-on-flickr/)\r
+- [Bing \u4E2D\u7684\u4E24\u4E2A\u6F0F\u6D1E\u53EF\u5229\u7528 XSS \u548C csrf](https://medium.com/bugbountywriteup/two-vulnerabilities-makes-an-exploit-xss-and-csrf-in-bing-cd4269da7b69)\r
+- [Runkeeper \u5B58\u50A8\u578B XSS](https://www.seekurity.com/blog/general/runkeeper-stores-xss-vulnerability/)\r
+- [Google \u4F11\u7720 XSS \u5524\u9192 5k \u8D4F\u91D1](https://blog.it-securityguard.com/bugbounty-sleeping-stored-google-xss-awakens-a-5000-bounty/)\r
+- [\u5229\u7528\u76F2 XSS \u653B\u51FB Godaddy \u5BA2\u670D](https://thehackerblog.com/poisoning-the-well-compromising-godaddy-customer-support-with-blind-xss/index.html)\r
+- [UBER \u5C06\u81EA\u8EAB XSS \u8F6C\u53D8\u4E3A\u826F\u597D XSS](https://whitton.io/articles/uber-turning-self-xss-into-good-xss/)\r
+- [\u901A\u8FC7 png \u5185\u5BB9\u7C7B\u578B\u5728 Facebook \u4E0A\u53D1\u8D77 XSS](https://whitton.io/articles/xss-on-facebook-via-png-content-types/)\r
+- [Cloudflare XSS](https://ahussam.me/Cloudflare-xss/)\r
+- [\u6211\u662F\u5982\u4F55\u53D1\u73B0 Google \u7684 XSS \u6F0F\u6D1E\u7684](https://zombiehelp54.blogspot.com/2015/09/how-i-found-xss-vulnerability-in-google.html)\r
+- [XSS \u5230 RCE](https://matatall.com/xss/rce/bugbounty/2015/09/08/xss-to-rce.html)\r
+- [\u4E00\u4E2A payload \u5C31\u80FD\u5BF9\u6240\u6709 XSS \u8FDB\u884C\u653B\u51FB](https://ahussam.me/One-payload-to-xss-them/)\r
+- [komunitas \u4E0A\u7684\u81EA\u6211 XSS](https://medium.com/@bughunter.sec7/self-xss-on-komunitas-bukalapak-com-b8a28dce4fbd)\r
+- [\u963F\u91CC\u4E91\u4E0A\u53CD\u6620\u7684XSS](https://medium.com/@bughunter.sec7/reflected-xss-on-alibabacloud-com-4e652fcca22f)\r
+- [komunitas bukalapak \u4E0A\u7684\u81EA\u6211 XSS](https://medium.com/@bughunter.sec7/self-xss-on-komunitas-bukalapak-com-b8a28dce4fbd)\r
+- [OLX\u4E2D\u771F\u5B9E\u7684XSS](https://medium.com/@paulorcchoupina/a-real-xss-in-olx-7727ae89c640)\r
+- [\u5229\u7528 IE Adob\u200B\u200Be \u8FDB\u884C\u81EA\u8EAB XSS](https://medium.com/@80vul/from-http-domain-to-res-domain-xss-by-using-ie-adobes-pdf-activex-plugin-9f2a72a87aff)\r
+- [\u901A\u8FC7XSS\u7A83\u53D6\u672C\u5730\u5B58\u50A8](http://blog.h4rsh4d.com/2019/04/stealing-local-storage-data-through-xss.html)\r
+- [Outlook \u4E2D 5 \u5206\u949F\u5185\u5B58\u50A8 1000 \u7F8E\u5143\u7684 XSS](https://omespino.com/write-up-1000-usd-in-5-minutes-xss-stored-in-outlook-com-ios-browsers/)\r
+- [OLX \u53CD\u5C04\u578B XSS](https://medium.com/@abaykandotcom/olx-bug-bounty-reflected-xss-adb3095cd525)\r
+- [\u6211\u5728 edmodo.com \u4E0A\u53D1\u73B0\u7684\u7B2C\u4E00\u4E2A\u5B58\u50A8\u578B XSS](https://medium.com/@ZishanAdThandar/my-first-stored-xss-on-edmodo-com-540a33349662)\r
+- [\u7834\u89E3\u4F60\u7684\u8868\u5355\u65B0\u5411\u91CF\u4EE5\u8FDB\u884C BXSS](https://medium.com/@GeneralEG/hack-your-form-new-vector-for-blind-xss-b7a50b808016)\r
+- [\u6211\u662F\u5982\u4F55\u53D1\u73B0 redacted.com \u4E2D\u7684 Blind XSS \u6F0F\u6D1E\u7684](https://medium.com/@newp_th/how-i-find-blind-xss-vulnerability-in-redacted-com-33af18b56869)\r
+- [3 iOS \u7248 Protonmail \u4E2D\u7684 XSS](https://medium.com/@vladimirmetnew/3-xss-in-protonmail-for-ios-95f8e4b17054)\r
+- [5 \u5206\u949F\u5185\u89E3\u51B3 edmodo \u4E2D\u7684 XSS](https://medium.com/@valakeyur/xss-in-edmodo-within-5-minute-my-first-bug-bounty-889e3da6167d)\r
+- [\u4ECD\u7136\u6709\u6548\u91CD\u5B9A\u5411 Yahoo \u5B50\u57DF\u540D XSS](https://www.mohamedharon.com/2019/02/still-work-redirect-yahoo-subdomain-xss.html)\r
+- [Azure DevOps \u4E2D\u7684 XSS](https://5alt.me/2019/02/xss-in-azure-devops/)\r
+- [Shopify \u53CD\u5C04\u578B XSS](https://medium.com/@modam3r5/reflected-xss-at-https-photos-shopify-com-ea696db3915c)\r
+- [tokopedia \u4E0A\u7684\u591A\u4E2A\u5B58\u50A8\u578B XSS](https://apapedulimu.click/multiple-stored-xss-on-tokopedia/)\r
+- [edmodo \u4E0A\u7684\u5B58\u50A8\u578B XSS](https://medium.com/@futaacmcyber/stored-xss-on-edmodo-11a3fbc6b6d0)\r
+- [\u4E00\u4E2A\u72EC\u7279\u7684 XSS \u573A\u666F 1000 \u8D4F\u91D1](https://medium.com/@rohanchavan/a-unique-xss-scenario-1000-bounty-347f8f92fcc6)\r
+- [Protonmail XSS \u5B58\u50A8]\uFF08https://medium.com/@ChandSingh/protonmail-xss-stored-b733031ac3b5\uFF09\r
+- [\u5C06\u68D8\u624B\u7684 ouath \u5229\u7528\u94FE\u63A5\u5230\u5B58\u50A8\u578B XSS](https://medium.com/@nahoragg/chaining-tricky-oauth-exploitation-to-stored-xss-b67eaea4aabd)\r
+- [\u53CD\u9ED1\u5BA2XSS\u5230php\u4E0A\u4F20]\uFF08https://blog.saycure.io/2019/01/24/antihack-xss-2-php-upload/\uFF09\r
+- [zomato \u4E2D\u7684\u53CD\u5C04\u578B XSS](https://medium.com/@sudhanshur705/reflected-xss-in-zomato-f892d6887147)\r
+- [\u901A\u8FC7 SWF \u6587\u4EF6\u8FDB\u884C XSS \u653B\u51FB](https://medium.com/@friendly_/xss-through-swf-file-4f04af7b0f59)\r
+- [Hackyourform BXSS](https://generaleg0x01.com/2019/01/13/hackyourform-b\u200B\u200Bxss/)\r
+- [\u534E\u7855\u4E0A\u7684\u53CD\u5C04\u578B XSS](https://medium.com/@thejuskrishnan911/reflected-xss-on-asus-568ce0541171)\r
+- [zendesk \u652F\u6301\u4E2D\u901A\u8FC7\u66FF\u4EE3\u6587\u672C\u53D1\u73B0\u5B58\u50A8\u578B XSS](https://medium.com/@hariharan21/stored-xss-via-alternate-text-at-zendesk-support-8bfee68413e4)\r
+- [\u6211\u662F\u5982\u4F55\u5076\u7136\u53D1\u73B0\u5B58\u50A8\u578B XSS \u7684\uFF1A\u6211\u7684\u7B2C\u4E00\u4E2A\u6F0F\u6D1E\u8D4F\u91D1\u6545\u4E8B](https://medium.com/@parthshah14031998/how-i-stumbled-upon-a-stored-xss-my-first-bug-bounty-story-2793300d82bb)\r
+- [\u57FA\u4E8E Cookie \u7684 Self XSS \u5230 Good XSS](https://medium.com/bugbountywriteup/cookie-based-self-xss-to-good-xss-d0d1ca16dd0e)\r
+- [\u4E9A\u9A6C\u900A\u4E0A\u7684\u53CD\u5C04\u578BXSS](https://medium.com/@newp_th/reflected-xss-on-ws-na-amazon-adsystem-com-amazon-f1e55f1d24cf)\r
+- [XSS\u8815\u866B\uFF1A\u4E00\u79CD\u5BF9Web\u5E94\u7528\u7A0B\u5E8F\u6F0F\u6D1E\u7684\u521B\u9020\u6027\u5229\u7528]\uFF08https://blog.compass-security.com/2018/12/xss-worm-a-creative-use-of-web-application-vulnerability/\uFF09\r
+- [XSS\u4E2D\u7684Google\u4EE3\u7801]\uFF08https://websecblog.com/vulns/google-code-in-xss/\uFF09\r
+- [indeed.com \u4E0A\u7684 Self XSS](https://medium.com/@sampanna/self-xss-in-indeed-com-e0c99c104cba)\r
+- [\u6211\u5982\u4F55\u5728 iOS \u7248 Protonmail \u5E94\u7528\u4E2D\u610F\u5916\u53D1\u73B0 XSS](https://www.secu.ninja/2018/12/04/how-to-accidentally-find-a-xss-in-protonmail-ios-app/)\r
+- [yandex.ru \u610F\u5916\u51FA\u73B0 XML XSS](https://medium.com/@0ktavandi/xml-xss-in-yandex-ru-by-accident-7e63c692b4c0)\r
+- [\u4E25\u91CD\u7684\u5B58\u50A8\u578BXSS\u6F0F\u6D1E](https://www.hackerinside.me/2018/11/critical-stored-xss-vulnerability.html)\r
+- [\u4F7F\u7528 realestate.postnl.nl \u4E2D\u7684 META \u6807\u7B7E\u7ED5\u8FC7 XSS](https://medium.com/bugbountywriteup/xss-bypass-using-meta-tag-in-realestate-postnl-nl-32db25db7308)\r
+- [Edmodo XSS \u6F0F\u6D1E](https://medium.com/@sameerphad72/edmodo-xss-bug-9c0fc9bdd0bf)\r
+- [\u9690\u85CF\u8F93\u5165\u5B57\u6BB5\u4E2D\u7684 XSS](https://portswigger.net/blog/xss-in-hidden-input-fields)\r
+- [\u6211\u662F\u5982\u4F55\u53D1\u73B0\u5F71\u54CD\u8D85\u8FC7 20 \u4E2A\u8D85\u7EA7\u5B50\u57DF\u540D\u7684 XSS \u7684](https://blog.fadyothman.com/how-i-discovered-xss-that-affects-over-20-uber-subdomains/)\r
+- [\u57FA\u4E8E DOM \u7684 XSS \u6216\u4E3A\u4EC0\u4E48\u4F60\u4E0D\u5E94\u8BE5\u8FC7\u5EA6\u4F9D\u8D56 cloudflare](https://medium.com/bugbountywriteup/dom-based-xss-or-why-you-should-not-rely-on-cloudflare-too-much-a1aa9f0ead7d)\r
+- [Dynamics 365 \u4E2D\u7684 XSS](https://medium.com/@tim.kent/xss-in-dynamics-365-25c800aac473)\r
+- [XSS \u7528 html \u8FDB\u884C\u7834\u574F\u4EE5\u53CA\u5982\u4F55\u5C06 html \u8F6C\u6362\u4E3A charcode](https://medium.com/@ariffadhlullah2310/xss-deface-with-html-and-how-to-convert-the-html-into-charcode-f0c62dd5ef3f)\r
+- [\u57FA\u4E8E Cookie \u7684\u6CE8\u5165\u5F0F XSS \u53EF\u5229\u7528\u5176\u4ED6\u6F0F\u6D1E\u8FDB\u884C\u5229\u7528](https://medium.com/@agrawalsmart7/cookie-based-injection-xss-making-exploitable-with-out-exploiting-other-vulns-81132ca01d67)\r
+- [Ghost \u535A\u5BA2\u4E2D put \u7684 XSS](https://www.itsecguy.com/xss-with-put-in-ghost-blog/)\r
+- [\u5229\u7528 Safari \u4E2D\u7684 Bug \u8FDB\u884C XSS \u653B\u51FB\u4EE5\u53CA\u9ED1\u540D\u5355\u4E3A\u4F55\u5982\u6B64\u611A\u8822](https://labs.detectify.com/2018/10/19/xss-using-a-bug-in-safari-and-why-blacklists-are-stupid/)\r
+- [\u5E26\u6709\u4E24\u4E2A\u53C2\u6570\u7684Magic XSS]\uFF08https://medium.com/@m4shahab1/magic-xss-with-two-parameters-463559b03949\uFF09\r
+- [\u5F71\u54CD tinder shopify Yelp \u7684 DOM XSS \u6F0F\u6D1E](https://www.vpnmentor.com/blog/dom-xss-bug-affecting-tinder-shopify-yelp/)\r
+- [linkedin.com \u4E0A\u5D4C\u5165\u7684\u6301\u4E45\u6027 XSS \u672A\u7ECF\u9A8C\u8BC1\u7684\u5F00\u653E\u56FE](https://medium.com/@jonathanbouman/persistent-xss-unvalidated-open-graph-embed-at-linkedin-com-db6188acedd9)\r
+- [\u6211\u7684\u7B2C\u4E00\u4E2A 0day \u6F0F\u6D1E\u5229\u7528 CSP \u7ED5\u8FC7\u53CD\u5C04\u578B XSS](https://medium.com/@alicanact60/my-first-0day-exploit-csp-bypass-reflected-xss-bugbounty-c7efa4bed3d7)\r
+- [Google \u652F\u4ED8\u4E2D\u7684\u5B58\u50A8\u578B XSS](https://medium.com/@brs.sgdc/google-stored-xss-in-payments-350cd7ba0d1b)\r
+- [Dropbox \u4E0A\u7684 XSS](https://www.kumar.ninja/2018/09/xss-surveydropboxcom.html)\r
+- [\u5229\u7528\u6B66\u5668\u5316XSS\u653B\u51FB\u5185\u90E8\u57DF]\uFF08https://medium.com/@rahulraveendran06/weaponizing-xss-attacking-internal-domains-d8ba1cbd106d\uFF09\r
+- [\u6211\u5982\u4F55\u5BF9 UBER \u53D1\u8D77 XSS \u653B\u51FB\u5E76\u7ED5\u8FC7 CSP](https://medium.com/@efkan162/how-i-xssed-uber-and-bypassed-csp-9ae52404f4c5)\r
+- [RXSS \u548C CSRF \u7ED5\u8FC7\u8D26\u6237\u63A5\u7BA1](https://nirmaldahal.com.np/r-xss-csrf-bypass-to-account-takeover/)\r
+- [\u8C37\u6B4C\u5B9E\u9A8C\u5BA4\u4E2D\u7684\u53E6\u4E00\u4E2AXSS](https://blog.bentkowski.info/2018/09/another-xss-in-google-colaboratory.html)\r
+- [\u6211\u5982\u4F55\u5728 overstock.com \u4E2D\u7ED5\u8FC7 AKAMAI waf](https://medium.com/@0ktavandi/how-i-bypassed-akamai-kona-waf-xss-in-overstock-com-f205b0e71a0d)\r
+- [philips.com \u4E0A\u7684\u53CD\u5C04\u578B XSS](https://medium.com/@jonathanbouman/reflected-xss-at-philips-com-e48bf8f\u200B\u200B9cd3c)\r
+- [\u591A\u4E2A iframe busters \u4E2D\u5B58\u5728 XSS \u6F0F\u6D1E\uFF0C\u5F71\u54CD\u9876\u7EA7\u7F51\u7AD9](https://randywestergren.com/xss-vulnerabilities-in-multiple-iframe-busters-affecting-top-tier-sites/)\r
+- [\u53CD\u5C04 DOM XSS \u548C\u70B9\u51FB\u52AB\u6301 silvergoldbull](https://medium.com/@maxon3/reflected-dom-xss-and-clickjacking-on-https-silvergoldbull-de-bt-html-daa36bdf7bf0)\r
+- [h1 private \u4E2D\u7684\u5B58\u50A8\u578B XSS \u6F0F\u6D1E](https://www.hackerinside.me/2018/09/stored-xss-vulnerability-in-h1c-private.html)\r
+- [Authbypass SQLi \u548C XSS](https://blog.securitybreached.org/2018/09/09/zol-zimbabwe-authbypass-sqli-xss/)\r
+- [tumblr \u4E2D\u7684\u5B58\u50A8\u578B XSS \u6F0F\u6D1E](https://www.hackerinside.me/2018/09/stored-xss-vulnerability-in-tumblr.html)\r
+- [Google Code Jam \u4E2D\u7684 XSS](https://websecblog.com/vulns/reflected-xss-in-google-code-jam/)\r
+- [Mapbox XSS](https://www.mohamedharon.com/2018/08/mapboxxss.html)\r
+- [\u6211\u7684\u7B2C\u4E00\u4E2A\u6709\u6548 XSS](https://medium.com/@nandwanajatin25/my-first-valid-xss-hackerone-f8ba0a7c647)\r
+- [webcomponents.org \u4E2D\u7684\u5B58\u50A8\u578B XSS](https://websecblog.com/vulns/stored-xss-in-webcomponents-org/)\r
+- [3\u5206\u949FXSS]\uFF08https://medium.com/bugbountywriteup/3-minutes-xss-71e3340ad66b\uFF09\r
+- [icloud.com \u57FA\u4E8E DOM \u7684 XSS](https://medium.com/@musabalhussein/icloud-com-dom-based-xss-bugbounty-6f88cb865b18)\r
+- [\u5728 hubspot \u548C\u7535\u5B50\u90AE\u4EF6\u533A\u57DF\u5B58\u5728 XSS](https://medium.com/@friendly_/xss-at-hubspot-and-xss-in-email-areas-674fa39d5248)\r
+- [Self XSS \u5BFC\u81F4\u76F2\u76EE XSS \u548C\u53CD\u5C04 XSS](https://medium.com/@friendly_/self-xss-leads-to-blind-xss-and-reflected-xss-950b1dc24647)\r
+- [Refltected XSS primagames.com](https://medium.com/@friendly_/reflected-xss-primagames-com-c7a641912626)\r
+- [gameskinny \u4E2D\u7684\u5B58\u50A8\u578B XSS](https://medium.com/@friendly_/stored-xss-in-gameskinny-aa26c6a6ae40)\r
+- [Google Chrome \u4E2D\u7684\u76F2 XSS \u5B9E\u9A8C](https://evanricafort.blogspot.com/2018/08/blind-xss-in-chrome-experiments-google.html)\r
+- [\u96C5\u864E\u5229\u7528\u4E24\u4E2A XSSI \u6F0F\u6D1E\u7A83\u53D6\u7528\u6237\u4FE1\u606F (750 \u7F8E\u5143)](https://medium.com/@0xHyde/yahoo-two-xssi-vulnerabilities-chained-to-steal-user-information-750-bounty-e9bc6a41a40a)\r
+- [\u6211\u662F\u5982\u4F55\u5728\u4E9A\u9A6C\u900A\u4E0A\u53D1\u73B0XSS\u7684](https://medium.com/@codingkarma/how-i-found-xss-on-amazon-f62b50f1c336)\r
+- [Messenger Twins \u4E2D\u7684\u76F2 XSS](http://omespino.com/write-up-telegram-bug-bounty-whatsapp-na-blind-xss-stored-ios-in-messengers-twins-who-really-care-about-your-security/)\r
+- [Microsoft \u5B50\u57DF\u540D\u4E2D\u7684 XSS](https://medium.com/@sudhanshur705/xss-in-microsoft-subdomain-81c4e46d6631)\r
+- [ah.nl \u4E0A\u7684\u6301\u4E45\u6027 XSS](https://medium.com/@jonathanbouman/persistent-xss-at-ah-nl-198fe7b4c781)\r
+- [\u70B9\u51FB\u52AB\u6301\u3001XSS \u548C DOS \u4E4B\u95F4\u7684 12000 \u4E2A\u4EA4\u96C6](https://samcurry.net/the-12000-intersection-between-clickjacking-xss-and-denial-of-service/)\r
+- [\u8C37\u6B4C\u5B9E\u9A8C\u5BA4 CSP \u7ED5\u8FC7\u4E2D\u7684 XSS](https://blog.bentkowski.info/2018/06/xss-in-google-colaboratory-csp-bypass.html)\r
+- [\u6211\u662F\u5982\u4F55\u53D1\u73B0\u82F9\u679C\u4E2D\u7684\u76F2XSS\u7684]\uFF08https://medium.com/@tahasmily2013m/how-i-found-blind-xss-in-apple-c890775e745a\uFF09\r
+- [amazon.com \u4E0A\u7684\u53CD\u5C04\u578B XSS](https://medium.com/@jonathanbouman/reflected-client-xss-amazon-com-7b0d3cec787)\r
+- [\u6211\u662F\u5982\u4F55\u5728360totalsecurity\u4E2D\u53D1\u73B0XSS\u7684](https://medium.com/@tahasmily2013m/i-have-found-vulnerability-in-360totalsecurity-is-reflected-xss-in-3a6bd602bb5a)\r
+- [2.5 BTC\u5B58\u50A8\u578BXSS](https://medium.com/@khaled.hassan/the-2-5-btc-stored-xss-f2f9393417f2)\r
+- [Netflix \u4E2D\u7684 XSS \u6F0F\u6D1E](https://medium.com/@black_b/vulnerability-netflix-cross-site-scripting-xss-d44010142e2c)\r
+- [Steam \u5E93\u5B58\u52A9\u624B\u4E2D\u901A\u8FC7 DOM XSS \u70B9\u51FB\u52AB\u6301\u5F15\u53D1\u7684 UXSS \u6545\u4E8B](https://thehackerblog.com/steam-fire-and-paste-a-story-of-uxss-via-dom-xss-clickjacking-in-steam-inventory-helper/index.html)\r
+- [\u6211\u662F\u5982\u4F55\u901A\u8FC7 SSRF \u6F0F\u6D1E\u53D1\u73B0 XSS \u7684](https://medium.com/@adeshkolte/how-i-found-xss-via-ssrf-vulnerability-adesh-kolte-873b30a6b89f)\r
+- [\u641C\u7D22XSS\u53D1\u73B0ldap\u6CE8\u5165]\uFF08https://www.nc-lp.com/blog/searching-for-xss-found-ldap-injection\uFF09\r
+- [\u5982\u4F55\u5728\u5B58\u5728 SSRF \u6F0F\u6D1E\u7684 JIRA \u4E2D\u5C06 SSRF \u8F6C\u6362\u4E3A XSS](https://medium.com/@D0rkerDevil/how-i-convert-ssrf-to-xss-in-a-ssrf-vulnerable-jira-e9f37ad5b158)\r
+- [Yahoo \u5B50\u57DF\u540D\u4E2D\u7684\u53CD\u5C04\u578B XSS](https://www.mohamedharon.com/2018/05/reflected-xss-in-hk-yahoo.html)\r
+- [\u8D26\u6237\u63A5\u7BA1\u548C\u76F2XSS]\uFF08https://blog.witcoat.com/2018/05/30/account-takeover-and-blind-xss-go-pro-get-bugs/\uFF09\r
+- [\u6211\u5982\u4F55\u5728\u79C1\u6709\u7A0B\u5E8F\u4E2D\u53D1\u73B0 5 \u4E2A\u5B58\u50A8\u578B XSS](https://cybristerboy.blogspot.com/2018/05/how-i-found-5-store-xss-on-private.html)\r
+- [\u6301\u4E45\u6027 XSS \u7A83\u53D6\u5BC6\u7801 (Paypal)](https://wesecureapp.com/blog/persistent-xss-to-steal-passwords-paypal/)\r
+- [Self XSS + CSRF \u5230\u5B58\u50A8\u578B XSS](https://medium.com/@renwa/self-xss-csrf-to-stored-xss-54f9f423a7f1)\r
+- [Yahoo \u53CA\u5176\u5B50\u57DF\u4E2D\u7684\u5B58\u50A8\u578B XSS](https://medium.com/@ozil.hakim/stored-xss-in-yahoo-and-all-subdomains-bbcaa7c3b8d)\r
+- [\u5FAE\u8F6F\u4E2D\u7684XSS](https://medium.com/@hacker_eth/xss-in-microsoft-7a70416aee75)\r
+- [\u5BA2\u6237\u652F\u6301\u9762\u677F\u7684\u76F2 XSS](https://blog.hx01.me/2018/05/blind-xss-to-customer-support-panel.html)\r
+- [stackoverflow \u4E0A\u7684\u53CD\u5C04\u5F0F XSS](https://medium.com/@newp_th/reflected-xss-on-stack-overflow-b8366a855472)\r
+- [Yahoo \u4E2D\u7684\u5B58\u50A8\u578B XSS](https://medium.com/@TheShahzada/stored-xss-in-yahoo-b0878ecc97e2)\r
+- [XSS 403 \u7981\u6B62\u7ED5\u8FC7](https://medium.com/@nuraalamdipu/xss-403-forbidden-bypass-write-up-e070de52bc06)\r
+- [\u901A\u8FC7 paypal \u7684\u6388\u6743\u95EE\u9898\u5C06\u81EA\u8EAB XSS \u8F6C\u53D8\u4E3A\u975E\u81EA\u8EAB XSS](https://medium.com/@YoKoKho/turning-self-xss-into-non-self-stored-xss-via-authorization-issue-at-paypal-tech-support-and-brand-3046f52ac16b)\r
+- [\u5B58\u50A8\u578BXSS\u7ED5\u8FC7\u7684\u6545\u4E8B](https://medium.com/@prial261/story-of-a-stored-xss-bypass-26e6659f807b)\r
+- [Mangobaaz \u7834\u89E3 XSS \u83B7\u53D6\u51ED\u8BC1](https://blog.hx01.me/2018/04/mangobaaz-hacked-xss-to-credentials.html)\r
+- [\u6211\u662F\u5982\u4F55\u5229\u7528\u6587\u4EF6\u4E0A\u4F20\u6765\u906D\u53D7\u5B58\u50A8\u578BXSS\u653B\u51FB\u7684](https://medium.com/@vis_hacker/how-i-got-stored-xss-using-file-upload-5c33e19df51e)\r
+- [\u7ED5\u8FC7 CSP \u6765\u6EE5\u7528 Edge \u4E2D\u7684 XSS \u8FC7\u6EE4\u5668](https://medium.com/bugbountywriteup/bypass-csp-by-abusing-xss-filter-in-edge-43e9106a9754)\r
+- [XSS \u5230\u4F1A\u8BDD\u52AB\u6301](https://medium.com/@yassergersy/xss-to-session-hijack-6039e11e6a81)\r
+- [www.zomato.com \u4E0A\u7684\u53CD\u5C04\u578B XSS](https://www.mohamedharon.com/2018/04/reflected-xss-on-wwwzomatocom-by.html)\r
+- [yahoo \u5B50\u57DF\u540D\u4E2D\u7684 XSS](https://www.mohamedharon.com/2018/03/xss-in-subdomain-httpsyefgrantsyahoocom.html)\r
+- [yahoo.net \u5B50\u57DF\u540D\u4E2D\u7684 XSS](https://www.mohamedharon.com/2018/03/xss-in-sportstwcampaignyahoonet.html)\r
+- [\u53CD\u5C04\u5F0F XSS moongaloop swf \u7248\u672C 62x](https://www.mohamedharon.com/2018/03/reflected-xss-moogaloop-swf-version-62x.html)\r
+- [Google adwords 3133.7 \u5B58\u50A8\u578B XSS](https://medium.com/@Alra3ees/google-adwords-3133-7-stored-xss-27bb083b8d27)\r
+- [\u6211\u662F\u5982\u4F55\u5728 Oracle Netsuite \u4E0A\u53D1\u73B0\u4E00\u4E2A\u4EE4\u4EBA\u60CA\u8BB6\u7684 XSS \u6F0F\u6D1E\u7684](https://medium.com/bug-bounty-hunting/how-i-found-a-surprising-xss-vulnerability-on-oracle-netsuite-2d48b7fcf0c8)\r
+- [Snapchat \u4E0A\u7684\u5B58\u50A8\u578B XSS](https://medium.com/@mrityunjoy/stored-xss-on-snapchat-5d704131d8fd)\r
+- [\u6211\u5982\u4F55\u7ED5\u8FC7 h1 \u79C1\u6709\u7A0B\u5E8F\u4E0A\u7684 XSS \u4FDD\u62A4](https://blog.securitybreached.org/2018/02/02/how-i-was-able-to-bypass-xss-protection-on-hackerones-private-program/)\r
+- [\u53EF\u80FD\u5B58\u5728\u53CD\u5C04\u578BXSS](https://www.mohamedharon.com/2018/01/reflected-xss-possible-server-side.html)\r
+- [\u901A\u8FC7 angularjs \u6A21\u677F\u6CE8\u5165\u6258\u7BA1\u7A0B\u5E8F\u8FDB\u884C XSS](https://blog.ibrahimdraidia.com/xss-via-angularjs-template-injection_hostinger/)\r
+- [Microsoft \u8DDF\u968F\u529F\u80FD XSS (CVE-2017-8514)](https://medium.com/@adeshkolte/microsoft-sharepoints-follow-feature-xss-cve-2017-8514-adesh-kolte-d78d701cd064)\r
+- [XSS \u4FDD\u62A4\u7ED5\u8FC7\u8BA9\u6211\u83B7\u5F97\u4E86\u6709\u53F2\u4EE5\u6765\u6700\u5FEB\u7684\u8D4F\u91D1]\uFF08https://medium.com/@Skylinearafat/xss-protection-bypass-made-my-quickest-bounty-ever-f4fd970c9116\uFF09\r
+- [\u5728 simplenote \u7535\u5B50\u5BA2\u6237\u7AEF\u4E2D\u8BB0\u5F55 XSS \u5230 RCE](https://ysx.me.uk/taking-note-xss-to-rce-in-the-simplenote-electron-client/)\r
+- [VMWARE \u5B98\u65B9 vcdx \u53CD\u5C04\u578B XSS](https://medium.com/@honcbb/vmware-official-vcdx-reflected-xss-90e69a3c35e1)\r
+- [\u6211\u5982\u4F55\u4F7F\u7528 IDOR \u548C Blind XSS \u653B\u51FB\u4E00\u5BB6\u516C\u53F8](https://www.ansariosama.com/2017/11/how-i-pwned-company-using-idor-blind-xss.html)\r
+- [\u4ECE Recon \u5230\u57FA\u4E8E DOM \u7684 XSS](https://medium.com/@abdelfattahibrahim/from-recon-to-dom-based-xss-f279602a14cf)\r
+- [\u901A\u8FC7XSS\u8BFB\u53D6\u672C\u5730\u6587\u4EF6]\uFF08http://www.noob.ninja/2017/11/local-file-read-via-xss-in-dynamically.html\uFF09\r
+- [\u5FAE\u8F6F\u7684\u975E\u6301\u4E45\u6027 XSS](https://medium.com/@adeshkolte/non-persistent-xss-at-microsoft-adesh-kolte-ad36b1b4a325)\r
+- [\u8C37\u6B4C\u4E2D\u7684\u5B58\u50A8\u578BXSS\uFF08double kill\uFF09](https://ysx.me.uk/app-maker-and-colaboratory-a-stored-google-xss-double-bill/)\r
+- [\u8FC7\u6EE4\u7ED5\u8FC7 finance.yahoo.com (\u79FB\u52A8\u7248\u672C) \u4E0A\u7684\u53CD\u5C04\u578B XSS](https://medium.com/@saamux/filter-bypass-to-reflected-xss-on-https-finance-yahoo-com-mobile-version-22b854327b27)\r
+- [\u96C5\u864E\u4E2D\u7684 900 \u7F8E\u5143 XSS\uFF1A\u4FA6\u5BDF\u83B7\u80DC]\uFF08https://medium.com/bugbountywriteup/900-xss-in-yahoo-recon-wins-65ee6d4bfcbd\uFF09\r
+- [\u6211\u5982\u4F55\u7ED5\u8FC7 Practos \u9632\u706B\u5899\u5E76\u89E6\u53D1 XSS \u6F0F\u6D1E](https://medium.com/bugbountywriteup/how-i-bypassed-practos-firewall-and-triggered-a-xss-b30164a8f1dc)\r
+- [\u5B58\u50A8\u578BXSS\u81F3\u5168\u90E8\u4FE1\u606F\u6CC4\u9732](https://guptashubham.com/stored-xss-to-full-information-disclosure/)\r
+- [\u53C2\u6570\u7279\u5B9A\u578BXSS\u7684\u6545\u4E8B](http://www.noob.ninja/2017/09/story-of-parameter-specific-xss.html)\r
+- [\u94FE\u63A5\u81EA\u8EAB XSS \u4E0E UI \u91CD\u5B9A\u4F4D\u5BFC\u81F4\u4F1A\u8BDD\u52AB\u6301](https://medium.com/bugbountywriteup/chaining-self-xss-with-ui-redressing-is-leading-to-session-hijacking-pwn-users-like-a-boss-efb46249cd14)\r
+- [\u5B89\u88C5\u4EFB\u610F cookie \u7684\u5B58\u50A8\u578B XSS](https://medium.com/@arbazhussain/stored-xss-with-arbitrary-cookie-installation-567931433c7f)\r
+- [indeed.com \u5B50\u57DF\u540D\u4E0A\u7684\u53CD\u5C04\u578B XSS \u548C\u5F00\u653E\u91CD\u5B9A\u5411](https://medium.com/@SyntaxError4/reflective-xss-and-open-redirect-on-indeed-com-subdomain-b4ab40e40c83)\r
+- [\u6211\u5982\u4F55\u5728 Yahoo \u5B50\u57DF\u540D\u4E0A\u53D1\u73B0\u53CD\u5C04\u578B XSS](https://medium.com/@SyntaxError4/how-i-found-reflective-xss-in-yahoo-subdomain-3ad4831b386e)\r
+- [\u4E0D\u8981\u53EA\u56E0\u4E3A XSS \u66F4\u6709\u8DA3\u800C\u53D1\u51FA\u8B66\u62A5(1)](https://medium.com/@armaanpathan/dont-just-alert-1-because-xss-is-for-fun-f88cfb88d5b9)\r
+- [KNOXSS \u5E2E\u52A9\u4E0B\u7684 UBER XSS](https://medium.com/@Alra3ees/my-write-up-about-uber-cross-site-scripting-by-help-of-knoxss-b1b56f8d090)\r
+- [Yahoo \u4E2D\u7684\u53CD\u5C04\u578B XSS](https://medium.com/@TheShahzada/reflected-xss-in-yahoo-6e2b6b177448)\r
+- [ww.yahoo.com \u4E0A\u7684\u53CD\u5C04\u578B XSS](https://medium.com/@saamux/reflected-xss-on-www-yahoo-com-9b1857cecb8c)\r
+- [\u7531\u4E8E\u9519\u8BEF\u7684\u5185\u5BB9\u7C7B\u578B\u6807\u5934\u800C\u5BFC\u81F4\u7684 XSS](https://bugbaba.blogspot.com/2017/08/xss-because-of-wrong-content-type-header.html)\r
+\r
+## \u8DE8\u7AD9\u8BF7\u6C42\u4F2A\u9020\uFF08CSRF\uFF09\r
+\r
+- [\u7B80\u5355\u7684 CSRF \u653B\u51FB\u5982\u4F55\u6F14\u53D8\u6210 P1](https://ladysecspeare.wordpress.com/2020/04/05/how-a-simple-csrf-attack-turned-into-a-p1-level-bug/)\r
+- [\u6211\u5982\u4F55\u4F7F\u7528\u65B9\u6CD5\u8986\u76D6\u6280\u672F\u6765\u5229\u7528 json csrf](https://medium.com/@secureITmania/how-i-exploit-the-json-csrf-with-method-override-technique-71c0a9a7f3b0)\r
+- [\u6211\u5982\u4F55\u53D1\u73B0 CSRF\uFF08\u6211\u7684\u7B2C\u4E00\u4E2A\u8D4F\u91D1\uFF09]\uFF08https://medium.com/@rajeshranjan457/how-i-csrfd-my-first-bounty-a62b593d3f4d\uFF09\r
+- [\u5229\u7528 websocket \u5E94\u7528\u7A0B\u5E8F\u8303\u56F4\u7684 XSS \u548C CSRF](https://medium.com/@osamaavvan/exploiting-websocket-application-wide-xss-csrf-66e9e2ac8dfa)\r
+- [\u6D41\u884C\u7A0B\u5E8F\u7684\u7AD9\u70B9\u8303\u56F4 CSRF](https://fellchase.blogspot.com/2020/02/site-wide-csrf-on-popular-program.html)\r
+- [\u4F7F\u7528 CSRF \u6211\u906D\u9047\u4E86\u5947\u602A\u7684\u8D26\u6237\u63A5\u7BA1](https://flex0geek.blogspot.com/2020/02/using-csrf-i-got-weird-account-takeover.html)\r
+- [CSRF CSRF CSRF]\uFF08https://medium.com/@navne3t/csrf-csrf-csrf-f203e6452a9c\uFF09\r
+- [learndigital.withgoogle.com \u4E2D\u7684 Google Bugbounty CSRF](https://santuysec.com/2020/01/21/google-bug-bounty-csrf-in-learndigital-withgoogle-com/)\r
+- [CSRF \u4EE4\u724C\u7ED5\u8FC7 [2k \u6F0F\u6D1E\u6545\u4E8B]](https://medium.com/@sainttobs/csrf-token-bypasss-a-tale-of-my-2k-bug-ff7f51166ea1)\r
+- [\u901A\u8FC7 CSRF \u653B\u51FB\u7ED5\u8FC7 2FA](https://medium.com/@vbharad/2-fa-bypass-via-csrf-attack-8f2f6a6e3871)\r
+- [\u5B58\u50A8\u7684 iframe \u6CE8\u5165 CSRF \u8D26\u6237\u63A5\u7BA1]\uFF08https://medium.com/@irounakdhadiwal999/stored-iframe-injection-csrf-account-takeover-42c93ad13f5d\uFF09\r
+- [Instagram \u5220\u9664\u5A92\u4F53 CSRF](https://blog.darabi.me/2019/12/instagram-delete-media-csrf.html)\r
+- [\u4E0D\u4E00\u81F4\u7684 CSRF](https://smaranchand.com.np/2019/10/an-inconsistent-csrf/)\r
+- [\u5229\u7528\u70B9\u51FB\u52AB\u6301\u7ED5\u8FC7 CSRF \u4EF7\u503C 1250](https://medium.com/@saadahmedx/bypass-csrf-with-clickjacking-worth-1250-6c70cc263f40)\r
+- [\u7AD9\u70B9\u8303\u56F4\u7684 CSRF graphql](https://rafiem.github.io/bugbounty/tokopedia/site-wide-csrf-graphql/)\r
+- [\u4F7F\u7528\u57FA\u4E8E CSRF json \u7684\u8D26\u6237\u63A5\u7BA1](https://medium.com/@shub66452/account-takeover-using-csrf-json-based-a0e6efd1bffc)\r
+- [CORS \u5230 CSRF \u653B\u51FB](https://medium.com/@osamaavvan/cors-to-csrf-attack-c33a595d441)\r
+- [\u6211\u7684\u7B2C\u4E00\u4E2A CSRF \u8D26\u6237\u63A5\u7BA1](https://medium.com/@nishantrustlingup/my-first-csrf-to-account-takeover-worth-750-1332641d4304)\r
+- [4 \u4E2A\u94FE\u5F0F CSRF \u653B\u51FB\u7528\u4E8E\u8D26\u6237\u63A5\u7BA1](https://medium.com/a-bugz-life/4x-csrfs-chained-for-company-account-takeover-f9fada416986)\r
+- [CSRF \u53EF\u5BFC\u81F4\u5B58\u50A8\u578B XSS](https://medium.com/bugbountywriteup/csrf-attack-can-lead-to-stored-xss-f40ba91f1e4f)\r
+- [\u5176\u4ED6\u5728\u6CE8\u9500\u65F6\u6EE5\u7528 CSRF \u7684\u793A\u4F8B](https://soroush.secproject.com/blog/2019/04/yet-other-examples-of-abusing-csrf-in-logout/)\r
+- [Wordpress CSRF \u5230 RCE](https://blog.ripstech.com/2019/wordpress-csrf-to-rce/)\r
+- [\u901A\u8FC7 CSRF \u66B4\u529B\u7834\u89E3\u7528\u6237 ID\uFF0C\u4F7F\u7528 CSRF \u653B\u51FB\u5220\u9664\u6240\u6709\u7528\u6237](https://medium.com/@armaanpathan/brute-forcing-user-ids-via-csrf-to-delete-all-users-with-csrf-attack-216ccd4d832c)\r
+- [\u4F7F\u7528\u8DE8\u6846\u67B6\u811A\u672C\u7ED5\u8FC7 CSRF](https://medium.com/@mr_hacker/csrf-bypass-using-cross-frame-scripting-c349d6f33eb6)\r
+- [\u901A\u8FC7 CSRF \u63A5\u7BA1\u5E10\u6237]\uFF08https://medium.com/@adeshkolte/lintern-ute-account-takeover-via-csrf-adesh-kolte-307f7065ee74\uFF09\r
+- [\u4E00\u79CD\u975E\u5E38\u6709\u7528\u7684\u7ED5\u8FC7 CSRF \u4FDD\u62A4\u7684\u6280\u672F](https://medium.com/@Skylinearafat/a-very-useful-technique-to-bypass-the-csrf-protection-for-fun-and-profit-471af64da276)\r
+- [CSRF \u5E10\u6237\u63A5\u7BA1\u8BE6\u89E3\u81EA\u52A8\u624B\u52A8\u6F0F\u6D1E\u8D4F\u91D1](https://medium.com/bugbountywriteup/csrf-account-takeover-explained-automated-manual-bug-bounty-447e4b96485b)\r
+- [CSRF \u8D26\u6237\u63A5\u7BA1](https://medium.com/bugbountywriteup/csrf-account-takeover-in-a-company-worth-1b-6e966813c262)\r
+- [\u6211\u662F\u5982\u4F55\u56E0 CSRF \u6F0F\u6D1E\u4ECE\u5FAE\u8F6F\u83B7\u5F97 500 \u7F8E\u5143\u7684](https://medium.com/@adeshkolte/how-i-got-500-from-microsoft-for-csrf-vulnerability-700accaf48b9)\r
+- [\u5173\u952E\u7ED5\u8FC7 CSRF \u4FDD\u62A4](https://medium.com/bugbountywriteup/critical-bypass-csrf-protection-on-ibm-313ffb68dd0c)\r
+- [RXSS CSRF \u7ED5\u8FC7\u4EE5\u5B8C\u5168\u63A5\u7BA1\u5E10\u6237]\uFF08https://nirmaldahal.com.np/r-xss-csrf-bypass-to-account-takeover/\uFF09\r
+- [Youtube CSRF](https://www.sagarvd.me/2018/09/youtube-csrf.html)\r
+- [\u81EA\u8EAB XSS + CSRF = \u5B58\u50A8\u578B XSS](https://medium.com/@renwa/self-xss-csrf-to-stored-xss-54f9f423a7f1)\r
+- [Ribose IDOR \u4F7F\u7528\u7B80\u5355\u7684 CSRF \u7ED5\u8FC7\u5BF9\u5176\u4ED6\u7167\u7247\u8D44\u6599\u7684\u65E0\u9650\u5236\u66F4\u6539\u548C\u5220\u9664]\uFF08https://medium.com/@YoKoKho/ribose-idor-with-simple-csrf-bypass-unrestricted-changes-and-deletion-to-other-photo-profile-e4393305274e\uFF09\r
+- [\u9488\u5BF9\u793E\u4EA4\u7F51\u7AD9\u7684 JSON CSRF \u653B\u51FB](https://medium.com/@pig.wig45/json-csrf-attack-on-a-social-networking-site-hackerone-platform-3d7aed3239b0)\r
+- [\u9ED1\u5BA2\u653B\u51FB Facebook Oculus \u96C6\u6210 CSRF]\uFF08https://www.josipfranjkovic.com/blog/hacking-facebook-oculus-integration-csrf\uFF09\r
+- [\u4E9A\u9A6C\u900A\u5229\u7528\u670D\u52A1\u5DE5\u4F5C\u8005\u6CC4\u9732 CSRF \u4EE4\u724C]\uFF08https://ahussam.me/Amazon-leaking-csrf-token-using-service-worker/\uFF09\r
+- [Facebook graphql CSRF](https://philippeharewood.com/facebook-graphql-csrf/)\r
+- [\u94FE\u63A5\u6F0F\u6D1E\u5E76\u5C06\u60A8\u7684\u62A5\u544A\u5BF9\u6708\u7403 csrf \u7684\u5F71\u54CD\u8F6C\u5316\u4E3A html \u6CE8\u5165]\uFF08https://medium.com/@armaanpathan/chain-the-vulnerabilities-and-take-your-report-impact-on-the-moon-csrf-to-html-injection-which-608fa6e74236\uFF09\r
+- [\u90E8\u5206 CSRF \u5230\u5B8C\u6574 CSRF](https://medium.com/@ciph3r7r0ll/that-escalated-quickly-from-partial-csrf-to-reflected-xss-to-complete-csrf-to-stored-xss-6ba8103069c2)\r
+- [\u901A\u8FC7\u94FE\u5F0F csrf \u6F0F\u6D1E\u7A83\u53D6\u4E00\u4E2A\u9A71\u52A8\u5668\u96C6\u6210\u7684\u8BBF\u95EE\u4EE4\u724C]\uFF08https://medium.com/@arbazhussain/stealing-access-token-of-one-drive-integration-by-chaining-csrf-vulnerability-779f999624a7\uFF09\r
+- [Metasploit web \u9879\u76EE\u7EC8\u6B62\u6240\u6709\u6B63\u5728\u8FD0\u884C\u7684\u4EFB\u52A1 CSRF CVE-2017-5244](https://www.seekurity.com/blog/general/metasploit-web-project-kill-all-running-tasks-csrf-cve-2017-5244/)\r
+- [Messenger \u7AD9\u70B9\u8303\u56F4\u7684 CSRF](https://whitton.io/articles/messenger-site-wide-csrf/)\r
+- [\u7834\u89E3 Facebook CSRF \u8BBE\u5907\u767B\u5F55\u6D41\u7A0B](https://www.josipfranjkovic.com/blog/hacking-facebook-csrf-device-login-flow)\r
+- [Bing \u4E2D\u7684\u4E24\u4E2A\u6F0F\u6D1E\u53EF\u5229\u7528 XSS \u548C CSRF](https://medium.com/bugbountywriteup/two-vulnerabilities-makes-an-exploit-xss-and-csrf-in-bing-cd4269da7b69)\r
+- [\u6211\u5728 2016 \u5E74\u5982\u4F55\u7ED5\u8FC7 Facebook](https://medium.com/blog.darabi.me/2016/05/how-i-bypassed-facebook-csrf-in-2016.html)\r
+- [Ubiquiti bugbounty unifi \u901A\u7528 CSRF \u4FDD\u62A4\u7ED5\u8FC7]\uFF08https://www.rcesecurity.com/2016/02/ubiquiti-bug-bounty-unifi-v3-2-10-generic-csrf-protection-bypass/\uFF09\r
+- [\u7ED5\u8FC7 Facebook CSRF](https://blog.darabi.me/2015/04/bypass-facebook-csrf.html)\r
+- [Facebook CSRF \u5B8C\u6574\u8D26\u6237\u63A5\u7BA1](https://www.josipfranjkovic.com/blog/facebook-csrf-full-account-takeover)\r
+\r
+## \u70B9\u51FB\u52AB\u6301\uFF08UI \u91CD\u6574\u653B\u51FB\uFF09\r
+\r
+- [Google \u6F0F\u6D1E\u8D4F\u91D1 Google \u4ED8\u6B3E\u70B9\u51FB\u52AB\u6301](https://santuysec.com/2020/03/06/google-bug-bounty-clickjacking-on-google-payment-1337/)\r
+- [\u4EF7\u503C 1337 \u7F8E\u5143\u7684 Google API \u70B9\u51FB\u52AB\u6301](https://medium.com/@godofdarkness.msf/google-apis-clickjacking-1337-7a3a9f3eb8df)\r
+- [Google org \u4E0A\u7684\u70B9\u51FB\u52AB\u6301 + XSS](https://websecblog.com/vulns/clickjacking-xss-on-google-org/)\r
+- [\u901A\u8FC7 Google org \u4E0A\u7684\u70B9\u51FB\u52AB\u6301\u7ED5\u8FC7 CSRF ]\uFF08https://medium.com/@saadahmedx/bypass-csrf-with-clickjacking-worth-1250-6c70cc263f40\uFF09\r
+- [1800 \u4EF7\u503C\u70B9\u51FB\u52AB\u6301](https://medium.com/@osamaavvan/1800-worth-clickjacking-1f92e79d0414)\r
+- [\u901A\u8FC7\u70B9\u51FB\u52AB\u6301\u8FDB\u884C\u8D26\u6237\u63A5\u7BA1]\uFF08https://medium.com/@osamaavvan/account-taker-with-clickjacking-ace744842ec3\uFF09\r
+- [\u8C37\u6B4C CSE \u4E0A\u7684\u70B9\u51FB\u52AB\u6301]\uFF08https://medium.com/@abaykandotcom/clickjacking-on-google-cse-6636bba72d20\uFF09\r
+- [\u6211\u662F\u5982\u4F55\u610F\u5916\u53D1\u73B0 Facebook \u70B9\u51FB\u52AB\u6301\u7684](https://malfind.com/index.php/2018/12/21/how-i-accidentaly-found-clickjacking-in-facebook/)\r
+- [\u8C37\u6B4C\u6211\u7684\u8D26\u6237\u88AB\u70B9\u51FB\u52AB\u6301\uFF0C\u4EF7\u503C 7500 \u7F8E\u5143](https://apapedulimu.click/clickjacking-on-google-myaccount-worth-7500/)\r
+- [Google \u6587\u6863\u4E2D\u7684\u70B9\u51FB\u52AB\u6301\u548C\u65E0\u6548\u7684\u8F93\u5165\u529F\u80FD]\uFF08https://medium.com/@raushanraj_65039/clickjacking-in-google-docs-and-voice-typing-feature-c481d00b020a\uFF09\r
+- [\u53CD\u5C04 DOM XSS \u548C\u70B9\u51FB\u52AB\u6301](https://medium.com/@maxon3/reflected-dom-xss-and-clickjacking-on-https-silvergoldbull-de-bt-html-daa36bdf7bf0)\r
+- [binary.com \u70B9\u51FB\u52AB\u6301\u6F0F\u6D1E\u5229\u7528 HTML5 \u5B89\u5168\u529F\u80FD](https://medium.com/@ameerassadi/binary-com-clickjacking-vulnerability-exploiting-html5-security-features-368c1ff2219d)\r
+- [\u70B9\u51FB\u52AB\u6301 XSS \u548C\u62D2\u7EDD\u670D\u52A1\u4E4B\u95F4\u7684 12000 \u4E2A\u4EA4\u96C6](https://samcurry.net/the-12000-intersection-between-clickjacking-xss-and-denial-of-service/)\r
+- [Steam fire and paste\uFF1A\u5173\u4E8E\u901A\u8FC7 DOM XSS \u548C Steam \u5E93\u5B58\u52A9\u624B\u4E2D\u7684\u70B9\u51FB\u52AB\u6301\u8FDB\u884C uxss \u7684\u6545\u4E8B](https://thehackerblog.com/steam-fire-and-paste-a-story-of-uxss-via-dom-xss-clickjacking-in-steam-inventory-helper/index.html)\r
+- [\u53C8\u4E00\u4E2A Google \u70B9\u51FB\u52AB\u6301](https://medium.com/@raushanraj_65039/google-clickjacking-6a04132b918a)\r
+- [\u89E3\u51B3 Instagram \u901A\u8FC7\u70B9\u51FB\u52AB\u6301\u6F0F\u6D1E\u6CC4\u9732\u5E94\u7528\u7A0B\u5E8F\u4EE4\u724C\u7684\u95EE\u9898](https://www.seekurity.com/blog/general/redressing-instagram-leaking-application-tokens-via-instagram-clickjacking-vulnerability/)\r
+- [Self XSS \u5230 Good XSS \u548C\u70B9\u51FB\u52AB\u6301](https://medium.com/@arbazhussain/self-xss-to-good-xss-clickjacking-6db43b44777e)\r
+- [Microsoft Yammer \u70B9\u51FB\u52AB\u6301\u5229\u7528 HTML5 \u5B89\u5168\u529F\u80FD](https://www.seekurity.com/blog/general/microsoft-yammer-clickjacking-exploiting-html5-security-features/)\r
+- [Firefox \u67E5\u627E\u6211\u7684\u8BBE\u5907\u70B9\u51FB\u52AB\u6301](https://www.seekurity.com/blog/general/firefox-find-my-device-service-clickjacking/)\r
+- [Whatsapp \u70B9\u51FB\u52AB\u6301\u6F0F\u6D1E](https://www.seekurity.com/blog/general/whatsapp-clickjacking-vulnerability-yet-another-web-client-failure/)\r
+- [Telegram WEB\u5BA2\u6237\u7AEF\u70B9\u51FB\u52AB\u6301\u6F0F\u6D1E](https://www.seekurity.com/blog/general/telegram-web-client-clickjacking-vulnerability/)\r
+- [Facebook \u70B9\u51FB\u52AB\u6301\uFF1A\u6211\u4EEC\u5982\u4F55\u5728 Facebook UI \u4E0A\u653E\u7F6E\u4E00\u4EF6\u65B0\u8863\u670D]\uFF08https://www.seekurity.com/blog/write-ups/facebook-clickjacking-how-we-put-a-new-dress-on-facebook-ui/\uFF09\r
+\r
+## \u672C\u5730\u6587\u4EF6\u5305\u542B\uFF08LFI\uFF09\r
+\r
+- [RFI LFI \u5199\u4F5C](http://hassankhanyusufzai.com/RFI_LFI_writeup/)\r
+- [\u6211\u7684\u7B2C\u4E00\u4E2A LFI](https://cyberzombie.in/my-first-lfi/)\r
+- [Google.com \u4E0A\u7684 LFI \u6F0F\u6D1E\u8D4F\u91D1](https://medium.com/@vulnerabilitylabs/bug-bounty-lfi-at-google-com-3c2e17d8c912)\r
+- [redacted.google.com \u4E0A\u7684\u751F\u4EA7\u670D\u52A1\u5668\u4E0A\u7684 Google LFI](https://omespino.com/write-up-google-bug-bounty-lfi-on-production-servers-in-redacted-google-com-13337-usd/)\r
+- [LFI \u5230 10 \u670D\u52A1\u5668\u7834\u89E3](https://nirmaldahal.com.np/lfi-to-10-server-pwn/)\r
+- [apigee \u95E8\u6237\u4E2D\u7684 LFI](https://offensi.com/2019/01/31/lfi-in-apigee-portals/)\r
+- [\u5229\u7528\u6F0F\u6D1E\u653B\u51FB\u67D0\u4E2A\u7EC4\u7EC7\u7684 LFI \u4E0D\u53D7\u9650\u5236\u7684\u6587\u4EF6\u4E0A\u4F20\u5230 RCE](https://medium.com/@armaanpathan/chain-the-bugs-to-pwn-an-organisation-lfi-unrestricted-file-upload-remote-code-execution-93dfa78ecce)\r
+- [\u6211\u4EEC\u5982\u4F55\u50CF\u8001\u677F\u4E00\u6837\u5728 apache drill recom \u4E2D\u83B7\u5F97 LFI](https://medium.com/bugbountywriteup/how-we-got-lfi-in-apache-drill-recon-like-a-boss-6f739a79d87d)\r
+- [\u4ECE LFI \u5230 RCE \u7684 Bugbounty \u4E4B\u65C5](https://medium.com/@logicbomb_1/bugbounty-journey-from-lfi-to-rce-how-a69afe5a0899)\r
+- [\u5FB7\u56FD\u7535\u4FE1\u6F0F\u6D1E\u8D4F\u91D1\u8BA1\u5212\u4E2D\u7684 LFI \u5230 RCE](https://medium.com/@maxon3/lfi-to-command-execution-deutche-telekom-bug-bounty-6fe0de7df7a6)\r
+- [\u901A\u8FC7 PHP \u4F1A\u8BDD\u4ECE LFI \u5230 RCE](https://www.rcesecurity.com/2017/08/from-lfi-to-rce-via-php-sessions/)\r
+- [magix bugbounty magix.com XSS RCE SQLI \u548C LFI](https://www.rcesecurity.com/2014/04/magix-bug-bounty-magix-com-rce-sqli-and-xara-com-lfi-xss/)\r
+- [\u8BFA\u57FA\u4E9A\u5730\u56FE\u4E2D\u7684 LFI](http://blog.shashank.co/2013/10/lfi-in-nokia-maps.html)\r
+\r
+## \u5B50\u57DF\u540D\u63A5\u7BA1\r
+\r
+- [\u6211\u662F\u5982\u4F55\u5728 tokopedia \u4E0A\u82B1\u94B1\u6536\u8D2D\u5B50\u57DF\u540D\u7684](https://medium.com/bugbountywriteup/how-i-bought-my-way-to-subdomain-takeover-on-tokopedia-8c6697c85b4d)\r
+- [\u901A\u8FC7 pantheon \u8FDB\u884C\u5B50\u57DF\u540D\u63A5\u7BA1]\uFF08https://smaranchand.com.np/2019/12/subdomain-takeover-via-pantheon/\uFF09\r
+- [\u5B50\u57DF\u540D\u63A5\u7BA1\uFF1A\u4E00\u79CD\u72EC\u7279\u7684\u65B9\u5F0F]\uFF08https://www.mohamedharon.com/2019/11/subdomain-takeover-via.html\uFF09\r
+- [\u4E0D\u65AD\u5347\u7EA7\u7684\u5B50\u57DF\u540D\u63A5\u7BA1\u4EE5\u7A83\u53D6\u654F\u611F\u4FE1\u606F]\uFF08https://blog.takemyhand.xyz/2019/05/escalating-subdomain-takeovers-to-steal.html\uFF09\r
+- [\u5B50\u57DF\u540D\u63A5\u7BA1\u5956\u52B1 200](https://medium.com/@friendly_/subdomain-takeover-awarded-200-8296f4abe1b0)\r
+- [\u901A\u8FC7 wufoo \u670D\u52A1\u8FDB\u884C\u5B50\u57DF\u540D\u63A5\u7BA1]\uFF08https://www.mohamedharon.com/2019/02/subdomain-takeover-via-wufoo-service-in.html\uFF09\r
+- [\u901A\u8FC7 Hubspot \u8FDB\u884C\u5B50\u57DF\u540D\u63A5\u7BA1](https://www.mohamedharon.com/2019/02/subdomain-takeover-via-hubspot.html)\r
+- [Souq.com \u5B50\u57DF\u540D\u63A5\u7BA1]\uFF08https://www.mohamedharon.com/2019/02/souqcom-subdomain-takeover-via.html\uFF09\r
+- [\u5B50\u57DF\u540D\u63A5\u7BA1\uFF1A\u65B0\u7EA7\u522B]\uFF08https://medium.com/bugbountywriteup/subdomain-takeover-new-level-43f88b55e0b2\uFF09\r
+- [\u7531\u4E8E\u81EA\u5B9A\u4E49\u57DF\u7684\u9879\u76EE\u8BBE\u7F6E\u914D\u7F6E\u9519\u8BEF\u5BFC\u81F4\u5B50\u57DF\u63A5\u7BA1]\uFF08https://medium.com/@prial261/subdomain-takeover-dew-to-missconfigured-project-settings-for-custom-domain-46e90e702969\uFF09\r
+- [\u901A\u8FC7 shopify \u4F9B\u5E94\u5546\u63A5\u7BA1\u5B50\u57DF\u540D](https://www.mohamedharon.com/2018/10/subdomain-takeover-via-shopify-vendor.html)\r
+- [\u901A\u8FC7\u4E0D\u5B89\u5168\u7684 S3 \u5B58\u50A8\u6876\u8FDB\u884C\u5B50\u57DF\u540D\u63A5\u7BA1]\uFF08https://blog.securitybreached.org/2018/09/24/subdomain-takeover-via-unsecured-s3-bucket/\uFF09\r
+- [\u4EF7\u503C 200 \u7684\u5B50\u57DF\u540D\u63A5\u7BA1](https://medium.com/@alirazzaq/subdomain-takeover-worth-200-ed73f0a58ffe)\r
+- [\u901A\u8FC7 campaignmonitor \u8FDB\u884C\u5B50\u57DF\u540D\u63A5\u7BA1]\uFF08https://www.mohamedharon.com/2018/09/subdomain-takeover-via-campaignmonitor.html\uFF09\r
+- [\u5982\u4F55\u5728\u7728\u773C\u95F4\u5B8C\u6210 55000 \u4E2A\u5B50\u57DF\u540D\u63A5\u7BA1]\uFF08https://medium.com/@thebuckhacker/how-to-do-55-000-subdomain-takeover-in-a-blink-of-an-eye-a94954c3fc75\uFF09\r
+- [\u5B50\u57DF\u540D\u63A5\u7BA1\u661F\u5DF4\u514B (\u7B2C 2 \u90E8\u5206)](https://0xpatrik.com/subdomain-takeover-starbucks-ii/)\r
+- [\u5B50\u57DF\u540D\u63A5\u7BA1\u661F\u5DF4\u514B]\uFF08https://0xpatrik.com/subdomain-takeover-starbucks/\uFF09\r
+- [Uber \u901A\u914D\u7B26\u5B50\u57DF\u540D\u63A5\u7BA1](https://blog.securitybreached.org/2017/11/20/uber-wildcard-subdomain-takeover)\r
+- [Bugcrowd \u57DF\u540D\u5B50\u57DF\u540D\u63A5\u7BA1\u6F0F\u6D1E](https://blog.securitybreached.org/2017/10/10/bugcrowds-domain-subdomain-takeover-vulnerability)\r
+- [\u5B50\u57DF\u540D\u63A5\u7BA1\u6F0F\u6D1E (\u5170\u535A\u57FA\u5C3C\u88AB\u9ED1)](https://blog.securitybreached.org/2017/10/10/subdomain-takeover-lamborghini-hacked/)\r
+- [\u901A\u8FC7\u5B50\u57DF\u540D\u63A5\u7BA1\u7ED5\u8FC7 uber SSO \u7684\u8EAB\u4EFD\u9A8C\u8BC1](https://www.arneswinnen.net/2017/06/authentication-bypass-on-ubers-sso-via-subdomain-takeover/)\r
+- [\u901A\u8FC7\u63A5\u7BA1 ping.ubnt.com \u7684\u5B50\u57DF\u540D\u7ED5\u8FC7 SSO ubnt.com \u4E0A\u7684\u8EAB\u4EFD\u9A8C\u8BC1](https://www.arneswinnen.net/2016/11/authentication-bypass-on-sso-ubnt-com-via-subdomain-takeover-of-ping-ubnt-com/)\r
+\r
+\u62D2\u7EDD\u670D\u52A1\uFF08DOS\uFF09\r
+\r
+\r
+- [\u957F\u5B57\u7B26\u4E32 DOS](https://medium.com/@shahjerry33/long-string-dos-6ba8ceab3aa0)\r
+- [AIRDOS](https://kishanbagaria.com/airdos/)\r
+- [\u811A\u672C\u52A0\u8F7D\u5668\u4E2D\u7684\u62D2\u7EDD\u670D\u52A1 DOS \u6F0F\u6D1E (CVE-2018-6389)](https://www.pankajinfosec.com/post/700-denial-of-service-dos-vulnerability-in-script-loader-php-cve-2018-6389)\r
+- [Github actions DOS](https://blog.teddykatz.com/2019/11/12/github-actions-dos.html)\r
+- [\u5E94\u7528\u7A0B\u5E8F\u7EA7\u62D2\u7EDD\u670D\u52A1]\uFF08https://evanricafort.blogspot.com/2019/08/application-level-denial-of-service-dos.html\uFF09\r
+- [\u6A2A\u5E45\u6293\u53D6\u5230 DOS \u5E76\u5BFC\u81F4\u5185\u5B58\u635F\u574F](https://medium.com/bugbountywriteup/banner-grabbing-to-dos-and-memory-corruption-2442b1c25bbb)\r
+- [\u8DE8 Facebook \u7AEF\u70B9\u7684 DOS](https://medium.com/@maxpasqua/dos-across-facebook-endpoints-1d7d0bc27c7f)\r
+- [\u5BF9\u53D7 WAF \u4FDD\u62A4\u7684\u7AD9\u70B9\u8FDB\u884C DOS \u653B\u51FB](https://www.hackerinside.me/2019/02/dos-on-waf-protected-sites-by-abusing.html)\r
+- [Facebook Android \u5E94\u7528\u7A0B\u5E8F\u4E0A\u7684 DOS \u4F7F\u7528\u96F6\u5BBD\u5EA6\u65E0\u4E2D\u65AD\u5B57\u7B26]\uFF08https://medium.com/@kankrale.rahul/dos-on-facebook-android-app-using-65530-characters-of-zero-width-no-break-space-db41ca8ded89\uFF09\r
+- [Android \u548C iOS \u4E0A\u7684 Whatsapp DOS \u6F0F\u6D1E]\uFF08https://medium.com/@pratheesh.p.narayanan/whatsapp-dos-vulnerability-on-android-ios-web-7628077d21d4\uFF09\r
+- [iOS \u5B89\u5353\u7CFB\u7EDF\u4E2D\u7684 Whatsapp DOS \u6F0F\u6D1E](https://medium.com/bugbountywriteup/whatsapp-dos-vulnerability-in-ios-android-d896f76d3253)\r
+\r
+## \u8EAB\u4EFD\u9A8C\u8BC1\u7ED5\u8FC7\r
+\r
+\r
+- [\u7ED5\u8FC7 Evernote \u548C Dropbox iOS \u5E94\u7528\u4E0A\u7684 Touch ID \u8EAB\u4EFD\u9A8C\u8BC1](https://medium.com/@pig.wig45/touch-id-authentication-bypass-on-evernote-and-dropbox-ios-apps-7985219767b2)\r
+- [\u4F7F\u7528\u5947\u602A\u7684 1 \u4E2A\u5B57\u7B26\u6253\u5F00\u91CD\u5B9A\u5411\u7ED5\u8FC7 airbnb \u83B7\u53D6\u4E2D\u7684 Oauth \u8EAB\u4EFD\u9A8C\u8BC1](https://xpoc.pro/oauth-authentication-bypass-on-airbnb-acquisition-using-weird-1-char-open-redirect/)\r
+- [\u53CC\u56E0\u7D20\u8EAB\u4EFD\u9A8C\u8BC1\u7ED5\u8FC7]\uFF08https://gauravnarwani.com/two-factor-authentication-bypass/\uFF09\r
+- [Instagram \u591A\u91CD\u8EAB\u4EFD\u9A8C\u8BC1\u7ED5\u8FC7]\uFF08https://medium.com/@vishnu0002/instagram-multi-factor-authentication-bypass-924d963325a1\uFF09\r
+- [nodejs\u5E94\u7528\u4E2D\u7684\u8EAB\u4EFD\u9A8C\u8BC1\u7ED5\u8FC7](https://medium.com/@_bl4de/authentication-bypass-in-nodejs-application-a-bug-bounty-story-d34960256402)\r
+- [Symantec \u8EAB\u4EFD\u9A8C\u8BC1\u7ED5\u8FC7](https://artkond.com/2018/10/10/symantec-authentication-bypass/)\r
+- [CISCO meraki \u4E2D\u7684\u8EAB\u4EFD\u9A8C\u8BC1\u7ED5\u8FC7](https://blog.takemyhand.xyz/2018/06/authentication-bypass-in-cisco-meraki.html)\r
+- [Slack SAML \u8EAB\u4EFD\u9A8C\u8BC1\u7ED5\u8FC7](https://blog.intothesymmetry.com/2017/10/slack-saml-authentication-bypass.html)\r
+- [UBER SSO \u8EAB\u4EFD\u9A8C\u8BC1\u7ED5\u8FC7](https://www.arneswinnen.net/2017/06/authentication-bypass-on-ubers-sso-via-subdomain-takeover/)\r
+- [\u901A\u8FC7\u7A83\u53D6 oauth \u4EE4\u724C\u7ED5\u8FC7 airbnb \u8EAB\u4EFD\u9A8C\u8BC1](https://www.arneswinnen.net/2017/06/authentication-bypass-on-airbnb-via-oauth-tokens-theft/)\r
+- [\u68C0\u67E5\u5143\u7D20\u5BFC\u81F4\u6761\u7EB9\u8D26\u6237\u9501\u5B9A\u8EAB\u4EFD\u9A8C\u8BC1\u7ED5\u8FC7]\uFF08https://www.jonbottarini.com/2017/04/03/inspect-element-leads-to-stripe-account-lockout-authentication-bypass/\uFF09\r
+- [SSO ubnt.com \u4E0A\u7684\u8EAB\u4EFD\u9A8C\u8BC1\u7ED5\u8FC7](https://www.arneswinnen.net/2016/11/authentication-bypass-on-sso-ubnt-com-via-subdomain-takeover-of-ping-ubnt-com/)\r
+\r
+## SQL \u6CE8\u5165\uFF08SQLI\uFF09\r
+\r
+- [\u68D8\u624B\u7684 oracle SQLI \u60C5\u51B5](https://blog.yappare.com/2020/04/tricky-oracle-sql-injection-situation.html)\r
+- [\u5229\u7528\u201CGoogle BigQuery\u201D SQLI](https://hackemall.live/index.php/2020/03/31/akamai-web-application-firewall-bypass-journey-exploiting-google-bigquery-sql-injection-vulnerability/)\r
+- [\u901A\u8FC7\u505C\u6B62\u91CD\u5B9A\u5411\u5230\u767B\u5F55\u9875\u9762\u7684 SQLI](https://medium.com/@St00rm/sql-injection-via-stopping-the-redirection-to-a-login-page-52b0792d5592)\r
+- [\u4F7F\u7528\u767D\u76D2\u5206\u6790\u67E5\u627E SQLI \u6700\u8FD1\u7684 bug \u793A\u4F8B](https://medium.com/@frycos/finding-sql-injections-fast-with-white-box-analysis-a-recent-bug-example-ca449bce6c76)\r
+- [\u7ED5\u8FC7\u7CDF\u7CD5\u7684 WAF \u6765\u5229\u7528\u76F2 SQLI](https://robinverton.de/blog/2019/08/25/bug-bounty-bypassing-a-crappy-waf-to-exploit-a-blind-sql-injection/)\r
+- [private-site.com/login.php \u4E2D\u7684 SQL \u6CE8\u5165](https://www.mohamedharon.com/2019/07/sql-injection-in-private-sitecomloginphp.html)\r
+- [\u5229\u7528\u68D8\u624B\u7684\u76F2\u6CE8 SQLI](https://www.noob.ninja/2019/07/exploiting-tricky-blind-sql-injection.html)\r
+- [\u5FD8\u8BB0\u5BC6\u7801\u529F\u80FD\u4E2D\u7684SQLI](https://medium.com/@kgaber99/sql-injection-in-forget-password-function-3c945512e3cb)\r
+- [SQLI \u6F0F\u6D1E\u8D4F\u91D1](https://medium.com/@ariffadhlullah2310/sql-injection-bug-bounty-110e92e71ec3)\r
+- [\u6587\u4EF6\u4E0A\u4F20\u76F2 SQLI](https://jspin.re/fileupload-blind-sqli/)\r
+- [SQL \u6CE8\u5165](https://medium.com/@saadahmedx/sql-injection-c87a390afdd3)\r
+- [\u901A\u8FC7\u7528\u6237\u4EE3\u7406\u8FDB\u884C\u7684 SQLI](https://medium.com/@frostnull1337/sql-injection-through-user-agent-44a1150f6888)\r
+- [\u63D2\u5165\u66F4\u65B0\u67E5\u8BE2\u4E2D\u7684 SQLI \u6CA1\u6709\u9017\u53F7]\uFF08https://blog.redforce.io/sql-injection-in-insert-update-query-without-comma/\uFF09\r
+- [\u7528\u4E8E 50 \u8D4F\u91D1\u7684 SQLI](https://medium.com/@orthonviper/sql-injection-for-50-bounty-but-still-worth-reading-468442c1cc1a)\r
+- [\u6EE5\u7528 MYSQL \u5BA2\u6237\u7AEF](https://www.vesiluoma.com/abusing-mysql-clients/)\r
+- [SQLI \u8EAB\u4EFD\u9A8C\u8BC1\u7ED5\u8FC7 AutoTrader Webmail](https://blog.securitybreached.org/2018/09/10/sqli-login-bypass-autotraders/)\r
+- [ZOL \u6D25\u5DF4\u5E03\u97E6\u8EAB\u4EFD\u9A8C\u8BC1\u7ED5\u8FC7 XSS \u548C SQLi](https://blog.securitybreached.org/2018/09/09/zol-zimbabwe-authbypass-sqli-xss/)\r
+- [SQLI bootcamp.nutanix.com](https://blog.securitybreached.org/2018/09/08/sqli-bootcampnutanix-com-bug-bounty-poc/)\r
+- [\u5251\u6865\u5927\u5B66\u7684 SQLI](https://medium.com/@adeshkolte/sql-injection-vulnerability-in-university-of-cambridge-b4c8d0381e1)\r
+- [\u8BA9\u76F2\u6CE8 SQLI \u53D8\u5F97\u4E0D\u90A3\u4E48\u76F2\u76EE](https://medium.com/@tomnomnom/making-a-blind-sql-injection-a-little-less-blind-428dcb614ba8)\r
+- [SQLI \u548C\u611A\u8822\u7684 WAF](https://mahmoudsec.blogspot.com/2018/07/sql-injection-and-silly-waf.html)\r
+- [\u653B\u51FB Postgresql \u6570\u636E\u5E93](https://medium.com/@vishnu0002/attacking-postgresql-database-834a9a3471bc)\r
+- [\u7ED5\u8FC7\u4E3B\u673A\u5934\u8FDB\u884C SQL \u6CE8\u5165\u8F6C\u50A8\u6570\u636E\u5E93 - \u4E00\u79CD\u4E0D\u5BFB\u5E38\u7684 SQL \u6CE8\u5165\u6848\u4F8B](https://medium.com/@logicbomb_1/bugbounty-database-hacked-of-indias-popular-sports-company-bypassing-host-header-to-sql-7b9af997c610)\r
+- [5 \u5206\u949F SQLI](https://medium.com/bugbountywriteup/a-five-minute-sql-i-16ab75b20fe4)\r
+- [\u57FA\u4E8E Union \u7684 SQLI \u7F16\u5199](https://medium.com/@nuraalamdipu/union-based-sql-injection-write-up-a-private-company-site-273f89a49ed9)\r
+- [\u5E26\u6709\u52A0\u8F7D\u6587\u4EF6\u5E76\u8FDB\u5165\u8F93\u51FA\u6587\u4EF6\u7684 SQLI](https://medium.com/bugbountywriteup/sql-injection-with-load-file-and-into-outfile-c62f7d92c4e2)\r
+- [SQLI \u65E0\u5904\u4E0D\u5728]\uFF08https://medium.com/@agrawalsmart7/sql-is-every-where-5cba6ae9480a\uFF09\r
+- [\u66F4\u65B0\u67E5\u8BE2\u4E2D\u7684 SQLI \u6F0F\u6D1E](https://zombiehelp54.blogspot.com/2017/02/sql-injection-in-update-query-bug.html)\r
+- [\u76F2 SQLI Hootsuite](https://ahussam.me/Blind-sqli-Hootsuite/)\r
+- [\u96C5\u864E \u2013 \u6839\u8BBF\u95EE SQLI \u2013 tw.yahoo.com](https://buer.haus/2015/01/15/yahoo-root-access-sql-injection-tw-yahoo-com/)\r
+- [\u9010\u6B65\u5229\u7528 Oculus \u4E2D\u7684 SQLI](https://josipfranjkovic.blogspot.com/2014/09/step-by-step-exploiting-sql-injection.html)\r
+- [Magix \u6F0F\u6D1E\u8D4F\u91D1\u8BA1\u5212\uFF1Amagix.com (RCE\u3001SQLi) \u548C xara.com (LFI\u3001XSS)](https://www.rcesecurity.com/2014/04/magix-bug-bounty-magix-com-rce-sqli-and-xara-com-lfi-xss/)\r
+- [\u7279\u65AF\u62C9\u6C7D\u8F66\u76F2 SQLI](https://bitquark.co.uk/blog/2014/02/23/tesla_motors_blind_sql_injection)\r
+- [\u8BFA\u57FA\u4E9A\u7F51\u7AD9\u4E2D\u7684 SQLI](https://josipfranjkovic.blogspot.com/2013/07/sql-injections-in-nokia-sites.html)\r
+\r
+## \u4E0D\u5B89\u5168\u7684\u76F4\u63A5\u5BF9\u8C61\u5F15\u7528\uFF08IDOR\uFF09\r
+\r
+- [\u5728 Facebook Analytics \u4E2D\u62AB\u9732\u79C1\u4EBA\u4EEA\u8868\u677F\u56FE\u8868\u7684\u540D\u79F0\u548C\u6570\u636E]\uFF08https://bugreader.com/jubabaghdad@disclose-private-dashboard-charts-name-and-data-in-facebook-analytics-184\uFF09\r
+- [\u62AB\u9732\u4EFB\u4F55\u7528\u6237\u79C1\u4E0B\u5206\u4EAB\u7684\u6E38\u620F\u526A\u8F91]\uFF08https://bugreader.com/rony@disclosing-privately-shared-gaming-clips-of-any-user-128\uFF09\r
+- [\u5728\u4E2A\u4EBA\u6D3B\u52A8\u4E2D\u5C06\u4EFB\u4F55\u4EBA\uFF08\u5305\u62EC\u975E\u597D\u53CB\u548C\u88AB\u5C4F\u853D\u7684\u4EBA\uFF09\u6DFB\u52A0\u4E3A\u5171\u540C\u4E3B\u6301\u4EBA\uFF01]\uFF08https://bugreader.com/binit@adding-anyone- including-non-friend-and-blocked-people-as-co-host-in-personal-event-181\uFF09\r
+- [\u9875\u9762\u5206\u6790\u5E08\u53EF\u4EE5\u67E5\u770B\u804C\u4F4D\u7533\u8BF7\u8BE6\u60C5](https://bugreader.com/rony@page-analyst-could-view-job-application-details-213)\r
+- [\u5220\u9664\u4EFB\u4F55\u4EBA\u7684\u89C6\u9891\u6295\u7968]\uFF08https://bugreader.com/testgrounds@deleting-anyones-video-poll-175\uFF09\r
+\r
+## 2FA \u76F8\u5173\u95EE\u9898\r
+\r
+- [\u901A\u8FC7\u903B\u8F91\u901F\u7387\u9650\u5236\u7ED5\u8FC7 2FA \u7ED5\u8FC7]\uFF08https://medium.com/@jeppe.b.weikop/2fa-bypass-via-logical-rate-limiting-bypass-25ae2a4e1835\uFF09\r
+- [\u5728\u7F51\u7AD9\u4E2D\u7ED5\u8FC7 2FA](https://medium.com/sourav-sahana/bypass-2fa-in-a-website-d616eaead1e3)\r
+- [\u5947\u602A\u800C\u7B80\u5355\u7684 2FA \u7ED5\u8FC7](https://medium.com/@ultranoob/weird-and-simple-2fa-bypass-without-any-test-b869e09ac261)\r
+- [\u6211\u5982\u4F55\u901A\u8FC7\u7B80\u5355\u56E0\u7D20\u66B4\u529B\u7834\u89E3 2FA](https://medium.com/clouddevops/bugbounty-how-i-cracked-2fa-two-factor-authentication-with-simple-factor-brute-force-a1c0f3a2f1b4)\r
+- [\u65E0\u9700\u8F93\u5165 2FA \u5373\u53EF\u91CD\u65B0\u6FC0\u6D3B Instagram \u5E10\u6237](https://bugbountypoc.com/instagram-account-is-reactivated-without-entering-2fa/)\r
+- [\u5982\u4F55\u4F7F\u7528 HTTP \u6807\u5934\u7ED5\u8FC7 2FA](https://medium.com/@YumiSec/how-to-bypass-a-2fa-with-a-http-header-ce82f7927893)\r
+- [\u6211\u5982\u4F55\u4F7F\u7528 2FA \u7ED5\u8FC7 Outlook \u7834\u89E3 40,000 \u4E2A Microsoft \u7528\u6237\u5E10\u6237](https://medium.com/@goyalvartul/how-i-hacked-40-000-user-accounts-of-microsoft-using-2fa-bypass-outlook-live-com-13258785ec2f)\r
+- [\u6211\u5982\u4F55\u6EE5\u7528 2FA \u5728\u5BC6\u7801\u6062\u590D\u66F4\u6539 google microsoft instagram \u540E\u4FDD\u6301\u6301\u4E45\u6027]\uFF08https://medium.com/@lukeberner/how-i-abused-2fa-to-maintain-persistence-after-a-password-change-google-microsoft-instagram-7e3f455b71a1\uFF09\r
+- [\u7ED5\u8FC7 hackerone 2FA ]\uFF08https://medium.com/japzdivino/bypass-hackerone-2fa-requirement-and-reporter-blacklist-46d7959f1ee5\uFF09\r
+- [Facebook \u6F0F\u6D1E\u8D4F\u91D1\uFF1A\u6211\u5982\u4F55\u679A\u4E3E\u5DF2\u542F\u7528 2FA \u7684 Instagram \u5E10\u6237]\uFF08https://medium.com/@zk34911/facebook-bug-bounty-how-i-was-able-to-enumerate-instagram-accounts-who-had-enabled-2fa-two-step-fddba9e9741c\uFF09\r
+\r
+## CORS \u76F8\u5173\u95EE\u9898\r
+\r
+- [\u8C37\u6B4C 404 \u9875\u9762\u4E0A\u7684 CORS \u9519\u8BEF\uFF08\u5DF2\u5956\u52B1\uFF09]\uFF08https://medium.com/@jayateerthag/cors-bug-on-googles-404-page-rewarded-2163d58d3c8b\uFF09\r
+- [CORS \u914D\u7F6E\u9519\u8BEF\u5BFC\u81F4\u79C1\u4EBA\u4FE1\u606F\u6CC4\u9732](https://medium.com/@sasaxxx777/cors-misconfiguration-leading-to-private-information-disclosure-3034cfcb4b93)\r
+- [CORS \u914D\u7F6E\u9519\u8BEF \u8D26\u6237\u63A5\u7BA1\u8D85\u51FA\u8303\u56F4\u4EE5\u83B7\u53D6\u8303\u56F4\u5185\u7684\u9879\u76EE]\uFF08https://medium.com/@mashoud1122/cors-misconfiguration-account-takeover-out-of-scope-to-grab-items-in-scope-66d9d18c7a46\uFF09\r
+- [Chrome CORS]\uFF08https://blog.bi.tk/chrome-cors/\uFF09\r
+- [\u7ED5\u8FC7 CORS](https://medium.com/@saadahmedx/bypassing-cors-13e46987a45b)\r
+- [CORS \u5230 CSRF \u653B\u51FB](https://medium.com/@osamaavvan/cors-to-csrf-attack-c33a595d441)\r
+- [\u672A\u5229\u7528\u7684 CORS \u9519\u8BEF\u914D\u7F6E\u53CD\u6620\u4E86\u8FDB\u4E00\u6B65\u7684\u95EE\u9898]\uFF08https://smaranchand.com.np/2019/05/an-unexploited-cors-misconfiguration-reflecting-further-issues/\uFF09\r
+- [\u8D85\u8D8A\u8303\u56F4\u601D\u8003\u9AD8\u7EA7 cors \u5F00\u53D1\u6280\u672F](https://medium.com/@sandh0t/think-outside-the-scope-advanced-cors-exploitation-techniques-dad019c68397)\r
+- [\u4E00\u4E2A\u7B80\u5355\u7684 CORS \u914D\u7F6E\u9519\u8BEF\u6CC4\u9732\u4E86 Twitter Facebook Instagram \u7684\u79C1\u4EBA\u5E16\u5B50]\uFF08https://medium.com/@nahoragg/a-simple-cors-misconfig-leaked-private-post-of-twitter-facebook-instagram-5f1a634feb9d\uFF09\r
+- [\u5229\u7528 CORS \u9519\u8BEF\u914D\u7F6E](https://bugbaba.blogspot.com/2018/02/exploiting-cors-miss-configuration.html)\r
+- [\u901A\u8FC7\u5E26\u6709\u8FDE\u63A5\u5957\u63A5\u5B57\u7684 CORS \u5B9E\u73B0\u5B8C\u5168\u8D26\u6237\u63A5\u7BA1]\uFF08https://medium.com/@saamux/full-account-takeover-through-cors-with-connection-sockets-179133384815\uFF09\r
+- [\u5229\u7528\u4E0D\u5B89\u5168\u7684 CORS API api.artsy.net](https://blog.securitybreached.org/2017/10/10/exploiting-insecure-cross-origin-resource-sharing-cors-api-artsy-net)\r
+- [\u57DF\u540D\u901A\u914D\u7B26 CORS \u9884\u5229\u7528](https://medium.com/bugbountywriteup/pre-domain-wildcard-cors-exploitation-2d6ac1d4bd30)\r
+- [\u5229\u7528\u6D41\u884C BTC \u7F51\u7AD9\u4E0A\u914D\u7F6E\u9519\u8BEF\u7684 CORS](https://medium.com/@arbazhussain/exploiting-misconfigured-cors-on-popular-btc-site-2aedfff906f6)\r
+- [\u6EE5\u7528 CORS \u5728 flickr \u4E0A\u9020\u6210 XSS](https://whitton.io/articles/abusing-cors-for-an-xss-on-flickr/)\r
+\r
+## \u670D\u52A1\u5668\u7AEF\u8BF7\u6C42\u4F2A\u9020\uFF08SSRF\uFF09\r
+\r
+\r
+- [\u5229\u7528 SSRF \u7684\u8BD5\u9A8C\u548C\u78E8\u96BE](https://medium.com/a-bugz-life/exploiting-an-ssrf-trials-and-tribulations-14c5d8dbd69a)\r
+- [PDF \u751F\u6210\u5668\u4E0A\u7684 SSRF](https://medium.com/@michan001/ssrf-on-pdf-generator-36b81e16d67b)\r
+- [Google\u4E91\u5E73\u53F0stackdriver\u4E2D\u7684Google VRP SSRF](https://ngailong.wordpress.com/2019/12/19/google-vrp-ssrf-in-google-cloud-platform-stackdriver/)\r
+- [Vimeo \u4E0A\u4F20\u51FD\u6570 SSRF](https://medium.com/@dPhoeniixx/vimeo-upload-function-ssrf-7466d8630437)\r
+- [\u901A\u8FC7 ffmeg \u5904\u7406\u7684 SSRF](https://medium.com/@pflash0x0punk/ssrf-via-ffmpeg-hls-processing-a04e0288a8c5)\r
+- [\u6211\u7684\u7B2C\u4E00\u4E2A\u4F7F\u7528 DNS \u91CD\u65B0\u7ED1\u5B9A\u7684 SSRF](https://geleta.eu/2019/my-first-ssrf-using-dns-rebinfing/)\r
+- [Bugbounty \u7B80\u5355 SSRF](https://jin0ne.blogspot.com/2019/11/bugbounty-simple-ssrf.html)\r
+- [SSRF\u4ECE downnotifier \u670D\u52A1\u5668\u8BFB\u53D6\u672C\u5730\u6587\u4EF6](https://www.openbugbounty.org/blog/leonmugen/ssrf-reading-local-files-from-downnotifier-server/)\r
+- [SSRF\u6F0F\u6D1E](https://evanricafort.blogspot.com/2019/08/ssrf-vulnerability-in.html)\r
+- [\u901A\u8FC7 gopher \u534F\u8BAE\u5229\u7528 SSRF \u83B7\u53D6 adfly SMTP \u8BBF\u95EE\u6743\u9650](https://medium.com/@androgaming1912/gain-adfly-smtp-access-with-ssrf-via-gopher-protocol-26a26d0ec2cb)\r
+- [\u7531\u4E8E Senntry \u914D\u7F6E\u9519\u8BEF\u5BFC\u81F4 stripe.com \u4E2D\u51FA\u73B0\u76F2 SSRF](https://medium.com/@0ktavandi/blind-ssrf-in-stripe-com-due-to-sentry-misconfiguration-60ebb6a40b5)\r
+- [SSRF \u7AEF\u53E3\u95EE\u9898\u9690\u85CF\u65B9\u6CD5](https://medium.com/@w_hat_boy/server-side-request-forgery-ssrf-port-issue-hidden-approch-f4e67bd8cc86)\r
+- [ Web \u7F13\u5B58\u9632\u706B\u5899\u7ED5\u8FC7 SSRF \u5230 AWS \u51ED\u8BC1\u6CC4\u9732\u7684\u5386\u7A0B](https://medium.com/@logicbomb_1/the-journey-of-web-cache-firewall-bypass-to-ssrf-to-aws-credentials-compromise-b250fb40af82)\r
+- [SSRF \u8BFB\u53D6\u672C\u5730\u6587\u4EF6\u5E76\u6EE5\u7528 AWS \u5143\u6570\u636E](https://medium.com/@pratiky054/ssrf-to-read-local-files-and-abusing-the-aws-metadata-8621a4bf382)\r
+- [pdfreactor SSRF \u5230\u6839\u7EA7\u672C\u5730\u6587\u4EF6\u8BFB\u53D6\u5BFC\u81F4 RCE](https://medium.com/@armaanpathan/pdfreacter-ssrf-to-root-level-local-file-read-which-led-to-rce -eb460ffb3129)\r
+- [SSRF \u6280\u5DE7\uFF1A\u5FAE\u8F6F Bing webwaster \u4E2D\u7684 SSRF XSPA](https://medium.com/@elberandre/ssrf-trick-ssrf-xspa-in-microsofts-bing-webmaster-central-8015b5d487fb)\r
+- [Downnotifeer SSRF](https://mqt.github.io/notes/downnotifer-ssrf/)\r
+- [\u5C06 SSRF \u5347\u7EA7\u4E3A RCE](https://medium.com/cesppa/escalating-ssrf-to-rce-f28c482eb8b9)\r
+- [\u5177\u6709\u4EE3\u7801\u6267\u884C\u6F5C\u529B\u7684 Vimeo SSRF](https://medium.com/@rootxharsh_90844/vimeo-ssrf-with-code-execution-potential-68c774ba7c1e)\r
+- [slack \u4E2D\u7684 SSRF](https://medium.com/@elberandre/1-000-ssrf-in-slack-7737935d3884)\r
+- [\u50CF\u8001\u677F\u4E00\u6837\u5229\u7528 SSRF]\uFF08https://medium.com/@zain.sabahat/exploiting-ssrf-like-a-boss-c090dc63d326\uFF09\r
+- [AWS \u63A5\u7BA1 SSRF javascript](http://10degres.net/aws-takeover-ssrf-javascript/)\r
+- [\u6DF1\u5165\u8C37\u6B4C\u751F\u4EA7\u7F51\u7EDC\u5185\u90E8\u7684 SSRF \u6F0F\u6D1E](https://opnsec.com/2018/07/into-the-borg-ssrf-inside-google-production-network/)\r
+- [SSRF \u5230\u672C\u5730\u6587\u4EF6\u6CC4\u9732](https://medium.com/@tungpun/from-ssrf-to-local-file-disclosure-58962cdc589f)\r
+- [\u6211\u662F\u5982\u4F55\u5728 Yahoo Guesthouse \u4E2D\u53D1\u73B0 SSRF \u7684\uFF08\u4FA6\u5BDF\u80DC\u5229\uFF09](https://medium.com/@th3g3nt3l/how-i-found-an-ssrf-in-yahoo-guesthouse-recon-wins-8722672e41d4)\r
+- [\u5229\u7528 SSRF \u6F0F\u6D1E\u8BFB\u53D6\u5185\u90E8\u6587\u4EF6](https://medium.com/@neerajedwards/reading-internal-files-using-ssrf-vulnerability-703c5706eefb)\r
+- [Airbnb \u901A\u8FC7 liveperson \u804A\u5929\u94FE\u63A5\u7B2C\u4E09\u65B9\u5F00\u653E\u91CD\u5B9A\u5411\u5230 SSRF](https://buer.haus/2017/03/09/airbnb-chaining-third-party-open-redirect-into-server-side-request-forgery-ssrf-via-liveperson-chat/)\r
+\r
+\r
+\u7ADE\u4E89\u6761\u4EF6\r
+\r
+- [\u5229\u7528\u7ADE\u4E89\u6761\u4EF6\u6F0F\u6D1E]\uFF08https://medium.com/@vincenz/exploiting-a-race-condition-vulnerability-3f2cb387a72\uFF09\r
+- [\u7ADE\u4E89\u6761\u4EF6\u53EF\u80FD\u5BFC\u81F4\u5E94\u7528\u7A0B\u5E8F\u5BF9\u6545\u4E8B\u8FDB\u884C RCE](https://medium.com/bugbountywriteup/race-condition-that-c\u200B\u200Bould-result-to-rce-a-story-with-an-app-that-temporary-stored-an-uploaded-9a4065368ba3)\r
+- [\u521B\u9020\u601D\u7EF4\u5C31\u662F\u6211\u4EEC\u7684\u4E00\u5207\uFF1A\u7ADE\u4E89\u6761\u4EF6\u548C\u4E1A\u52A1\u903B\u8F91](https://medium.com/@04sabsas/bugbounty-writeup-creative-thinking-is-our-everything-race-condition-business-logic-error-2f3e82b9aa17)\r
+- [\u5C06\u4E0D\u5F53\u6388\u6743\u4E0E\u7ADE\u4E89\u6761\u4EF6\u6302\u94A9\u4EE5\u83B7\u53D6\u4FE1\u7528\u5361\u8BE6\u7EC6\u4FE1\u606F]\uFF08https://medium.com/@ciph3r7r0ll/chaining-improper-authorization-to-race-condition-to-harvest-credit-card-details-a-bug-bounty-effe6e0f5076\uFF09\r
+- [Facebook \u804A\u5929\u7EC4\u4E2D\u7684\u7ADE\u4E89\u6761\u4EF6\u9519\u8BEF](https://www.seekurity.com/blog/general/the-fuzz-the-bug-the-action-a-race-condition-bug-in-facebook-chat-groups-leads-to-spy-on-conversations/)\r
+- [\u7ADE\u4E89\u6761\u4EF6\u7ED5\u8FC7\u56E2\u961F\u9650\u5236]\uFF08https://medium.com/@arbazhussain/race-condition-bypassing-team-limit-b162e777ca3b\uFF09\r
+- [\u7F51\u7EDC\u4E0A\u7684\u7ADE\u4E89\u6761\u4EF6]\uFF08https://www.josipfranjkovic.com/blog/race-conditions-on-web\uFF09\r
+- [Facebook \u4E0A\u7684\u7ADE\u4E89\u6761\u4EF6\u9519\u8BEF](https://josipfranjkovic.blogspot.com/2015/04/race-conditions-on-facebook.html)\r
+- [\u5229\u7528\u7ADE\u4E89\u6761\u4EF6\u653B\u51FB\u94F6\u884C](https://medium.com/swlh/hacking-banks-with-race-conditions-2f8d55b45a4b)\r
+- [Web \u5E94\u7528\u4E2D\u7684\u7ADE\u4E89\u6761\u4EF6\u9519\u8BEF\uFF1A\u4E00\u4E2A\u7528\u4F8B](https://medium.com/@ciph3r7r0ll/race-condition-bug-in-web-app-a-use-case-21fd4df71f0e)\r
+- [\u6F0F\u6D1E\u8D4F\u91D1\u8BA1\u5212\u4E2D\u53D1\u73B0 RACE \u6761\u4EF6\u6F0F\u6D1E](https://medium.com/@pravinponnusamy/race-condition-vulnerability-found-in-bug-bounty-program-573260454c43)\r
+- [\u5982\u4F55\u68C0\u67E5 Web \u5E94\u7528\u7A0B\u5E8F\u4E2D\u7684\u7ADE\u4E89\u6761\u4EF6]\uFF08https://medium.com/@valeriyshevchenko/how-to-check-race-conditions-in-web-applications-338f73937992\uFF09\r
+\r
+## \u8FDC\u7A0B\u4EE3\u7801\u6267\u884C\uFF08RCE\uFF09\r
+\r
+- [\u5FAE\u8F6F RCE \u6F0F\u6D1E\u8D4F\u91D1](https://blog.securitybreached.org/2020/03/31/microsoft-rce-bugbounty/)\r
+- [OTP \u66B4\u529B\u7834\u89E3\u8D26\u6237\u63A5\u7BA1]\uFF08https://medium.com/@ranjitsinghnit/otp-bruteforce-account-takeover-faaac3d712a8\uFF09\r
+- [\u4F7F\u7528 bitdefender \u653B\u51FB deskpro \u4E0A\u7684 helpdesk RCE \u94FE](https://blog.redforce.io/attacking-helpdesks-part-1-rce-chain-on-deskpro-with-bitdefender-as-case-study/)\r
+- [\u8FDC\u7A0B\u56FE\u7247\u4E0A\u4F20\u5BFC\u81F4RCE\u6CE8\u5165\u6076\u610F\u4EE3\u7801]\uFF08https://medium.com/@asdqwedev/remote-image-upload-leads-to-rce-inject-malicious-code-to-php-gd-image-90e1e8b2aada\uFF09\r
+- [\u5229\u7528 shodan.io RCE \u5728\u4E00\u5206\u949F\u5185\u627E\u5230 p1](https://medium.com/@sw33tlie/finding-a-p1-in-one-minute-with-shodan-io-rce-735e08123f52)\r
+- [\u4E0E\u6700\u5927\u7684 ICT \u516C\u53F8\u4E4B\u4E00\u5408\u4F5C\uFF0C\u4ECE\u4FA6\u5BDF\u5230\u4F18\u5316 RCE \u7ED3\u679C\u7684\u7B80\u5355\u6545\u4E8B](https://medium.com/bugbountywriteup/from-recon-to-optimizing-rce-results-simple-story-with-one-of-the-biggest-ict-company-in-the-ea710bca487a)\r
+- [\u4E0A\u4F20\u540E\u95E8\u4EE5\u8C0B\u53D6\u4E50\u8DA3\u548C\u5229\u6DA6 RCE DB creds P1](https://medium.com/@mohdaltaf163/uploading-backdoor-for-fun-and-profit-rce-db-cred-p1-2cdaa00e2125)\r
+- [\u8D1F\u8D23\u4EFB\u7684\u62AB\u9732\u7A81\u7834\u6C99\u76D2\u7F16\u8F91\u5668\u6267\u884C RCE](https://jatindhankhar.in/blog/responsible-disclosure-breaking-out-of-a-sandboxed-editor-to-perform-rce/)\r
+- [Wordpress \u8BBE\u8BA1\u7F3A\u9677\u5BFC\u81F4 woocommerce RCE](https://blog.ripstech.com/2018/wordpress-design-flaw-leads-to-woocommerce-rce/)\r
+- [RCE \u4E2D\u4E0A\u4F20\u65F6\u8DEF\u5F84\u904D\u5386\u7684\u7ED3\u679C](https://blog.harshjaiswal.com/path-traversal-while-uploading-results-in-rce)\r
+- [RCE jenkins \u5B9E\u4F8B](https://blog.securitybreached.org/2018/09/07/rce-jenkins-instance-dosomething-org-bug-bounty-poc/)\r
+- [\u904D\u5386 RCE \u8DEF\u5F84](https://hawkinsecurity.com/2018/08/27/traversing-the-path-to-rce/)\r
+- [\u6211\u5982\u4F55\u5C06 4 \u4E2A\u6F0F\u6D1E\u7279\u5F81\u94FE\u63A5\u5230\u4E9A\u9A6C\u900A\u7684 RCE \u4E2D](http://blog.orange.tw/2018/08/how-i-chained-4-bugs-features-into-rce-on-amazon.html)\r
+- [\u56E0 showexceptions \u5BFC\u81F4\u7684 RCE](https://sites.google.com/view/harshjaiswalblog/rce-due-to-showexceptions)\r
+- [\u96C5\u864E luminate RCE](https://sites.google.com/securifyinc.com/secblogs/yahoo-luminate-rce)\r
+- [Latex \u5230 RCE \u79C1\u4EBA\u6F0F\u6D1E\u8D4F\u91D1\u8BA1\u5212](https://medium.com/bugbountywriteup/latex-to-rce-private-bug-bounty-program-6a0b5b33d26a)\r
+- [\u6211\u5982\u4F55\u5728\u4E24\u5BB6\u8D22\u5BCC 500 \u5F3A\u516C\u53F8\u4E2D\u8DFB\u8EAB\u540D\u4EBA\u5802\u7684 RCE \u6545\u4E8B](https://medium.com/@emenalf/how-i-got-hall-of-fame-in-two-fortune-500-companies-an-rce-story-9c89cead81ff)\r
+- [\u901A\u8FC7\u4E0A\u4F20\u7F51\u9875\u914D\u7F6E\u8FDB\u884C RCE](https://poc-server.com/blog/2018/05/22/rce-by-uploading-a-web-config/)\r
+- [36k Google \u5E94\u7528\u5F15\u64CE RCE](https://sites.google.com/site/testsitehacking/-36k-google-app-engine-rce)\r
+- [\u6211\u662F\u5982\u4F55\u5728\u96C5\u864E\u4E0A\u53D1\u73B0 2.9 RCE \u7684](https://medium.com/@kedrisec/how-i-found-2-9-rce-at-yahoo-bug-bounty-program-20ab50dbfac7)\r
+- [\u7ED5\u8FC7\u9632\u706B\u5899\u83B7\u53D6 RCE](https://medium.com/@logicbomb_1/bugbounty-how-i-was-able-to-bypass-firewall-to-get-rce-and-then-went-from-server-shell-to-get-783f71131b94)\r
+- [yahoo \u5B50\u57DF\u540D RCE \u6F0F\u6D1E](https://www.mohamedharon.com/2018/01/rce-vulnerabilite-in-yahoo-subdomain.html)\r
+- [Android \u7248 duolingos tinycards \u5E94\u7528\u4E2D\u5B58\u5728 RCE](https://wwws.nightwatchcybersecurity.com/2018/01/04/rce-in-duolingos-tinycards-app-for-android-cve-2017-16905/)\r
+- [\u65E0\u9650\u5236\u6587\u4EF6\u4E0A\u4F20\u81F3 RCE](https://blog.securitybreached.org/2017/12/19/unrestricted-file-upload-to-rce-bug-bounty-poc/)\r
+- [\u83B7\u53D6 RCE\uFF08CTF \u65B9\u5F0F\uFF09]\uFF08https://medium.com/@uranium238/getting-a-rce-ctf-way-2fd612fb643f\uFF09\r
+- [RCE \u661F\u7403\u5927\u6218](https://blog.zsec.uk/rce-starwars/)\r
+- [\u6211\u5982\u4F55\u4ECE\u96C5\u864E\u83B7\u5F97 5500 \u4E2A RCE](https://medium.com/bugbountywriteup/how-i-got-5500-from-yahoo-for-rce-92fffb7145e6)\r
+- [Addthis \u4E2D\u7684 RCE](https://whitehatnepal.tumblr.com/post/149933960267/rce-in-addthis)\r
+- [Paypal \u8FDC\u7A0B\u4EE3\u7801\u6267\u884C](https://artsploit.blogspot.com/2016/01/paypal-rce.html)\r
+- [\u6211\u7684\u7B2C\u4E00\u4E2A RCE\uFF08\u538B\u529B\u5927\u7684\u5458\u5DE5\u8BA9\u6211\u83B7\u5F97\u53CC\u500D\u8D4F\u91D1\uFF09]\uFF08https://medium.com/@abhishake100/my-first-rce-stressed-employee-gets-me-2x-bounty-c4879c277e37\uFF09\r
+- [\u6EE5\u7528 ImageMagick \u83B7\u53D6 RCE](https://strynx.org/imagemagick-rce/)\r
+- [Snapdeal \u5982\u4F55\u8BA9\u7528\u6237\u6570\u636E\u9762\u4E34\u98CE\u9669\uFF01]\uFF08https://medium.com/@nanda_kumar/bugbounty-how-snapdeal-indias-popular-e-commerce-website-kept-their-user-data-at-risk-3d02b4092d9c\uFF09\r
+- [\u901A\u8FC7 ImageTragick \u8FDB\u884C RCE](https://rezo.blog/hacking/2019/11/29/rce-via-imagetragick.html)\r
+- [\u6211\u5982\u4F55\u4F7F\u7528\u7B80\u5355\u56E0\u5B50\u66B4\u529B\u7834\u89E3 2FA\uFF01]\uFF08https://medium.com/clouddevops/bugbounty-how-i-cracked-2fa-two-factor-authentication-with-simple-factor-brute-force-a1c0f3a2f1b4\uFF09\r
+- [\u53D1\u73B0 RCE \u4F46\u88AB\u91CD\u590D]\uFF08https://medium.com/@smilehackerofficial/how-i-found-rce-but-got-duplicated-ea7b8b010990\uFF09\r
+- [\u201CRecon\u201D \u5E2E\u52A9\u4E09\u661F\u4FDD\u62A4\u5176 SamsungTv\u3001\u7535\u5B50\u5546\u52A1\u7535\u5B50\u5546\u5E97\u7684\u751F\u4EA7\u5B58\u50A8\u5E93](https://blog.usejournal.com/how-recon-helped-samsung-protect-their-production-repositories-of-samsungtv-ecommerce-estores-4c51d6ec4fdd)\r
+- [IDOR \u5230 RCE](https://www.rahulr.in/2019/10/idor-to-rce.html?m=1)\r
+- [\u65E0\u9700 JAVA \u77E5\u8BC6\u5373\u53EF\u5728 AEM \u5B9E\u4F8B\u4E0A\u8FDB\u884C RCE](https://medium.com/@byq/how-to-get-rce-on-aem-instance-without-java-knowledge-a995ceab0a83)\r
+- [\u5229\u7528 Flask Jinja \u6A21\u677F\u6CE8\u5165\u8FDB\u884C RCE](https://medium.com/@akshukatkar/rce-with-flask-jinja-template-injection-ea5d0201b870)\r
+- [\u53EF\u80FD\u5BFC\u81F4 RCE \u7684\u7ADE\u4E89\u6761\u4EF6](https://medium.com/bugbountywriteup/race-condition-that-c\u200B\u200Bould-result-to-rce-a-story-with-an-app-that-temporary-stored-an-uploaded-9a4065368ba3)\r
+- [\u4E32\u8054\u4E24\u4E2A 0-Day \u6F0F\u6D1E\u4EE5\u653B\u51FB Uber Wordpress](https://www.rcesecurity.com/2019/09/H1-4420-From-Quiz-to-Admin-Chaining-Two-0-Days-to-Compromise-an-Uber-Wordpress/)\r
+- [\u901A\u8FC7\u66B4\u529B\u7834\u89E3\u7ED5\u8FC7 Oculus \u8EAB\u4EFD\u9A8C\u8BC1](https://medium.com/@karthiksoft007/oculus-identity-verification-bypass-through-brute-force-dbd0c0d3c37e)\r
+- [\u4EE5 Root \u8EAB\u4EFD\u5728 Marathon \u5B9E\u4F8B\u4E0A\u4F7F\u7528 RCE](https://omespino.com/write-up-private-bug-bounty-usd-rce-as-root-on-marathon-instance/)\r
+- [Atlassian \u4EA7\u54C1\u4E2D\u7684\u4E24\u4E2A\u7B80\u5355 RCE](https://medium.com/@valeriyshevchenko/two-easy-rce-in-atlassian-products-e8480eacdc7f)\r
+- [\u4F7F\u7528 mustache \u6A21\u677F\u5728 Ruby \u4E2D\u5B9E\u73B0 RCE](https://rhys.io/post/rce-in-ruby-using-mustache-templates)\r
+- [\u5173\u4E8E Sucuri RCE...\u4EE5\u53CA\u5982\u4F55\u5904\u7406\u6F0F\u6D1E\u8D4F\u91D1\u62A5\u544A]\uFF08https://www.rcesecurity.com/2019/06/about-a-sucuri-rce-and-how-not-to-handle-bug-bounty-reports/\uFF09\r
+- [\u6E90\u4EE3\u7801\u6CC4\u9732\u6F0F\u6D1E](https://medium.com/@mohamedrserwah/source-code-disclose-vulnerability-b9e49584e2d2)\r
+- [\u7ED5\u8FC7\u79FB\u52A8\u5E94\u7528\u4E2D\u7684\u81EA\u5B9A\u4E49\u4EE4\u724C\u8BA4\u8BC1]\uFF08https://medium.com/@dortz/how-did-i-bypass-a-custom-brute-force-protection-and-why-that-solution-is-not-a-good-idea-4bec705004f9\uFF09\r
+- [Facebook \u7684\u5165\u5BA4\u76D7\u7A83\u8D2D\u7269\u6E05\u5355](https://www.7elements.co.uk/resources/blog/facebooks-burglary-shopping-list/)\r
+- [\u4ECE SSRF \u5230 PDFReacter \u4E2D\u7684 RCE](https://medium.com/@armaanpathan/pdfreacter-ssrf-to-root-level-local-file-read-which-led-to-rce-eb460ffb3129)\r
+- [Apache strust RCE](https://www.mohamedharon.com/2019/04/apache-strust-rce.html)\r
+- [Dell KACE K1000 \u8FDC\u7A0B\u4EE3\u7801\u6267\u884C]\uFF08https://www.rcesecurity.com/2019/04/dell-kace-k1000-remote-code-execution-the-story-of-bug-k1-18652/\uFF09\r
+- [Handlebars \u6A21\u677F\u6CE8\u5165\u548C RCE](https://mahmoudsec.blogspot.com/2019/04/handlebars-template-injection-and-rce.html)\r
+- [IKEA.com \u6CC4\u9732\u7684 Salesforce API \u8BBF\u95EE\u4EE4\u724C](https://medium.com/@jonathanbouman/leaked-salesforce-api-access-token-at-ikea-com-132eea3844e0)\r
+- [Mozilla AWS \u7F51\u7EDC\u4E0A\u7684\u96F6\u65E5 RCE](https://blog.assetnote.io/bug-bounty/2019/03/19/rce-on-mozilla-zero-day-webpagetest/)\r
+- [\u5C06 SSRF \u5347\u7EA7\u4E3A RCE](https://medium.com/cesppa/escalating-ssrf-to-rce-f28c482eb8b9)\r
+- [\u4FEE\u590D\uFF1A\u66B4\u529B\u7834\u89E3 Instagram \u5E10\u6237\u5BC6\u7801]\uFF08https://medium.com/@addictrao20/fixed-brute-force-instagram-accounts-passwords-938471b6e9d4\uFF09\r
+- [Bug Bounty 101 \u2014 \u52A1\u5FC5\u68C0\u67E5\u6E90\u4EE3\u7801](https://medium.com/@spazzyy/bug-bounty-101-always-check-the-source-code-1adaf3f59567)\r
+- [rma.asus-europe.eu \u4E0A\u7684\u534E\u7855 RCE \u6F0F\u6D1E](https://mustafakemalcan.com/asus-rce-vulnerability-on-rma-asus-europe-eu/)\r
+- [Magento \u2013 RCE \u548C\u5177\u6709\u4F4E\u6743\u9650\u7BA1\u7406\u5458\u6743\u9650\u7684\u672C\u5730\u6587\u4EF6\u8BFB\u53D6]\uFF08https://blog.scrt.ch/2019/01/24/magento-rce-local-file-read-with-low-privilege-admin-rights/\uFF09\r
+- [Nokia.com \u4E2D\u7684 RCE](https://medium.com/@sampanna/rce-in-nokia-com-59b308e4e882)\r
+- [SharePoint \u4E2D\u7684\u4E24\u4E2A RCE](https://soroush.secproject.com/blog/2018/12/story-of-two-published-rces-in-sharepoint-workflows/)\r
+- [\u4EE4\u724C\u66B4\u529B\u7834\u89E3\u3001\u8D26\u6237\u63A5\u7BA1\u3001\u6743\u9650\u63D0\u5347\u3001\u7EC4\u7EC7\u63A5\u7BA1]\uFF08https://medium.com/bugbountywriteup/token-brute-force-to-account-take-over-to-privilege-escalation-to-organization-take-over-650d14c7ce7f\uFF09\r
+- [Hubspot \u4E2D\u7684 RCE \u4EE5\u53CA HubL \u4E2D\u7684 EL \u6CE8\u5165](https://www.betterhacker.com/2018/12/rce-in-hubspot-with-el-injection-in-hubl.html)\r
+- [Github \u684C\u9762 RCE](https://pwning.re/2018/12/04/github-desktop-rce/)\r
+- [eBay \u6E90\u4EE3\u7801\u6CC4\u9732](https://slashcrypto.org/2018/11/28/eBay-source-code-leak/)\r
+- [Facebook \u5E7F\u544A API \u4E2D\u7684\u6E90\u4EE3\u7801\u62AB\u9732](https://www.amolbaikar.com/facebook-source-code-disclosure-in-ads-api/)\r
+- [XS-\u641C\u7D22 Google \u7684 bug tracker \u4EE5\u67E5\u627E\u6613\u53D7\u653B\u51FB\u7684\u6E90\u4EE3\u7801](https://medium.com/@luanherrera/xs-searching-googles-bug-tracker-to-find-out-vulnerable-source-code-50d8135b7549)\r
+\r
+## \u7F13\u51B2\u533A\u6EA2\u51FA\u62A5\u544A\r
+\r
+- [\u7F13\u51B2\u533A\u6EA2\u51FA\u653B\u51FB\u4E66\u7C4D pdf](http://www.cis.syr.edu/~wedu/seed/Book/book_sample_buffer.pdf)\r
+- [\u7F13\u51B2\u533A\u6EA2\u51FA\u653B\u51FB Github \u4ED3\u5E93](https://github.com/npapernot/buffer-overflow-attack)\r
+- [\u57FA\u4E8E\u5806\u6808\u7684\u7F13\u51B2\u533A\u6EA2\u51FA\u653B\u51FB\uFF1A\u89E3\u91CA\u548C\u793A\u4F8B]\uFF08https://blog.rapid7.com/2019/02/19/stack-based-buffer-overflow-attacks-what-you-need-to-know/\uFF09\r
+- [\u7F13\u51B2\u533A\u6EA2\u51FA\u653B\u51FB\u7684\u5DE5\u4F5C\u539F\u7406]\uFF08https://www.netsparker.com/blog/web-security/buffer-overflow-attacks/\uFF09\r
+- [\u4E8C\u8FDB\u5236\u5229\u7528\uFF1A\u7F13\u51B2\u533A\u6EA2\u51FA]\uFF08https://blog.usejournal.com/binary-exploitation-buffer-overflows-a9dc63e8b546\uFF09\r
+- [\u4EC0\u4E48\u662F\u7F13\u51B2\u533A\u6EA2\u51FA\uFF1F\u4E86\u89E3\u7F13\u51B2\u533A\u6EA2\u51FA\u6F0F\u6D1E\u3001\u6F0F\u6D1E\u5229\u7528\u548C\u653B\u51FB]\uFF08https://www.veracode.com/security/buffer-overflow\uFF09\r
+\r
+Android \u6E17\u900F\u6D4B\u8BD5\r
+\r
+- [Android \u6E17\u900F\u6D4B\u8BD5\u5B9E\u9A8C\u5BA4\uFF08\u521D\u5B66\u8005\u5206\u6B65\u6307\u5357\uFF01\uFF09]\uFF08https://medium.com/bugbountywriteup/android-pentesting-lab-4a6fe1a1d2e0\uFF09\r
+\r
+## \u8D21\u732E\r
+- \u6253\u5F00 Pull \u8BF7\u6C42\r
+- \u5C06\u6587\u7AE0\u94FE\u63A5\u53D1\u9001\u81F3\u6211\u7684 Twitter : [0xAsm0d3us](https://twitter.com/0xAsm0d3us)\r
+\r
+\r
+\u7EF4\u62A4\u8005\r
+\r
+\`\u6B64 Repo \u7531\u4EE5\u4E0B\u4EBA\u5458\u7EF4\u62A4\uFF1A\`\r
+\r
+- [devanshbatham](https://github.com/devanshbatham)\r
+- [e13v3n-0xb]\uFF08https://github.com/e13v3n-0xb\uFF09\r
+`;export{t as _};
